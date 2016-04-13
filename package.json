@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "better-npm-run build",
     "start": "better-npm-run start"
   },
   "betterScripts": {
     "start": {
+      "command": "babel-node ./bin/server.js"
+    },
+    "build": {
       "command": "babel-node ./bin/server.js"
     }
   },
@@ -25,6 +28,7 @@
     "babel-preset-survivejs-kanban": "^0.3.3",
     "better-npm-run": "0.0.8",
     "css-loader": "^0.23.1",
+    "debug": "^2.2.0",
     "express": "^4.13.4",
     "npm-install-webpack-plugin": "^3.0.0",
     "style-loader": "^0.13.1",
