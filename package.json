@@ -1,0 +1,41 @@
+{
+  "name": "kanban-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "better-npm-run start"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "babel-node ./bin/server.js"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.7.5",
+    "babel-core": "^6.7.6",
+    "babel-loader": "^6.2.4",
+    "babel-preset-airbnb": "^1.1.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-survivejs-kanban": "^0.3.3",
+    "better-npm-run": "0.0.8",
+    "css-loader": "^0.23.1",
+    "express": "^4.13.4",
+    "npm-install-webpack-plugin": "^3.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-merge": "^0.10.0"
+  },
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
+  }
+}
