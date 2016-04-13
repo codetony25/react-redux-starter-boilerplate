@@ -1,7 +1,8 @@
 import path from 'path'
 import merge from 'webpack-merge'
-import webpack from 'webpack'
-import NpmInstallPlugin from 'npm-install-webpack-plugin'
+
+import webpackDevConfig from './dev.config'
+import webpackProdConfig from './prod.config'
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -22,7 +23,7 @@ const config = {
 		path: PATHS.build,
 		filename: 'bundle.js',
 	},
-	
+
 	resolve: {
 		extensions: ['', '.js', '.jsx']
 	},
@@ -39,31 +40,14 @@ const config = {
 				loaders: ['style', 'css'],
 				include: PATHS.app,
 			}
-		]
+		],
 	}
 };
 
 if(TARGET === 'start' || !TARGET) {
-	module.exports = merge(config, {
-		devtool: 'eval-source-map',
-		devServer: {
-			contentBase: PATHS.build,
-			historyApiFallback: true,
-			hot: true,
-			inline: true,
-			progress: true,
-			stats: 'errors-only',
-		},
-
-		plugins: [
-			new webpack.HotModuleReplacementPlugin(),
-			new NpmInstallPlugin(({
-				save: true,
-			}))
-		]
-	});
+	module.exports = merge(config, webpackDevConfig);
 }
 
 if(TARGET === 'build') {
-	module.exports = merge(config, {})
+	module.exports = merge(config, webpackProdConfig)
 }
