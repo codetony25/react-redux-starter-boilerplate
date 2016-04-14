@@ -1,15 +1,16 @@
 import webpack from 'webpack'
 import path from 'path'
 import NpmInstallPlugin from 'npm-install-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const PATHS = {
 	app: path.join(__dirname, '../src'),
 	build: path.join(__dirname, '../build'),
 }
 
-const webpackDevConfig = {
-	devtool: 'eval-source-map',
+console.log('PATHS', PATHS.index);
 
+const webpackDevConfig = {
 	devServer: {
 		contentBase: PATHS.build,
 		historyApiFallback: true,
@@ -20,6 +21,14 @@ const webpackDevConfig = {
 	},
 
 	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.join(__dirname, '../src/index.html'),
+			filename: 'index.html',
+			inject: 'body',
+			minify: {
+				collapseWhitespace: true,
+			},
+		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new NpmInstallPlugin(({
 			save: true,

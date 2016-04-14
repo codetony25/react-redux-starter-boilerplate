@@ -3,10 +3,10 @@ import express from 'express'
 import webpack from 'webpack'
 import webpackMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-import config from '../webpack/webpack.config.js'
+import webpackConfig from '../webpack/webpack.config.js'
 
 const app = express()
-const compiler = webpack(config)
+const compiler = webpack(webpackConfig)
 
 app.use(express.static(__dirname + '../build'))
 app.use(webpackMiddleware(compiler))
