@@ -1,4 +1,5 @@
 import './styles/main.scss'
+import './styles/othermain.css'
 
 import React from 'react'
 import ReactDom from 'react-dom'

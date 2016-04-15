@@ -1,4 +1,3 @@
-import path from 'path'
 import express from 'express'
 import webpack from 'webpack'
 import webpackMiddleware from 'webpack-dev-middleware'
@@ -16,8 +15,12 @@ app.use(webpackMiddleware(compiler, {
 	hot: true,
 	inline: true,
 	lazy: false,
-	headers: {'Access-Control-Allow-Origin': '*'},
-	stats: {colors: true}
+	headers: {
+		'Access-Control-Allow-Origin': '*'
+	},
+	stats: {
+		colors: true
+	},
 }))
 
 app.use(webpackHotMiddleware(compiler, {
@@ -25,7 +28,7 @@ app.use(webpackHotMiddleware(compiler, {
 }))
 
 router.get('/', (req, res) => {
-	res.render('../build/index.html')
+	res.render('../dist/index.html')
 })
 
 app.use(router)

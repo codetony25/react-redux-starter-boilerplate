@@ -1,20 +1,12 @@
-import path from 'path'
-import merge from 'webpack-merge'
-import cssnano from 'cssnano'
+import webpack from 'webpack'
+import rucksack from 'rucksack-css'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CONFIG from './config.js'
 
-import webpackDevConfig from './dev.config'
-import webpackProdConfig from './prod.config'
-
-// Custom Webpack Configurations
-const CONFIG = {
-	env: process.env.NODE_ENV || 'development',
-	target: process.env.npm_lifecycle_event,
-	appPath:  path.join(__dirname, '../app'),
-	buildPath: path.join(__dirname, '../build'),
-	htmlPath: path.join(__dirname, '../app/index.html'),
-	serverHost: 'localhost',
-	serverPort: '8080'
-}
+const {
+	__DEV__,
+	__PROD__,
+} = CONFIG.globals
 
 // Webpack Configurations
 const webpackConfig = {
@@ -45,56 +37,98 @@ webpackConfig.output = {
 	publicPath: `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
 }
 
-// Loaders
+// Javascript and JSON Loaders
 webpackConfig.module.loaders = [
 	{
 		test: /\.jsx?$/,
-		exclude: /node_modules/,
+		include: CONFIG.appPath,
 		loader: 'babel-loader?cacheDirectory',
 	},
 	{
 		test: /\.json$/,
 		loaders: ['json'],
 	},
-	{
-		test: /\.[s]css$/,
-		loaders: ['style', 'css', 'postcss', 'sass?sourceMap'],
-		include: CONFIG.appPath,
-	},
-	{
-		test: /\.(otf|eot|ttf|woff|png|jpe?g|txt)/i,
-		loader: 'url-loader?limit=10000',
-		include: CONFIG.appPath,
-	},
 ]
+
+// Style Loaders
+webpackConfig.module.loaders.push(
+	{
+		test: /\.scss$/,
+		loaders: [
+			'style',
+			'css',
+			'postcss',
+			'sass?sourceMap',
+		],
+		include: CONFIG.appPath,
+	},
+	{
+		test: /\.css$/,
+		loaders: [
+			'style',
+			'css',
+			'postcss',
+		],
+		include: CONFIG.appPath,
+	},
+)
 
 // Postcss config
 webpackConfig.postcss = [
-	cssnano({
-		autoprefixer: {
-			add: true,
-			remove: true,
-			browsers: ['last 2 versions'],
-		},
-		discardComments: {
-			removeAll: true,
-		},
-		discardUnused: true,
-		mergeIdents: false,
-		reduceIdents: false,
-		safe: true,
-		sourcemap: true,
+	rucksack({
+		autoprefixer: true,
+		fallbacks: true,
 	})
 ]
 
-// Merges webpack developement configurations
-if(CONFIG.target === 'start' || !CONFIG.target) {
-	module.exports = merge(webpackConfig, webpackDevConfig(CONFIG))
+// File loaders
+webpackConfig.module.loaders.push(
+	{
+		test: /\.txt$/,
+		loader: 'raw-loader',
+	},
+	{
+		test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+		loader: 'url-loader',
+		query: {
+			name: '[path][name].[ext]?[hash]',
+			limit: 10000,
+		},
+	},
+)
+
+// Plugin Configurations
+webpackConfig.plugins = [
+	new HtmlWebpackPlugin({
+		template: CONFIG.htmlPath,
+		hash: false,
+		filename: 'index.html',
+		inject: 'body',
+		minify: {
+			collapseWhitespace: true
+		},
+	}),
+]
+
+// Development Plugins
+if (__DEV__) {
+	webpackConfig.plugins.push(
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoErrorsPlugin(),
+	)
 }
 
-// Merges webpack production configurations
-if(CONFIG.target === 'build' && CONFIG.env === 'production') {
-	module.exports = merge(webpackConfig, webpackProdConfig(CONFIG))
+// Production Plugins
+if (__PROD__) {
+	webpackConfig.plugins.push(
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false,
+			}
+		}),
+	)
 }
 
 export default webpackConfig

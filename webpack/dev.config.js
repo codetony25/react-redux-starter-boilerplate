@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-import NpmInstallPlugin from 'npm-install-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 let webpackDevConfig = (CONFIG) => {
@@ -16,9 +15,6 @@ let webpackDevConfig = (CONFIG) => {
 			}),
 			new webpack.HotModuleReplacementPlugin(),
 			new webpack.NoErrorsPlugin(),
-			new NpmInstallPlugin(({
-				save: true,
-			}))
 		]
 	}
 }

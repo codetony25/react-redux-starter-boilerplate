@@ -70,7 +70,8 @@ class App extends React.Component {
 					onEdit={this.editNote}
 				  onDelete={this.deleteNote}
 				/>
-				<h1>Hello World!!!</h1>
+				<h1>Hello World</h1>
+				<h2>This is a test!</h2>
 			</div>
 		)
 	}
