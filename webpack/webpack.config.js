@@ -3,6 +3,9 @@ import rucksack from 'rucksack-css'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import CONFIG from './config.js'
 
+import webpackDevConfig from './dev.config.js'
+import webpackProdConfig from './prod.config.js'
+
 const {
 	__DEV__,
 	__PROD__,
@@ -110,25 +113,14 @@ webpackConfig.plugins = [
 	}),
 ]
 
-// Development Plugins
+// Development Configuarations
 if (__DEV__) {
-	webpackConfig.plugins.push(
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin(),
-	)
+	webpackDevConfig(webpackConfig)
 }
 
-// Production Plugins
+// Production Configuartions
 if (__PROD__) {
-	webpackConfig.plugins.push(
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.OccurenceOrderPlugin(),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false,
-			}
-		}),
-	)
+	webpackProdConfig(webpackConfig)
 }
 
 export default webpackConfig
