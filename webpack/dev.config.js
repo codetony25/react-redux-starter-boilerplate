@@ -1,39 +1,36 @@
 import webpack from 'webpack'
-import path from 'path'
 import NpmInstallPlugin from 'npm-install-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-const PATHS = {
-	app: path.join(__dirname, '../src'),
-	build: path.join(__dirname, '../build'),
-}
+let webpackDevConfig = (CONFIG) => {
+	return {
+		devServer: {
+			contentBase: CONFIG.buildPath,
+			historyApiFallback: true,
+			hot: true,
+			inline: true,
+			progress: true,
+			headers: {'Access-Control-Allow-Origin': '*'},
+			stats: {colors: true},
+		},
 
-console.log('PATHS', PATHS.index);
-
-const webpackDevConfig = {
-	devServer: {
-		contentBase: PATHS.build,
-		historyApiFallback: true,
-		hot: true,
-		inline: true,
-		progress: true,
-		stats: 'errors-only',
-	},
-
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: path.join(__dirname, '../src/index.html'),
-			filename: 'index.html',
-			inject: 'body',
-			minify: {
-				collapseWhitespace: true,
-			},
-		}),
-		new webpack.HotModuleReplacementPlugin(),
-		new NpmInstallPlugin(({
-			save: true,
-		}))
-	]
+		plugins: [
+			new HtmlWebpackPlugin({
+				template: CONFIG.htmlPath,
+				hash: false,
+				filename: 'index.html',
+				inject: 'body',
+				minify: {
+					collapseWhitespace: true
+				},
+			}),
+			new webpack.HotModuleReplacementPlugin(),
+			new webpack.NoErrorsPlugin(),
+			new NpmInstallPlugin(({
+				save: true,
+			}))
+		]
+	}
 }
 
 export default webpackDevConfig
