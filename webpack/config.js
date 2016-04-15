@@ -1,12 +1,18 @@
 import path from 'path'
 
+// Config Helpers
+let getPath = (pathParam) => {
+  return path.join(__dirname, pathParam)
+}
+
 // Custom Webpack Configurations
 const CONFIG = {
   env: process.env.NODE_ENV || 'development',
   target: process.env.npm_lifecycle_event,
-  appPath:  path.join(__dirname, '../app'),
-  buildPath: path.join(__dirname, '../dist'),
-  htmlPath: path.join(__dirname, '../app/index.html'),
+  appPath:  getPath('../app'),
+  distPath: getPath('../dist'),
+  rootPath: getPath('../'),
+  htmlPath: getPath('../app/index.html'),
   serverHost: 'localhost',
   serverPort: '8080',
 }

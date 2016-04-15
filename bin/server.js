@@ -28,6 +28,7 @@ app.use(webpackHotMiddleware(compiler, {
 }))
 
 router.get('/', (req, res) => {
+	console.log(req, res);
 	res.render('../dist/index.html')
 })
 

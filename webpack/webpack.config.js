@@ -6,6 +6,7 @@ import CONFIG from './config.js'
 import webpackDevConfig from './dev.config.js'
 import webpackProdConfig from './prod.config.js'
 
+// Global Variables
 const {
 	__DEV__,
 	__PROD__,
@@ -35,7 +36,7 @@ webpackConfig.entry = {
 
 // Bundle Distanation outputs
 webpackConfig.output = {
-	path: '/',
+	path: CONFIG.distPath,
 	filename: 'bundle.js',
 	publicPath: `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
 }
@@ -115,12 +116,12 @@ webpackConfig.plugins = [
 
 // Development Configuarations
 if (__DEV__) {
-	webpackDevConfig(webpackConfig)
+	webpackDevConfig(webpackConfig, CONFIG)
 }
 
 // Production Configuartions
 if (__PROD__) {
-	webpackProdConfig(webpackConfig)
+	webpackProdConfig(webpackConfig, CONFIG)
 }
 
 export default webpackConfig
