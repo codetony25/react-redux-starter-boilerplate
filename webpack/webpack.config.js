@@ -11,10 +11,10 @@ const CONFIG = {
 	appPath:  path.join(__dirname, '../app'),
 	buildPath: path.join(__dirname, '../build'),
 	htmlPath: path.join(__dirname, '../app/index.html'),
+	hostPath: 'http://localhost:8080/',
 }
 
-process.env.BABEL_ENV = CONFIG.target;
-
+// Webpack config
 const webpackConfig = {
 	target: 'web',
 	devtool: 'source-map',
@@ -27,6 +27,7 @@ const webpackConfig = {
 	module: {},
 }
 
+// Entry points for app
 webpackConfig.entry = {
 	app: [
 		'webpack/hot/dev-server',
@@ -35,12 +36,14 @@ webpackConfig.entry = {
 	],
 }
 
+// Bundle Distanation outputs
 webpackConfig.output = {
 	path: '/',
 	filename: 'bundle.js',
-	publicPath: 'http://localhost:8080/',
+	publicPath: CONFIG.hostPath,
 }
 
+// Loaders
 webpackConfig.module.loaders = [
 	{
 		test: /\.jsx?$/,
@@ -56,8 +59,14 @@ webpackConfig.module.loaders = [
 		loaders: ['style', 'css', 'postcss', 'sass?sourceMap'],
 		include: CONFIG.appPath,
 	},
+	{
+		test: /\.(otf|eot|ttf|woff|png|jpe?g|txt)/i,
+		loader: 'url-loader?limit=10000',
+		include: CONFIG.appPath,
+	},
 ]
 
+// Postcss config
 webpackConfig.postcss = [
 	cssnano({
 		autoprefixer: {
@@ -76,10 +85,12 @@ webpackConfig.postcss = [
 	})
 ]
 
+// Merges webpack developement configurations
 if(CONFIG.target === 'start' || !CONFIG.target) {
 	module.exports = merge(webpackConfig, webpackDevConfig(CONFIG))
 }
 
+// Merges webpack production configurations
 if(CONFIG.target === 'build' && CONFIG.env === 'production') {
 	module.exports = merge(webpackConfig, webpackProdConfig(CONFIG))
 }
