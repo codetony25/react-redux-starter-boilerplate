@@ -16,6 +16,7 @@ const CONFIG = {
 process.env.BABEL_ENV = CONFIG.target;
 
 const webpackConfig = {
+	target: 'web',
 	devtool: 'source-map',
 	node: {
 		fs: 'empty',
@@ -28,49 +29,23 @@ const webpackConfig = {
 
 webpackConfig.entry = {
 	app: [
+		'webpack/hot/dev-server',
 		'webpack-hot-middleware/client',
 		CONFIG.appPath,
 	],
 }
 
 webpackConfig.output = {
-	path: CONFIG.buildPath,
+	path: '/',
 	filename: 'bundle.js',
-	publicPath: '/',
+	publicPath: 'http://localhost:8080/',
 }
 
 webpackConfig.module.loaders = [
 	{
 		test: /\.jsx?$/,
 		exclude: /node_modules/,
-		loader: 'babel',
-		query: {
-			cacheDirectory: true,
-			plugins: ['transform-runtime'],
-			presets: ['es2015', 'react', 'stage-0'],
-			env: {
-				development: {
-					plugins: [
-						['react-transform', {
-							transforms: [{
-								transform: 'react-transform-hmr',
-								imports: ['react'],
-								locals: ['module']
-							}, {
-								transform: 'react-transform-catch-errors',
-								imports: ['react', 'redbox-react']
-							}]
-						}]
-					]
-				},
-				production: {
-					plugins: [
-						'transform-react-remove-prop-types',
-						'transform-react-constant-elements'
-					]
-				}
-			}
-		}
+		loader: 'babel-loader?cacheDirectory',
 	},
 	{
 		test: /\.json$/,
@@ -106,7 +81,6 @@ if(CONFIG.target === 'start' || !CONFIG.target) {
 }
 
 if(CONFIG.target === 'build' && CONFIG.env === 'production') {
-	console.log("IN PRODUCTION")
 	module.exports = merge(webpackConfig, webpackProdConfig(CONFIG))
 }
 

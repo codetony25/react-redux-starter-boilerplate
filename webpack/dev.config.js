@@ -4,16 +4,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 let webpackDevConfig = (CONFIG) => {
 	return {
-		devServer: {
-			contentBase: CONFIG.buildPath,
-			historyApiFallback: true,
-			hot: true,
-			inline: true,
-			progress: true,
-			headers: {'Access-Control-Allow-Origin': '*'},
-			stats: {colors: true},
-		},
-
 		plugins: [
 			new HtmlWebpackPlugin({
 				template: CONFIG.htmlPath,
