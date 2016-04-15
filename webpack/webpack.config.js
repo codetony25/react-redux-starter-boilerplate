@@ -5,16 +5,18 @@ import cssnano from 'cssnano'
 import webpackDevConfig from './dev.config'
 import webpackProdConfig from './prod.config'
 
+// Custom Webpack Configurations
 const CONFIG = {
 	env: process.env.NODE_ENV || 'development',
 	target: process.env.npm_lifecycle_event,
 	appPath:  path.join(__dirname, '../app'),
 	buildPath: path.join(__dirname, '../build'),
 	htmlPath: path.join(__dirname, '../app/index.html'),
-	hostPath: 'http://localhost:8080/',
+	serverHost: 'localhost',
+	serverPort: '8080'
 }
 
-// Webpack config
+// Webpack Configurations
 const webpackConfig = {
 	target: 'web',
 	devtool: 'source-map',
@@ -27,7 +29,7 @@ const webpackConfig = {
 	module: {},
 }
 
-// Entry points for app
+// Entry Points For App
 webpackConfig.entry = {
 	app: [
 		'webpack/hot/dev-server',
@@ -40,7 +42,7 @@ webpackConfig.entry = {
 webpackConfig.output = {
 	path: '/',
 	filename: 'bundle.js',
-	publicPath: CONFIG.hostPath,
+	publicPath: `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
 }
 
 // Loaders
