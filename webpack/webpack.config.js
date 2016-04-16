@@ -5,13 +5,17 @@ import CONFIG from './config.js'
 import webpackDevConfig from './dev.config.js'
 import webpackProdConfig from './prod.config.js'
 
-// Global Variables
+/*=============================================
+ =           Webpack Global Variables          =
+ =============================================*/
 const {
 	__DEV__,
 	__PROD__,
 } = CONFIG.globals
 
-// Webpack Configurations
+/*=============================================
+ =           Webpack Configuarations           =
+ =============================================*/
 const webpackConfig = {
 	target     : 'web',
 	devtool    : 'source-map',
@@ -20,7 +24,9 @@ const webpackConfig = {
 	module     : {},
 }
 
-// Entry Points For App
+/*=============================================
+ =           Entry points for App              =
+ =============================================*/
 webpackConfig.entry = {
 	app: [
 		'webpack/hot/dev-server',
@@ -29,14 +35,18 @@ webpackConfig.entry = {
 	],
 }
 
-// Bundle Distanation outputs
+/*=============================================
+ =           Output points for App             =
+ =============================================*/
 webpackConfig.output = {
 	path          : CONFIG.distPath,
 	filename      : 'bundle.js',
 	publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
 }
 
-// Javascript and JSON Loaders
+/*=============================================
+ =         JavaScript and JSON Loaders         =
+ =============================================*/
 webpackConfig.module.loaders = [
 	{
 		test       : /\.jsx?$/,
@@ -49,7 +59,9 @@ webpackConfig.module.loaders = [
 	},
 ]
 
-// Style Loaders
+/*=============================================
+ =     Style Loaders and Configurations        =
+ =============================================*/
 webpackConfig.module.loaders.push(
 	{
 		test       : /\.scss$/,
@@ -62,8 +74,6 @@ webpackConfig.module.loaders.push(
 		include    : CONFIG.appPath,
 	},
 )
-
-// Postcss config
 webpackConfig.postcss = [
 	rucksack({
 		autoprefixer    : true,
@@ -71,7 +81,9 @@ webpackConfig.postcss = [
 	})
 ]
 
-// File loaders
+/*=============================================
+ =              File Loaders                   =
+ =============================================*/
 webpackConfig.module.loaders.push(
 	{
 		test      : /\.txt$/,
@@ -87,7 +99,9 @@ webpackConfig.module.loaders.push(
 	},
 )
 
-// Plugin Configurations
+/*=============================================
+ =            Plugin Configurations            =
+ =============================================*/
 webpackConfig.plugins = [
 	new HtmlWebpackPlugin({
 		template    : CONFIG.htmlPath,
@@ -100,12 +114,16 @@ webpackConfig.plugins = [
 	}),
 ]
 
-// Development only Configuarations
+/*=============================================
+ =     Development Only Configurations         =
+ =============================================*/
 if (__DEV__) {
 	webpackDevConfig(webpackConfig, CONFIG)
 }
 
-// Production only Configuartions
+/*=============================================
+ =     Production Only Configurations          =
+ =============================================*/
 if (__PROD__) {
 	webpackProdConfig(webpackConfig, CONFIG)
 }

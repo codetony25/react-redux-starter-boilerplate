@@ -1,9 +1,17 @@
 import webpack from 'webpack'
 import CleanPlugin from 'clean-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import { cssLoaderAddExtract } from './utils/helpers'
 
 let webpackProdConfig = (webpackConfig, CONFIG) => {
-	// Production plugins
+
+	/*=============================================
+	 =            Production Plugins              =
+	 =============================================*/
+
+	// In production we use different css loaders to extract css
+	cssLoaderAddExtract(webpackConfig, /css/, ExtractTextPlugin)
+
 	webpackConfig.plugins.push(
 		new CleanPlugin([CONFIG.distPath], {
 			root       : CONFIG.rootPath,
@@ -19,19 +27,6 @@ let webpackProdConfig = (webpackConfig, CONFIG) => {
 				unused       : true,
 			}
 		}),
-	)
-
-// In production we use different css loaders to extract css
-	webpackConfig.module.loaders.filter((loader) =>
-		loader.loaders && loader.loaders.find((name) => {
-			return /css/.test(name.split('?')[0])
-		})
-	).forEach((cssLoader) => {
-		const [first, ...rest] = cssLoader.loaders
-		cssLoader.loader = ExtractTextPlugin.extract(first, rest.join('!'))
-	})
-
-	webpackConfig.plugins.push(
 		new ExtractTextPlugin('[name].[contenthash].css', {
 			allChunks: true,
 		})
