@@ -4,36 +4,36 @@ import webpackMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../webpack/webpack.config.js'
 
-let app = express()
-let router = express.Router()
-let compiler = webpack(webpackConfig)
+const app = express()
+const router = express.Router()
+const compiler = webpack(webpackConfig)
 
 app.use(webpackMiddleware(compiler, {
-	publicPath    : webpackConfig.output.publicPath,
-	quiet         : false,
-	noInfo        : false,
-	hot           : true,
-	inline        : true,
-	lazy          : false,
-	headers       : { 'Access-Control-Allow-Origin': '*' },
-	stats         : {
-		chunks : false,
-		chunkModules : false,
-		colors : true
-	},
+  publicPath    : webpackConfig.output.publicPath,
+  quiet         : false,
+  noInfo        : false,
+  hot           : true,
+  inline        : true,
+  lazy          : false,
+  headers       : { 'Access-Control-Allow-Origin': '*' },
+  stats         : {
+    chunks : false,
+    chunkModules : false,
+    colors : true
+  },
 }))
 
 app.use(webpackHotMiddleware(compiler, {
-	log: console.log,
+  log: console.log,
 }))
 
 router.get('/', (req, res) => {
-	res.render('../dist/index.html')
+  res.render('../dist/index.html')
 })
 
 app.use(router)
 
 
 app.listen(8080, () => {
-	console.log('Running on localhost 8080!')
+  console.log('Running on localhost 8080!')
 })

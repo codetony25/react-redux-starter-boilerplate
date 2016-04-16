@@ -6,10 +6,10 @@ import ReactDom from 'react-dom'
 import App from './components/App.jsx'
 
 if (module.hot) {
-	module.hot.accept();
+  module.hot.accept();
 }
 
 ReactDom.render(
-	<App />,
-	document.getElementById('app')
+  <App />,
+  document.getElementById('app')
 )

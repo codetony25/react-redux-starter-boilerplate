@@ -2,14 +2,14 @@ import webpack from 'webpack'
 
 let webpackDevConfig = (webpackConfig, CONFIG) => {
 
-	/*=============================================
-	 =            Development Plugins              =
-	 =============================================*/
+  /*=============================================
+   =            Development Plugins              =
+   =============================================*/
 
-	webpackConfig.plugins.push(
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoErrorsPlugin(),
-	)
+  webpackConfig.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+  )
 
 }
 

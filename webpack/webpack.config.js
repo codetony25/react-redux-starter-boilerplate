@@ -10,8 +10,8 @@ import webpackProdConfig from './prod.config.js'
  =============================================*/
 
 const {
-	__DEV__,
-	__PROD__,
+  __DEV__,
+  __PROD__,
 } = CONFIG.globals
 
 /*=============================================
@@ -19,11 +19,11 @@ const {
  =============================================*/
 
 const webpackConfig = {
-	target     : 'web',
-	devtool    : 'source-map',
-	node       : { fs: 'empty' },
-	resolve    : { extensions: ['', 'json', '.js', '.jsx'] },
-	module     : {},
+  target     : 'web',
+  devtool    : 'source-map',
+  node       : { fs: 'empty' },
+  resolve    : { extensions: ['', 'json', '.js', '.jsx'] },
+  module     : {},
 }
 
 /*=============================================
@@ -31,11 +31,11 @@ const webpackConfig = {
  =============================================*/
 
 webpackConfig.entry = {
-	app: [
-		'webpack/hot/dev-server',
-		'webpack-hot-middleware/client',
-		CONFIG.appPath,
-	],
+  app: [
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
+    CONFIG.appPath,
+  ],
 }
 
 /*=============================================
@@ -43,9 +43,9 @@ webpackConfig.entry = {
  =============================================*/
 
 webpackConfig.output = {
-	path          : CONFIG.distPath,
-	filename      : '[name].[hash].js',
-	publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
+  path          : CONFIG.distPath,
+  filename      : '[name].[hash].js',
+  publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
 }
 
 /*=============================================
@@ -53,15 +53,15 @@ webpackConfig.output = {
  =============================================*/
 
 webpackConfig.module.loaders = [
-	{
-		test       : /\.jsx?$/,
-		include    : CONFIG.appPath,
-		loader     : 'babel-loader?cacheDirectory',
-	},
-	{
-		test       : /\.json$/,
-		loaders    : ['json'],
-	},
+  {
+    test       : /\.jsx?$/,
+    include    : CONFIG.appPath,
+    loader     : 'babel-loader?cacheDirectory',
+  },
+  {
+    test       : /\.json$/,
+    loaders    : ['json'],
+  },
 ]
 
 /*=============================================
@@ -69,22 +69,22 @@ webpackConfig.module.loaders = [
  =============================================*/
 
 webpackConfig.module.loaders.push(
-	{
-		test       : /\.scss$/,
-		loaders    : [ 'style', 'css', 'postcss', 'sass?sourceMap'],
-		include    : CONFIG.appPath,
-	},
-	{
-		test       : /\.css$/,
-		loaders    : ['style', 'css', 'postcss'],
-		include    : CONFIG.appPath,
-	},
+  {
+    test       : /\.scss$/,
+    loaders    : [ 'style', 'css', 'postcss', 'sass?sourceMap'],
+    include    : CONFIG.appPath,
+  },
+  {
+    test       : /\.css$/,
+    loaders    : ['style', 'css', 'postcss'],
+    include    : CONFIG.appPath,
+  },
 )
 webpackConfig.postcss = [
-	rucksack({
-		autoprefixer    : true,
-		fallbacks       : true,
-	})
+  rucksack({
+    autoprefixer    : true,
+    fallbacks       : true,
+  })
 ]
 
 /*=============================================
@@ -92,18 +92,18 @@ webpackConfig.postcss = [
  =============================================*/
 
 webpackConfig.module.loaders.push(
-	{
-		test      : /\.txt$/,
-		loader    : 'raw-loader',
-	},
-	{
-		test      : /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-		loader    : 'url-loader',
-		query: {
-			name     : '[path][name].[ext]?[hash]',
-			limit    : 10000,
-		},
-	},
+  {
+    test      : /\.txt$/,
+    loader    : 'raw-loader',
+  },
+  {
+    test      : /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+    loader    : 'url-loader',
+    query: {
+      name     : '[path][name].[ext]?[hash]',
+      limit    : 10000,
+    },
+  },
 )
 
 /*=============================================
@@ -111,15 +111,15 @@ webpackConfig.module.loaders.push(
  =============================================*/
 
 webpackConfig.plugins = [
-	new HtmlWebpackPlugin({
-		template    : CONFIG.htmlPath,
-		hash        : false,
-		filename    : 'index.html',
-		inject      : 'body',
-		minify: {
-			collapseWhitespace: true,
-		},
-	}),
+  new HtmlWebpackPlugin({
+    template    : CONFIG.htmlPath,
+    hash        : false,
+    filename    : 'index.html',
+    inject      : 'body',
+    minify: {
+      collapseWhitespace: true,
+    },
+  }),
 ]
 
 /*=============================================
@@ -127,7 +127,7 @@ webpackConfig.plugins = [
  =============================================*/
 
 if (__DEV__) {
-	webpackDevConfig(webpackConfig, CONFIG)
+  webpackDevConfig(webpackConfig, CONFIG)
 }
 
 /*=============================================
@@ -135,7 +135,7 @@ if (__DEV__) {
  =============================================*/
 
 if (__PROD__) {
-	webpackProdConfig(webpackConfig, CONFIG)
+  webpackProdConfig(webpackConfig, CONFIG)
 }
 
 export default webpackConfig
