@@ -10,13 +10,17 @@ let compiler = webpack(webpackConfig)
 
 app.use(webpackMiddleware(compiler, {
 	publicPath    : webpackConfig.output.publicPath,
-	quiet         : true,
-	noInfo        : true,
+	quiet         : false,
+	noInfo        : false,
 	hot           : true,
 	inline        : true,
 	lazy          : false,
 	headers       : { 'Access-Control-Allow-Origin': '*' },
-	stats         : { colors: true },
+	stats         : {
+		chunks : false,
+		chunkModules : false,
+		colors : true
+	},
 }))
 
 app.use(webpackHotMiddleware(compiler, {

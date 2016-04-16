@@ -8,6 +8,7 @@ import webpackProdConfig from './prod.config.js'
 /*=============================================
  =           Webpack Global Variables          =
  =============================================*/
+
 const {
 	__DEV__,
 	__PROD__,
@@ -16,6 +17,7 @@ const {
 /*=============================================
  =           Webpack Configuarations           =
  =============================================*/
+
 const webpackConfig = {
 	target     : 'web',
 	devtool    : 'source-map',
@@ -27,6 +29,7 @@ const webpackConfig = {
 /*=============================================
  =           Entry points for App              =
  =============================================*/
+
 webpackConfig.entry = {
 	app: [
 		'webpack/hot/dev-server',
@@ -38,15 +41,17 @@ webpackConfig.entry = {
 /*=============================================
  =           Output points for App             =
  =============================================*/
+
 webpackConfig.output = {
 	path          : CONFIG.distPath,
-	filename      : 'bundle.js',
+	filename      : '[name].[hash].js',
 	publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
 }
 
 /*=============================================
  =         JavaScript and JSON Loaders         =
  =============================================*/
+
 webpackConfig.module.loaders = [
 	{
 		test       : /\.jsx?$/,
@@ -62,6 +67,7 @@ webpackConfig.module.loaders = [
 /*=============================================
  =     Style Loaders and Configurations        =
  =============================================*/
+
 webpackConfig.module.loaders.push(
 	{
 		test       : /\.scss$/,
@@ -84,6 +90,7 @@ webpackConfig.postcss = [
 /*=============================================
  =              File Loaders                   =
  =============================================*/
+
 webpackConfig.module.loaders.push(
 	{
 		test      : /\.txt$/,
@@ -102,6 +109,7 @@ webpackConfig.module.loaders.push(
 /*=============================================
  =            Plugin Configurations            =
  =============================================*/
+
 webpackConfig.plugins = [
 	new HtmlWebpackPlugin({
 		template    : CONFIG.htmlPath,
@@ -117,6 +125,7 @@ webpackConfig.plugins = [
 /*=============================================
  =     Development Only Configurations         =
  =============================================*/
+
 if (__DEV__) {
 	webpackDevConfig(webpackConfig, CONFIG)
 }
@@ -124,6 +133,7 @@ if (__DEV__) {
 /*=============================================
  =     Production Only Configurations          =
  =============================================*/
+
 if (__PROD__) {
 	webpackProdConfig(webpackConfig, CONFIG)
 }

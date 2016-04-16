@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-import CleanPlugin from 'clean-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { cssLoaderAddExtract } from './utils/helpers'
 
@@ -13,11 +12,6 @@ let webpackProdConfig = (webpackConfig, CONFIG) => {
 	cssLoaderAddExtract(webpackConfig, /css/, ExtractTextPlugin)
 
 	webpackConfig.plugins.push(
-		new CleanPlugin([CONFIG.distPath], {
-			root       : CONFIG.rootPath,
-			verbose    : true,
-			dry        : true,
-		}),
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.optimize.UglifyJsPlugin({
