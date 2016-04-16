@@ -1,6 +1,5 @@
-import webpack from 'webpack'
-import rucksack from 'rucksack-css'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import rucksack from 'rucksack-css'
 import CONFIG from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -14,15 +13,11 @@ const {
 
 // Webpack Configurations
 const webpackConfig = {
-	target: 'web',
-	devtool: 'source-map',
-	node: {
-		fs: 'empty',
-	},
-	resolve: {
-		extensions: ['', 'json', '.js', '.jsx'],
-	},
-	module: {},
+	target     : 'web',
+	devtool    : 'source-map',
+	node       : { fs: 'empty' },
+	resolve    : { extensions: ['', 'json', '.js', '.jsx'] },
+	module     : {},
 }
 
 // Entry Points For App
@@ -36,67 +31,58 @@ webpackConfig.entry = {
 
 // Bundle Distanation outputs
 webpackConfig.output = {
-	path: CONFIG.distPath,
-	filename: 'bundle.js',
-	publicPath: `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
+	path          : CONFIG.distPath,
+	filename      : 'bundle.js',
+	publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
 }
 
 // Javascript and JSON Loaders
 webpackConfig.module.loaders = [
 	{
-		test: /\.jsx?$/,
-		include: CONFIG.appPath,
-		loader: 'babel-loader?cacheDirectory',
+		test       : /\.jsx?$/,
+		include    : CONFIG.appPath,
+		loader     : 'babel-loader?cacheDirectory',
 	},
 	{
-		test: /\.json$/,
-		loaders: ['json'],
+		test       : /\.json$/,
+		loaders    : ['json'],
 	},
 ]
 
 // Style Loaders
 webpackConfig.module.loaders.push(
 	{
-		test: /\.scss$/,
-		loaders: [
-			'style',
-			'css',
-			'postcss',
-			'sass?sourceMap',
-		],
-		include: CONFIG.appPath,
+		test       : /\.scss$/,
+		loaders    : [ 'style', 'css', 'postcss', 'sass?sourceMap'],
+		include    : CONFIG.appPath,
 	},
 	{
-		test: /\.css$/,
-		loaders: [
-			'style',
-			'css',
-			'postcss',
-		],
-		include: CONFIG.appPath,
+		test       : /\.css$/,
+		loaders    : ['style', 'css', 'postcss'],
+		include    : CONFIG.appPath,
 	},
 )
 
 // Postcss config
 webpackConfig.postcss = [
 	rucksack({
-		autoprefixer: true,
-		fallbacks: true,
+		autoprefixer    : true,
+		fallbacks       : true,
 	})
 ]
 
 // File loaders
 webpackConfig.module.loaders.push(
 	{
-		test: /\.txt$/,
-		loader: 'raw-loader',
+		test      : /\.txt$/,
+		loader    : 'raw-loader',
 	},
 	{
-		test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-		loader: 'url-loader',
+		test      : /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+		loader    : 'url-loader',
 		query: {
-			name: '[path][name].[ext]?[hash]',
-			limit: 10000,
+			name     : '[path][name].[ext]?[hash]',
+			limit    : 10000,
 		},
 	},
 )
@@ -104,22 +90,22 @@ webpackConfig.module.loaders.push(
 // Plugin Configurations
 webpackConfig.plugins = [
 	new HtmlWebpackPlugin({
-		template: CONFIG.htmlPath,
-		hash: false,
-		filename: 'index.html',
-		inject: 'body',
+		template    : CONFIG.htmlPath,
+		hash        : false,
+		filename    : 'index.html',
+		inject      : 'body',
 		minify: {
-			collapseWhitespace: true
+			collapseWhitespace: true,
 		},
 	}),
 ]
 
-// Development Configuarations
+// Development only Configuarations
 if (__DEV__) {
 	webpackDevConfig(webpackConfig, CONFIG)
 }
 
-// Production Configuartions
+// Production only Configuartions
 if (__PROD__) {
 	webpackProdConfig(webpackConfig, CONFIG)
 }

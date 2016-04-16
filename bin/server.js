@@ -9,18 +9,14 @@ let router = express.Router()
 let compiler = webpack(webpackConfig)
 
 app.use(webpackMiddleware(compiler, {
-	publicPath: webpackConfig.output.publicPath,
-	quiet: true,
-	noInfo: true,
-	hot: true,
-	inline: true,
-	lazy: false,
-	headers: {
-		'Access-Control-Allow-Origin': '*'
-	},
-	stats: {
-		colors: true
-	},
+	publicPath    : webpackConfig.output.publicPath,
+	quiet         : true,
+	noInfo        : true,
+	hot           : true,
+	inline        : true,
+	lazy          : false,
+	headers       : { 'Access-Control-Allow-Origin': '*' },
+	stats         : { colors: true },
 }))
 
 app.use(webpackHotMiddleware(compiler, {
@@ -28,7 +24,6 @@ app.use(webpackHotMiddleware(compiler, {
 }))
 
 router.get('/', (req, res) => {
-	console.log(req, res);
 	res.render('../dist/index.html')
 })
 
@@ -37,4 +32,4 @@ app.use(router)
 
 app.listen(8080, () => {
 	console.log('Running on localhost 8080!')
-});
+})

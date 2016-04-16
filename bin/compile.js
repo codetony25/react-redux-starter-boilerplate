@@ -6,8 +6,9 @@ let compiler = webpack(webpackConfig)
 ;(async function() {
   try {
     compiler.run((err, stats) => {
-      console.log(stats)
-      console.log(err)
+      if (err) {
+        console.log("Error has occured while compiling", err)
+      }
     })
   } catch (err) {
     console.log('compiling has failed', err)
