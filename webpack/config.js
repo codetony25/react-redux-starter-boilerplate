@@ -11,15 +11,15 @@ const CONFIG = {
   rootPath      : getPath('../'),
   htmlPath      : getPath('../app/index.html'),
   serverHost    : 'localhost',
-  serverPort    : '8080',
+  serverPort    : '8080'
 }
 
 /*=============================================
  =        Set Webpack Global Variables         =
  =============================================*/
 CONFIG.globals = {
-  '__DEV__'     : CONFIG.env === 'development',
-  '__PROD__'    : CONFIG.env === 'production',
+  '__DEVELOPMENT__'    : CONFIG.env === 'development',
+  '__PRODUCTION__'     : CONFIG.env === 'production'
 }
 
 export default CONFIG

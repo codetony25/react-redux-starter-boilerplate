@@ -10,8 +10,8 @@ import webpackProdConfig from './prod.config.js'
  =============================================*/
 
 const {
-  __DEV__,
-  __PROD__,
+  __DEVELOPMENT__,
+  __PRODUCTION__
 } = CONFIG.globals
 
 /*=============================================
@@ -23,7 +23,8 @@ const webpackConfig = {
   devtool    : 'source-map',
   node       : { fs: 'empty' },
   resolve    : { extensions: ['', 'json', '.js', '.jsx'] },
-  module     : {},
+  eslint     : { configFile: '../.eslintrc' },
+  module     : {}
 }
 
 /*=============================================
@@ -34,8 +35,8 @@ webpackConfig.entry = {
   app: [
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
-    CONFIG.appPath,
-  ],
+    CONFIG.appPath
+  ]
 }
 
 /*=============================================
@@ -45,7 +46,7 @@ webpackConfig.entry = {
 webpackConfig.output = {
   path          : CONFIG.distPath,
   filename      : '[name].[hash].js',
-  publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`,
+  publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`
 }
 
 /*=============================================
@@ -56,12 +57,12 @@ webpackConfig.module.loaders = [
   {
     test       : /\.jsx?$/,
     include    : CONFIG.appPath,
-    loader     : 'babel-loader?cacheDirectory',
+    loader     : 'babel-loader?cacheDirectory'
   },
   {
     test       : /\.json$/,
-    loaders    : ['json'],
-  },
+    loaders    : ['json']
+  }
 ]
 
 /*=============================================
@@ -71,19 +72,19 @@ webpackConfig.module.loaders = [
 webpackConfig.module.loaders.push(
   {
     test       : /\.scss$/,
-    loaders    : [ 'style', 'css', 'postcss', 'sass?sourceMap'],
-    include    : CONFIG.appPath,
+    loaders    : ['style', 'css', 'postcss', 'sass?sourceMap'],
+    include    : CONFIG.appPath
   },
   {
     test       : /\.css$/,
     loaders    : ['style', 'css', 'postcss'],
-    include    : CONFIG.appPath,
-  },
+    include    : CONFIG.appPath
+  }
 )
 webpackConfig.postcss = [
   rucksack({
     autoprefixer    : true,
-    fallbacks       : true,
+    fallbacks       : true
   })
 ]
 
@@ -94,16 +95,16 @@ webpackConfig.postcss = [
 webpackConfig.module.loaders.push(
   {
     test      : /\.txt$/,
-    loader    : 'raw-loader',
+    loader    : 'raw-loader'
   },
   {
     test      : /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
     loader    : 'url-loader',
     query: {
       name     : '[path][name].[ext]?[hash]',
-      limit    : 10000,
-    },
-  },
+      limit    : 10000
+    }
+  }
 )
 
 /*=============================================
@@ -117,16 +118,16 @@ webpackConfig.plugins = [
     filename    : 'index.html',
     inject      : 'body',
     minify: {
-      collapseWhitespace: true,
-    },
-  }),
+      collapseWhitespace: true
+    }
+  })
 ]
 
 /*=============================================
  =     Development Only Configurations         =
  =============================================*/
 
-if (__DEV__) {
+if (__DEVELOPMENT__) {
   webpackDevConfig(webpackConfig, CONFIG)
 }
 
@@ -134,7 +135,7 @@ if (__DEV__) {
  =     Production Only Configurations          =
  =============================================*/
 
-if (__PROD__) {
+if (__PRODUCTION__) {
   webpackProdConfig(webpackConfig, CONFIG)
 }
 

@@ -3,7 +3,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { cssLoaderAddExtract } from './utils/helpers'
 
 let webpackProdConfig = (webpackConfig, CONFIG) => {
-
   /*=============================================
    =            Production Plugins              =
    =============================================*/
@@ -18,11 +17,11 @@ let webpackProdConfig = (webpackConfig, CONFIG) => {
       compress: {
         warnings     : false,
         dead_code    : true,
-        unused       : true,
+        unused       : true
       }
     }),
     new ExtractTextPlugin('[name].[contenthash].css', {
-      allChunks: true,
+      allChunks: true
     })
   )
 }

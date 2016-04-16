@@ -16,15 +16,11 @@ app.use(webpackMiddleware(compiler, {
   inline        : true,
   lazy          : false,
   headers       : { 'Access-Control-Allow-Origin': '*' },
-  stats         : {
-    chunks : false,
-    chunkModules : false,
-    colors : true
-  },
+  stats         : { chunks : false, chunkModules : false, colors : true }
 }))
 
 app.use(webpackHotMiddleware(compiler, {
-  log: console.log,
+  log: console.log
 }))
 
 router.get('/', (req, res) => {
@@ -33,7 +29,6 @@ router.get('/', (req, res) => {
 
 app.use(router)
 
-
-app.listen(8080, () => {
-  console.log('Running on localhost 8080!')
+app.listen(8080, (err) => {
+  !err ? console.log('Running on localhost 8080!!!') : console.error('Error while listining to 8080', err)
 })
