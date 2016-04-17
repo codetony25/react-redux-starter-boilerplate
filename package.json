@@ -1,5 +1,5 @@
 {
-  "name": "react-webpack-starter",
+  "name": "modern-reactjs-starter-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.jsx",
@@ -40,7 +40,7 @@
       "command": "npm run lint:jsx && npm run lint:node && npm run lint:js && npm run lint:css"
     }
   },
-  "author": "",
+  "author": "Tony Tai Nguyen",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
