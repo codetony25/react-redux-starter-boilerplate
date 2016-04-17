@@ -7,7 +7,7 @@
     "start": "better-npm-run start",
     "compile": "better-npm-run compile",
     "deploy": "better-npm-run deploy",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist && npm cache clean",
     "lint": "better-npm-run lint",
     "lint:app:jsx": "eslint ./app/**/**/*.jsx || true",
     "lint:app:js": "eslint ./app/**/**/*.js || true",

@@ -20,6 +20,9 @@ let webpackProdConfig = (webpackConfig, CONFIG) => {
         unused       : true
       }
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor']
+    }),
     new ExtractTextPlugin('[name].[contenthash].css', {
       allChunks: true
     })

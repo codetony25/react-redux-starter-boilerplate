@@ -26,7 +26,8 @@ const webpackConfig = {
   devtool    : 'source-map',
   node       : { fs: 'empty' },
   resolve    : { extensions: ['', 'json', '.js', '.jsx'] },
-  module     : {}
+  module     : {},
+  vendor     : ['react']
 }
 
 /*=============================================
@@ -79,7 +80,7 @@ webpackConfig.module.loaders = [
 webpackConfig.module.loaders.push(
   {
     test       : /\.(css|scss|sass|styl)$/,
-    loaders    : ['style', 'css', 'postcss', 'stylus'],
+    loaders    : ['style', 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'postcss', 'stylus'],
     include    : CONFIG.appPath
   }
 )
