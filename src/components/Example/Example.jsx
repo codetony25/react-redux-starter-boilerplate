@@ -14,9 +14,9 @@ class Example extends React.Component {
         <h1>Hello World!</h1>
         <h2>This is a test!!!!</h2>
         <div className="inner">
-          <h1>Inner stuff</h1>
+          <h1>Inner stuff!</h1>
           <img src={mainLogo} alt=""/>
-          <h3 styleName="test">Testing in component styles</h3>
+          <h3 styleName="test">Testing in component styles!!</h3>
         </div>
       </div>
     )

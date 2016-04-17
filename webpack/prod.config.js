@@ -1,15 +1,18 @@
 import webpack from 'webpack'
+import _debug from 'debug'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { cssLoaderAddExtract } from './utils/helpers'
 
-let webpackProdConfig = (webpackConfig, CONFIG) => {
+const debug = _debug('app:webpack:prod')
+const webpackProdConfig = (webpackConfig, config) => {
   /*=============================================
    =            Production Plugins              =
    =============================================*/
 
-  // In production we use different css loaders to extract css
+  debug('Extracting Css Loaders with the ExtractTextPlugin...')
   cssLoaderAddExtract(webpackConfig, /css/, ExtractTextPlugin)
 
+  debug('Setting up development plugins: DedupePlugin, OccurenceOrderPlugin, and UglifyJsPlugin')
   webpackConfig.plugins.push(
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),

@@ -3,7 +3,7 @@ import { getPath } from './utils/helpers'
 /*=============================================
  =        Custom Webpack Configuration         =
  =============================================*/
-const CONFIG = {
+const config = {
   env           : process.env.NODE_ENV || 'development',
   target        : process.env.npm_lifecycle_event,
   appPath       : getPath('../src'),
@@ -17,9 +17,9 @@ const CONFIG = {
 /*=============================================
  =        Set Webpack Global Variables         =
  =============================================*/
-CONFIG.globals = {
-  '__DEVELOPMENT__'    : CONFIG.env === 'development',
-  '__PRODUCTION__'     : CONFIG.env === 'production'
+config.globals = {
+  '__DEVELOPMENT__'    : config.env === 'development',
+  '__PRODUCTION__'     : config.env === 'production'
 }
 
-export default CONFIG
+export default config

@@ -1,9 +1,10 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import _debug from 'debug'
 import cssnext from 'postcss-cssnext'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import short from 'postcss-short'
-import CONFIG from './config.js'
+import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
 import webpackProdConfig from './prod.config.js'
@@ -12,15 +13,17 @@ import webpackProdConfig from './prod.config.js'
  =           Webpack Global Variables          =
  =============================================*/
 
+const debug = _debug('app:webpack:config')
 const {
   __DEVELOPMENT__,
   __PRODUCTION__
-} = CONFIG.globals
+} = config.globals
 
 /*=============================================
  =           Webpack Configuarations           =
  =============================================*/
 
+debug('Starting Webpack Configurations...')
 const webpackConfig = {
   target     : 'web',
   devtool    : 'source-map',
@@ -38,7 +41,7 @@ webpackConfig.entry = {
   app: [
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
-    CONFIG.appPath
+    config.appPath
   ]
 }
 
@@ -47,9 +50,9 @@ webpackConfig.entry = {
  =============================================*/
 
 webpackConfig.output = {
-  path          : CONFIG.distPath,
+  path          : config.distPath,
   filename      : '[name].[hash].js',
-  publicPath    : `http://${CONFIG.serverHost}:${CONFIG.serverPort}/`
+  publicPath    : `http://${config.serverHost}:${config.serverPort}/`
 }
 
 /*=============================================
@@ -60,11 +63,11 @@ webpackConfig.output = {
 /*=============================================
  =         JavaScript and JSON Loaders         =
  =============================================*/
-
+debug('Setting up Webpack Loaders...')
 webpackConfig.module.loaders = [
   {
     test       : /\.jsx?$/,
-    include    : CONFIG.appPath,
+    include    : config.appPath,
     loader     : 'babel-loader?cacheDirectory'
   },
   {
@@ -81,7 +84,7 @@ webpackConfig.module.loaders.push(
   {
     test       : /\.(css|scss|sass|styl)$/,
     loaders    : ['style', 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'postcss', 'stylus'],
-    include    : CONFIG.appPath
+    include    : config.appPath
   }
 )
 // Add postcss plugins here
@@ -132,10 +135,10 @@ webpackConfig.module.loaders.push(
 /*=============================================
  =            Plugin Configurations            =
  =============================================*/
-
+debug('Setting up Plugin Configurations...')
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
-    template    : CONFIG.htmlPath,
+    template    : config.htmlPath,
     hash        : false,
     filename    : 'index.html',
     inject      : 'body',
@@ -150,7 +153,8 @@ webpackConfig.plugins = [
  =============================================*/
 
 if (__DEVELOPMENT__) {
-  webpackDevConfig(webpackConfig, CONFIG)
+  debug('Development Mode Detected. Running only Development Webpack Configurations...')
+  webpackDevConfig(webpackConfig, config)
 }
 
 /*=============================================
@@ -158,7 +162,9 @@ if (__DEVELOPMENT__) {
  =============================================*/
 
 if (__PRODUCTION__) {
-  webpackProdConfig(webpackConfig, CONFIG)
+  debug('Production Mode Detected. Running only Production Webpack Configurations...')
+  webpackProdConfig(webpackConfig, config)
 }
 
+debug('Webpack Configuration Completed!')
 export default webpackConfig
