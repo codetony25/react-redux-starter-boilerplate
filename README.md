@@ -23,7 +23,7 @@ Suggestions are welcome!
 
 Download this by entering this command in your terminal:
 ```
-$ git clone https://github.com/tonytainguyen/ReactJS-Starter-Boilerplate.git
+$ git clone https://github.com/tonytainguyen/Modern-ReactJS-Starter-Boilerplate.git
 ```
 ## Usage
 
