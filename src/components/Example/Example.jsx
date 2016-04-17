@@ -1,12 +1,11 @@
 import React from 'react'
+import styles from './Example.styl'
+import CSSModules from 'react-css-modules';
 
 // Images
-import mainLogo from '../assets/images/main-logo.jpg'
+import mainLogo from '../../assets/images/main-logo.jpg'
 
-// Styles
-import styles from './App.styl'
-
-class App extends React.Component {
+class Example extends React.Component {
   render() {
     return (
       <div>
@@ -15,11 +14,11 @@ class App extends React.Component {
         <div className="inner">
           <h1>Inner stuff</h1>
           <img src={mainLogo} alt=""/>
-          <h3 className={styles.test}>Testing in component styles</h3>
+          <h3 styleName="test">Testing in component styles</h3>
         </div>
       </div>
     )
   }
 }
 
-export default App
+export default CSSModules(Example, styles)
