@@ -11,7 +11,8 @@
     "lint": "better-npm-run lint",
     "lint:app:jsx": "eslint ./app/**/**/*.jsx || true",
     "lint:app:js": "eslint ./app/**/**/*.js || true",
-    "lint:node": "eslint . || true"
+    "lint:node": "eslint . || true",
+    "lint:css": "./node_modules/.bin/stylelint '**/*.styl' || true"
   },
   "betterScripts": {
     "start": {
@@ -33,7 +34,7 @@
       }
     },
     "lint": {
-      "command": "npm run lint:app:jsx && npm run lint:node && npm run lint:app:js"
+      "command": "npm run lint:app:jsx && npm run lint:node && npm run lint:app:js && npm run lint:css"
     }
   },
   "author": "",
@@ -71,12 +72,10 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.15.0",
     "json-loader": "^0.5.4",
-    "node-glob": "^1.2.0",
     "node-sass": "^3.4.2",
     "postcss-cssnext": "^2.5.2",
     "postcss-loader": "^0.8.2",
     "postcss-modules": "^0.4.1",
-    "postcss-reporter": "^1.3.3",
     "postcss-short": "^1.4.0",
     "postcss-sorting": "^1.2.3",
     "poststylus": "^0.2.3",

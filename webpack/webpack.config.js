@@ -3,8 +3,6 @@ import cssnext from 'postcss-cssnext'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import short from 'postcss-short'
-import stylelint from 'stylelint'
-import poststylus from 'poststylus'
 import CONFIG from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -88,7 +86,6 @@ webpackConfig.module.loaders.push(
 // Add postcss plugins here
 webpackConfig.postcss = () => {
   return [
-    stylelint({ syntax: poststylus }),
     cssnext,
     rucksack,
     sorting,

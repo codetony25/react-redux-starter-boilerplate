@@ -3,6 +3,7 @@
   "rules": {
     "color-hex-case": "lower",
 	  "declaration-block-trailing-semicolon": null,
-	  "rule-non-nested-empty-line-before": "never"
+	  "rule-non-nested-empty-line-before": "never",
+	  "indentation": null
   }
 }
