@@ -38,8 +38,8 @@ There are more commands to which I have included in the package.json file which 
 - `npm run deploy` removes the dist folder and compiles afterwards.
 - `npm run clean` removes the dist folder and clears npm cache.
 - `npm run lint` lints all .js, .jsx, and .styl files and displayed in console.
-- `npm run lint:app:jsx` lints only jsx files located in the /src directory.
-- `npm run lint:app:js` lints only js files located in the /src directory.
+- `npm run lint:jsx` lints only jsx files located in the /src directory.
+- `npm run lint:js` lints only js files located in the /src directory.
 - `npm run lint:node` lints everything that except what is in /src directory
 - `npm run lint:css` lints all stylesheets located in /src directory.
 
