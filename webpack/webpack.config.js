@@ -1,5 +1,10 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import cssnext from 'postcss-cssnext'
 import rucksack from 'rucksack-css'
+import sorting from 'postcss-sorting'
+import short from 'postcss-short'
+import stylelint from 'stylelint'
+import poststylus from 'poststylus'
 import CONFIG from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -23,7 +28,6 @@ const webpackConfig = {
   devtool    : 'source-map',
   node       : { fs: 'empty' },
   resolve    : { extensions: ['', 'json', '.js', '.jsx'] },
-  eslint     : { configFile: '../.eslintrc' },
   module     : {}
 }
 
@@ -50,6 +54,11 @@ webpackConfig.output = {
 }
 
 /*=============================================
+ =                 Pre-Loaders                =
+ =============================================*/
+// In the Future.
+
+/*=============================================
  =         JavaScript and JSON Loaders         =
  =============================================*/
 
@@ -71,22 +80,21 @@ webpackConfig.module.loaders = [
 
 webpackConfig.module.loaders.push(
   {
-    test       : /\.scss$/,
-    loaders    : ['style', 'css', 'postcss', 'sass?sourceMap'],
-    include    : CONFIG.appPath
-  },
-  {
-    test       : /\.css$/,
-    loaders    : ['style', 'css', 'postcss'],
+    test       : /\.(css|scss|sass|styl)$/,
+    loaders    : ['style', 'css', 'postcss', 'stylus'],
     include    : CONFIG.appPath
   }
 )
-webpackConfig.postcss = [
-  rucksack({
-    autoprefixer    : true,
-    fallbacks       : true
-  })
-]
+// Add postcss plugins here
+webpackConfig.postcss = () => {
+  return [
+    stylelint({ syntax: poststylus }),
+    cssnext,
+    rucksack,
+    sorting,
+    short
+  ]
+}
 
 /*=============================================
  =              File Loaders                   =
@@ -94,16 +102,32 @@ webpackConfig.postcss = [
 
 webpackConfig.module.loaders.push(
   {
-    test      : /\.txt$/,
-    loader    : 'raw-loader'
+    test: /\.woff(\?.*)?$/,
+    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
   },
   {
-    test      : /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-    loader    : 'url-loader',
-    query: {
-      name     : '[path][name].[ext]?[hash]',
-      limit    : 10000
-    }
+    test: /\.woff2(\?.*)?$/,
+    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
+  },
+  {
+    test: /\.otf(\?.*)?$/,
+    loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'
+  },
+  {
+    test: /\.ttf(\?.*)?$/,
+    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
+  },
+  {
+    test: /\.eot(\?.*)?$/,
+    loader: 'file?prefix=fonts/&name=[path][name].[ext]'
+  },
+  {
+    test: /\.svg(\?.*)?$/,
+    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml'
+  },
+  {
+    test: /\.(png|jpg|gif)$/,
+    loader: 'url?limit=8192'
   }
 )
 

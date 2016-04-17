@@ -16,7 +16,6 @@
   },
   "rules": {
     "semi"              : [2, "never"],
-    "max-len"           : [2, 120, 2],
     "key-spacing"       : 0,
     "spaced-comment"    : 0,
     "space-before-function-paren" : 0

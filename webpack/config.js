@@ -6,10 +6,10 @@ import { getPath } from './utils/helpers'
 const CONFIG = {
   env           : process.env.NODE_ENV || 'development',
   target        : process.env.npm_lifecycle_event,
-  appPath       : getPath('../app'),
+  appPath       : getPath('../src'),
   distPath      : getPath('../dist'),
   rootPath      : getPath('../'),
-  htmlPath      : getPath('../app/index.html'),
+  htmlPath      : getPath('../src/index.html'),
   serverHost    : 'localhost',
   serverPort    : '8080'
 }

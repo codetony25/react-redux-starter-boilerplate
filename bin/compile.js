@@ -12,6 +12,6 @@ function runCompiler() {
       }
     })
   } catch (err) {
-    console.log('compiling has failed', err)
+    console.error('compiling has failed', err)
   }
 }
