@@ -16,12 +16,12 @@ Things planned for this boilerplate:
 - [ ] Redux
 - [ ] Redux Sega Middleware
 
-Suggestions are welcome! Keep in mind that this boilerplate was built with productivity in mind.
+Suggestions are welcome!
 
 
 ## Installation
 
-Download this by typing in your terminal to clone this to your computer:
+Download this by entering this command in your terminal:
 ```
 $ git clone https://github.com/tonytainguyen/ReactJS-Starter-Boilerplate.git
 ```
@@ -50,11 +50,11 @@ There are more commands to which I have included in the package.json file which 
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request!
-6. It will be reviewed and appreciated! :smirk:
+6. It will be reviewed and appreciated! :smile:
 
 ## History
 
-Just put this all together for myself and what I believe are best practices and saves me time and maybe you can benefit off it too! I love using tools that would increase my productivity. I had also organized my webpack to what I believe is pretty organized and not repeating a lot of code like those other boilerplates. My goal was to make webpack easy to understand as much as possible and hopefully I have done that. I will be constantly updating this project and will need your help! All ideas/suggestions are welcome!
+Just put this all together for myself and what I believe are best practices and saves me time and maybe you can benefit off it too! I love using tools that would increase my productivity. I had also structured my webpack to what I believe is pretty organized and not repeating a lot of code like those other boilerplates. My goal was to make webpack easy to understand as much as possible and hopefully I have done that. I will be constantly updating this project! All ideas/suggestions/pull requests are welcome!
 
 ## License
 
