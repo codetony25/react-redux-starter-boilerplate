@@ -9,10 +9,7 @@ runCompiler()
 function runCompiler() {
   try {
     compiler.run((error, stats) => {
-      const compileStats = stats.toJson()
       debug('Webpack compile has finished')
-      debug(stats.toString(compileStats))
-      
       if (error) {
         debug('Error has occured while compiling', error)
       } else {

@@ -12,6 +12,7 @@ Things planned for this boilerplate:
 - [x] Add Plugins for PostCSS (CSSNext, Stylus Syntax, RucksackCSS, Sorting, Autoprefixer, and Short)
 - [x] Added support for CSS Modules
 - [ ] React Router
+- [ ] Redux DevTools
 - [ ] Redux
 - [ ] Redux Sega Middleware
 
