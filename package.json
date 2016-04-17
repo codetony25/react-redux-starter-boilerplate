@@ -9,8 +9,8 @@
     "deploy": "better-npm-run deploy",
     "clean": "rm -rf dist && npm cache clean",
     "lint": "better-npm-run lint",
-    "lint:app:jsx": "eslint ./app/**/**/*.jsx || true",
-    "lint:app:js": "eslint ./app/**/**/*.js || true",
+    "lint:jsx": "eslint ./app/**/**/*.jsx || true",
+    "lint:js": "eslint ./app/**/**/*.js || true",
     "lint:node": "eslint . || true",
     "lint:css": "./node_modules/.bin/stylelint '**/*.styl' || true"
   },
@@ -37,7 +37,7 @@
       }
     },
     "lint": {
-      "command": "npm run lint:app:jsx && npm run lint:node && npm run lint:app:js && npm run lint:css"
+      "command": "npm run lint:jsx && npm run lint:node && npm run lint:js && npm run lint:css"
     }
   },
   "author": "",
