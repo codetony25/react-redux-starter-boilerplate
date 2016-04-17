@@ -16,10 +16,9 @@ Things planned for this boilerplate:
 - [ ] Redux DevTools
 - [ ] Redux Sega Middleware
 - [ ] ImmutableJS
-- [ ] Testing (Mocha -Recommended by Redux, Chai, JSdom)
+- [ ] Testing (Mocha -Recommended by Redux, Enzyme - By Airbnb)
 
 Suggestions are welcome!
-
 
 ## Installation
 

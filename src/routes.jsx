@@ -20,7 +20,7 @@ export default () => {
   return (
     <Router history={browserHistory}>
       <Route path="/" component={CoreLayout}>
-        <IndexRoute path="/home" component={HomeView} />
+        <IndexRoute path="/" component={HomeView} />
         <Route path="/exampleview" component={ExampleView} />
         <Route path="/example" component={Example} />
       </Route>
