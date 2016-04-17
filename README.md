@@ -1,4 +1,4 @@
-# ReactJS-Starter-Boilerplate
+# Modern-ReactJS-Starter-Boilerplate
 
 ReactJS, Webpack, PostCSS, Stylus, CSSNext, ESLint, StyleLint, ES6, Modern Front End Starter Boilerplate
 
