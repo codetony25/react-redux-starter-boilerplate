@@ -1,6 +1,8 @@
 import React from 'react'
-import styles from './Example.styl'
 import CSSModules from 'react-css-modules';
+
+// Styles
+import styles from './Example.styl'
 
 // Images
 import mainLogo from '../../assets/images/main-logo.jpg'
