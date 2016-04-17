@@ -11,7 +11,7 @@ Things planned for this boilerplate:
 - [x] PostCSS
 - [x] Add Plugins for PostCSS (CSSNext, Stylus Syntax, RucksackCSS, Sorting, Autoprefixer, and Short)
 - [x] Added support for CSS Modules
-- [ ] React Router
+- [x] React Router
 - [ ] Redux DevTools
 - [ ] Redux
 - [ ] Redux Sega Middleware
@@ -27,13 +27,16 @@ $ git clone https://github.com/tonytainguyen/Modern-ReactJS-Starter-Boilerplate.
 ```
 ## Usage
 
-Navigate in the project and run the good ol' npm install and start to boot up the localhost:8080. Feel free to change the port anytime in /webpack/config.js
+Navigate in the project and run the good ol' npm install and start to boot up the localhost. Feel free to change the port anytime in /webpack/config.js
 ```
 npm install
 npm start
 ```
+
+Browser Sync will start up and open your browser to the current hosted port.
+
 There are more commands to which I have included in the package.json file which include the following:
-- `npm start` starts up localhost:8080 with browserSync and hot reloading
+- `npm start` starts up localhost with browserSync and hot reloading
 - `npm run compile` compiles project and puts them in the /dist folder.
 - `npm run deploy` removes the dist folder and compiles afterwards.
 - `npm run clean` removes the dist folder and clears npm cache.
