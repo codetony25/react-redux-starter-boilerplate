@@ -85,7 +85,6 @@
     "postcss-short": "^1.4.0",
     "postcss-sorting": "^1.2.3",
     "poststylus": "^0.2.3",
-    "precss": "^1.4.0",
     "react-css-modules": "^3.7.6",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",

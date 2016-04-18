@@ -1,5 +1,23 @@
 # Modern-ReactJS-Starter-Boilerplate
 
+## Features
+
+* [React](https://github.com/facebook/react) (`^15.0.1`)
+  * Using the latest React Version.
+* [react-router](https://github.com/rackt/react-router) (`^2.2.4`)
+* [Webpack](https://github.com/webpack/webpack)
+  * Stylus w/ CSS modules, CSSNext, RucksackCSS, Sorting, and Short.
+  * BrowserSync included.
+  * CSS extraction and Uglify on Production build.
+  * Supports Component Styling ie: `styleName="awesome"` using CSSModules.
+  * Don't think that the webpack is set in stone. Please always feel free to add more loaders or plugins if needed.
+* [ESLint](http://eslint.org)
+  * Extends Standard and Standard-React. More information at: https://github.com/feross/eslint-config-standard-react
+* [StyleLint](https://github.com/stylelint/stylelint)
+  * Using stylelint-config-standard as our starting point linter. Feel free to add additional rules!
+  * More information about the current extension used here: https://github.com/stylelint/stylelint-config-standard
+
+## To Do List
 ReactJS, Webpack, PostCSS, Stylus, CSSNext, ESLint, StyleLint, ES6, Modern Front End Starter Boilerplate
 
 Things planned for this boilerplate:
@@ -17,6 +35,8 @@ Things planned for this boilerplate:
 - [ ] Redux Sega Middleware
 - [ ] ImmutableJS
 - [ ] Testing (Mocha -Recommended by Redux, Enzyme - By Airbnb)
+
+MobX (https://github.com/mobxjs/mobx) also formerly known as Mobservable is gaining a lot of attention and can be scaled for large applications. It has also solved problems that Redux has. I will think about adding this.
 
 Suggestions are welcome!
 
