@@ -7,7 +7,6 @@ class Name {
   @observable nameSaved = false
 
   onNameButtonClick = () => {
-    console.log('here?')
     if (this.name !== '') {
       this.nameSaved = true
     }
