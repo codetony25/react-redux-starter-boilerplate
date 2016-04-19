@@ -6,7 +6,6 @@ const HeaderLayout = () => {
     <div>
       <ul className="main-nav">
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/example">Example</Link></li>
         <li><Link to="/exampleView">Example View</Link></li>
       </ul>
     </div>
