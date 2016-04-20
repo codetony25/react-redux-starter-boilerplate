@@ -6,11 +6,6 @@ import {
   IndexRoute
 } from 'react-router'
 
-// Components
-import Example from './components/Example'
-
-// Views
-import ExampleView from './views/ExampleView'
 import HomeView from './views/HomeView'
 
 // Layouts
@@ -20,8 +15,7 @@ export default () => {
   return (
     <Router history={browserHistory}>
       <Route path="/" component={CoreLayout}>
-        <IndexRoute component={Example} />
-        <Route path="/exampleview" component={ExampleView} />
+        <IndexRoute component={HomeView} />
       </Route>
     </Router>
   )

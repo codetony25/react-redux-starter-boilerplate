@@ -1,10 +1,13 @@
 import React from 'react'
 
+// Components
+import Example from '../../components/Example'
+
 class HomeView extends React.Component {
   render() {
     return (
       <div>
-        <h1>This is the HomeView</h1>
+        <Example />
       </div>
     )
   }

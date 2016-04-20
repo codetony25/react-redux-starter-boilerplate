@@ -1,9 +1,8 @@
 import { observable, computed } from 'mobx'
 
-class Name {
+class Example {
   id = Math.random()
   @observable name = ''
-  @observable nameVisible = true
   @observable nameSaved = false
 
   onNameButtonClick = () => {
@@ -11,11 +10,15 @@ class Name {
       this.nameSaved = true
     }
   }
-  
+
   onNameChange = (ev) => {
     this.name = ev.target.value
-    console.log(this.name)
+  }
+
+  onNameReset = () => {
+    this.name = ''
+    this.nameSaved = false
   }
 }
 
-export default new Name()
+export default new Example()

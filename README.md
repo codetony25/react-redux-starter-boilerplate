@@ -38,6 +38,9 @@ Things planned for this boilerplate:
 
 MobX (https://github.com/mobxjs/mobx) also formerly known as Mobservable is gaining a lot of attention and can be scaled for large applications. It has also solved problems that Redux has. I will think about adding this.
 
+Here's a project structure I agree with: http://marmelab.com/blog/2015/12/17/react-directory-structure.html
+- Organizes it by domain and makes it easier for testing.
+
 Suggestions are welcome!
 
 ## Installation
