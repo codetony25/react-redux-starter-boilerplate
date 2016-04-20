@@ -7,7 +7,7 @@ const webpackDevConfig = (webpackConfig, config) => {
   /*=============================================
    =            Development Plugins              =
    =============================================*/
-
+  
   debug('Setting up development plugins: HMR, BrowserSyncPlugin and NoErrorsPlugin')
   webpackConfig.plugins.push(
     new BrowserSyncPlugin(

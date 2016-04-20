@@ -11,12 +11,11 @@ import HomeView from './views/HomeView'
 // Layouts
 import CoreLayout from './layouts/CoreLayout'
 
-export default () => {
-  return (
-    <Router history={browserHistory}>
-      <Route path="/" component={CoreLayout}>
-        <IndexRoute component={HomeView} />
-      </Route>
-    </Router>
-  )
-}
+export default () => (
+  <Router history={browserHistory}>
+    <Route path="/" component={CoreLayout}>
+      <IndexRoute component={HomeView} />
+    </Route>
+  </Router>
+)
+

@@ -9,6 +9,7 @@ const config = {
   appPath       : getPath('../src'),
   distPath      : getPath('../dist'),
   rootPath      : getPath('../'),
+  stylePath     : getPath('../src/styles'),
   htmlPath      : getPath('../src/index.html'),
   serverHost    : 'localhost',
   serverPort    : '8080'

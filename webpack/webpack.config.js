@@ -82,8 +82,8 @@ webpackConfig.module.loaders = [
 
 webpackConfig.module.loaders.push(
   {
-    test       : /\.(css|scss|sass|styl)$/,
-    loaders    : ['style', 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'postcss', 'stylus'],
+    test       : /\.styl$/,
+    loaders    : ['style', 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'postcss', 'stylus?sourceMap'],
     include    : config.appPath
   }
 )
