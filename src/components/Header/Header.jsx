@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const HeaderLayout = () => {
+const Header = () => {
   return (
     <div>
       <ul className="main-nav">
-        <li><Link to="/">Home</Link></li>
+        <li><Link to="/">Homes</Link></li>
       </ul>
       <div className="header-title">
         <h1>The Calculator</h1>
@@ -14,4 +14,4 @@ const HeaderLayout = () => {
   )
 }
 
-export default HeaderLayout
+export default Header

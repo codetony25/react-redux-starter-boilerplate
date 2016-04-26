@@ -8,14 +8,13 @@ import {
 
 import HomeView from './views/HomeView'
 
-// Layouts
-import CoreLayout from './layouts/CoreLayout'
+// Core Layout
+import layout from './layout.jsx'
 
 export default () => (
   <Router history={browserHistory}>
-    <Route path="/" component={CoreLayout}>
+    <Route path="/" component={layout}>
       <IndexRoute component={HomeView} />
     </Route>
   </Router>
 )
-

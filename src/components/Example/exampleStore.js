@@ -1,6 +1,6 @@
 import { observable, computed } from 'mobx'
 
-class Example {
+class ExampleState {
   id = Math.random()
   @observable name = ''
   @observable nameSaved = false
@@ -21,4 +21,4 @@ class Example {
   }
 }
 
-export default new Example()
+export default new ExampleState()
