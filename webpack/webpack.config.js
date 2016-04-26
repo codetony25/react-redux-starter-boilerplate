@@ -135,6 +135,7 @@ webpackConfig.module.loaders.push(
 /*=============================================
  =            Plugin Configurations            =
  =============================================*/
+
 debug('Setting up Plugin Configurations...')
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
