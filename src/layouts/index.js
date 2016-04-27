@@ -1,13 +1,13 @@
-import './styles/main.styl'
+import '../styles/main.styl'
 import React, { PropTypes } from 'react'
 
 // Layouts
-import Header from './components/Header'
+import HeaderLayout from './HeaderLayout'
 
 const layout = ({ children }) => {
   return (
     <div>
-      <Header />
+      <HeaderLayout />
       {children}
     </div>
   )

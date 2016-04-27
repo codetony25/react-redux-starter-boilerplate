@@ -6,15 +6,15 @@ import {
   IndexRoute
 } from 'react-router'
 
-import HomeView from './views/HomeView'
+import Home from './Home'
 
 // Core Layout
-import layout from './layout.jsx'
+import layout from '../layouts'
 
 export default () => (
   <Router history={browserHistory}>
     <Route path="/" component={layout}>
-      <IndexRoute component={HomeView} />
+      <IndexRoute component={Home} />
     </Route>
   </Router>
 )
