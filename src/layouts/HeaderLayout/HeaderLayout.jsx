@@ -10,7 +10,7 @@ const Header = () => {
         </li>
       </ul>
       <div className="header-title">
-        <h1>The Calculator</h1>
+        <h1>Starting Point</h1>
       </div>
     </div>
   )
