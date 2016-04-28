@@ -6,6 +6,10 @@ import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import short from 'postcss-short'
 import atImport from 'postcss-import'
+import customProperties from 'postcss-custom-properties'
+import webpackPostcssTools from 'webpack-postcss-tools'
+import customMedia from 'postcss-custom-media'
+import customSelectors from 'postcss-custom-selectors'
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -16,6 +20,7 @@ import webpackProdConfig from './prod.config.js'
  =============================================*/
 
 const debug = _debug('app:webpack:config')
+const map = webpackPostcssTools.makeVarMap('src/main.css')
 const {
   __DEVELOPMENT__,
   __PRODUCTION__
@@ -93,9 +98,18 @@ webpackConfig.module.loaders.push(
 // Add postcss plugins here
 webpackConfig.postcss = () => {
   return [
+    webpackPostcssTools.prependTildesToImports,
     atImport({
       addDependencyTo: webpack,
-      from: config.stylePath
+    }),
+    customProperties({
+      variables: map.vars
+    }),
+    customMedia({
+      extensions: map.media
+    }),
+    customSelectors({
+      extensions: map.selector
     }),
     cssnext,
     rucksack,

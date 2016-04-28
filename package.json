@@ -79,6 +79,9 @@
     "json-loader": "^0.5.4",
     "mobx-react-devtools": "^4.0.2",
     "postcss-cssnext": "^2.5.2",
+    "postcss-custom-media": "^5.0.1",
+    "postcss-custom-properties": "^5.0.1",
+    "postcss-custom-selectors": "^3.0.0",
     "postcss-import": "^8.1.0",
     "postcss-loader": "^0.8.2",
     "postcss-modules": "^0.4.1",
@@ -101,7 +104,8 @@
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "webpack-postcss-tools": "^1.1.1"
   },
   "dependencies": {
     "babel-cli": "^6.7.7",
