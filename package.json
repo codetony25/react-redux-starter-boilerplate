@@ -81,6 +81,7 @@
     "mobx-react-devtools": "^4.0.2",
     "node-sass": "^3.4.2",
     "postcss-cssnext": "^2.5.2",
+    "postcss-import": "^8.1.0",
     "postcss-loader": "^0.8.2",
     "postcss-modules": "^0.4.1",
     "postcss-short": "^1.4.0",

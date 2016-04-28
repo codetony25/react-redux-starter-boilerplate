@@ -1,5 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router'
+import CSSModules from 'react-css-modules'
+
+// Styles
+import styles from './HeaderLayout.css'
 
 const Header = () => {
   return (
@@ -9,11 +13,11 @@ const Header = () => {
           <Link to="/">Home</Link>
         </li>
       </ul>
-      <div className="header-title">
+      <div styleName="header-title">
         <h1>Starting Point</h1>
       </div>
     </div>
   )
 }
 
-export default Header
+export default CSSModules(Header, styles)

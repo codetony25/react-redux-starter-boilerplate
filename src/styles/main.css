@@ -1,0 +1,29 @@
+/* Imports */
+
+@import "variables/colors.css";
+@import "variables/fonts.css";
+@import "typography/typography.css";
+/*
+@import "scheme/scheme.css";
+*/
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*:matches(:before, :after) {
+  box-sizing: inherit
+}
+
+h1:matches(:hover) {
+  transition: 0.2s;
+  cursor: pointer;
+  font-family: var(--bebas-neue);
+  color: var(--bright-red);
+}

@@ -1,9 +1,11 @@
+import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import _debug from 'debug'
 import cssnext from 'postcss-cssnext'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import short from 'postcss-short'
+import atImport from 'postcss-import'
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -82,14 +84,18 @@ webpackConfig.module.loaders = [
 
 webpackConfig.module.loaders.push(
   {
-    test       : /\.styl$/,
-    loaders    : ['style', 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'postcss', 'stylus?sourceMap'],
+    test       : /\.css$/,
+    loaders    : ['style', 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'postcss'],
     include    : config.appPath
   }
 )
+
 // Add postcss plugins here
 webpackConfig.postcss = () => {
   return [
+    atImport({
+      addDependencyTo: webpack
+    }),
     cssnext,
     rucksack,
     sorting,

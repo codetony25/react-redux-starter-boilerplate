@@ -1,0 +1,10 @@
+/** Font Variables **/
+
+:root {
+  --open-sans: "OpenSans";
+  --bebas-neue: "BebasNeue";
+  --uni-sans-heavy: "UniSansHeavy";
+  --uni-sans-heavy-italic: "UniSansHeavyItalic";
+  --uni-sans-thin:"UniSansThin";
+  --uni-sans-thin-italic: "UniSansThinItalic";
+}

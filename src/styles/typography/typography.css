@@ -1,0 +1,28 @@
+/** Fonts **/
+
+@font-face {
+  font-family: var(--bebas-neue);
+  src: url("/assets/fonts/BebasNeue.otf") format("opentype");
+}
+
+
+/*
+  font-body(font-family)
+    font 0.875rem font-family sans-serif // 14px
+  font-heading-one(font-family)
+    font 3rem font-family sans-serif // 48px
+  font-heading-two(font-family)
+    font 2rem font-family sans-serif // 32px
+  font-heading-three(font-family)
+    font 1.625rem font-family sans-serif // 26px
+  font-heading-four(font-family)
+    font 1.25rem font-family sans-serif // 20px
+  font-heading-five(font-family)
+    font 1.125rem font-family sans-serif // 18px
+  font-heading-six(font-family)
+    font 1rem font-family sans-serif // 16px
+
+  // Custom Font Size
+  font(size, font-family)
+    font size font-family sans-serif
+*/
