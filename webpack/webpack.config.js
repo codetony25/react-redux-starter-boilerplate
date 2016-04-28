@@ -94,7 +94,8 @@ webpackConfig.module.loaders.push(
 webpackConfig.postcss = () => {
   return [
     atImport({
-      addDependencyTo: webpack
+      addDependencyTo: webpack,
+      from: config.stylePath
     }),
     cssnext,
     rucksack,
