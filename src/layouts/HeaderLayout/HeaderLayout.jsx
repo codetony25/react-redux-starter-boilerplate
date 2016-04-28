@@ -15,6 +15,9 @@ const Header = () => {
       </ul>
       <div styleName="header-title">
         <h1>Starting Point</h1>
+        <h2>Second Point</h2>
+        <p>Hello are you there?</p>
+        <h3 styleName="second-header">I am the god at coding.</h3>
       </div>
     </div>
   )

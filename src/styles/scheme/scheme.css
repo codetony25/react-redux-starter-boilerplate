@@ -1,8 +1,0 @@
-/** Scheme Styles **/
-:global
-  color = {
-    header: {
-      bg: white,
-      text: red
-    }
-  }

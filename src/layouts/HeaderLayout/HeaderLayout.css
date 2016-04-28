@@ -1,3 +1,6 @@
 .header-title {
-    background: blue;
+    background: cornsilk;
+}
+.second-header {
+    color: var(--bright-red);
 }

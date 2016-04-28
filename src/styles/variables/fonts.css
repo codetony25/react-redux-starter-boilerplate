@@ -1,10 +1,26 @@
 /** Font Variables **/
-
 :root {
+  /* Font Names */
   --open-sans: "OpenSans";
   --bebas-neue: "BebasNeue";
   --uni-sans-heavy: "UniSansHeavy";
   --uni-sans-heavy-italic: "UniSansHeavyItalic";
-  --uni-sans-thin:"UniSansThin";
+  --uni-sans-thin: "UniSansThin";
   --uni-sans-thin-italic: "UniSansThinItalic";
+
+  /* Premade Font sizes */
+  --font-tiny: 0.875rem; /* 14px */
+  --font-extra-small: 1rem; /* 16px */
+  --font-small: 1.125rem; /* 18px */
+  --font-medium: 1.25rem; /* 20px */
+  --font-large: 1.625rem; /* 26px */
+  --font-extra-large: 2rem; /* 32px */
+  --font-giant: 0.3rem; /* 48px */
+
+  /* Font Declarations */
+  --font-first: var(--bebas-neue), sans-serif;
+  --font-second: var(--uni-sans-heavy), sans-serif;
+  --font-third: var(--uni-sans-heavy-italic), sans-serif;
+  --font-fourth: var(--uni-sans-thin), sans-serif;
+  --font-fifth: var(--uni-sans-thin-italic), sans-serif;
 }
