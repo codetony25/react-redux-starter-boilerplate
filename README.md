@@ -6,11 +6,11 @@
   * Using the latest React Version.
 * [react-router](https://github.com/rackt/react-router) (`^2.2.4`)
 * [Webpack](https://github.com/webpack/webpack)
-  * Stylus w/ CSS modules, CSSNext, RucksackCSS, Sorting, and Short.
+  * CSSNext with React CSS modules
+  * PostCSS Plugins included: RucksackCSS, Sorting, Mixins, and Short.
   * BrowserSync included.
   * CSS extraction and Uglify on Production build.
   * Supports Component Styling ie: `styleName="awesome"` using CSSModules.
-  * Don't think that the webpack is set in stone. Please always feel free to add more loaders or plugins if needed.
 * [ESLint](http://eslint.org)
   * Extends Standard and Standard-React. More information at: https://github.com/feross/eslint-config-standard-react
 * [StyleLint](https://github.com/stylelint/stylelint)
@@ -27,19 +27,18 @@ Things planned for this boilerplate:
 - [x] ESLint
 - [x] StyleLint for linting css/stylus
 - [x] PostCSS
-- [x] Add Plugins for PostCSS (CSSNext, Stylus Syntax, RucksackCSS, Sorting, Autoprefixer, and Short)
+- [x] Add Plugins for PostCSS (CSSNext which includes autoprefixer, RucksackCSS, Sorting, Mixins, and Short)
 - [x] Added support for CSS Modules
 - [x] React Router
-- [ ] Redux
-- [ ] Redux DevTools
-- [ ] Redux Sega Middleware
-- [ ] ImmutableJS
+- [x] Mobx
+- [x] Mobx DevTools
+- [ ] Set up Mobx Example Structure and Design Pattern for large scalability
+- [ ] Develop a design pattern and file structure on server side with express and Node.js
+- [ ] Add Flow, a new static type checker for JavaScript
+- [ ] Decide on Database to use (MongoDB, PostgreSQL, RethinkDB, GraphQL)
 - [ ] Testing (Mocha -Recommended by Redux, Enzyme - By Airbnb)
 
-MobX (https://github.com/mobxjs/mobx) also formerly known as Mobservable is gaining a lot of attention and can be scaled for large applications. It has also solved problems that Redux has. I will think about adding this.
-
-Here's a project structure I agree with: http://marmelab.com/blog/2015/12/17/react-directory-structure.html
-- Organizes it by domain and makes it easier for testing.
+MobX (https://github.com/mobxjs/mobx) also formerly known as Mobservable is gaining a lot of attention and can be scaled for large applications. It makes it helps with state management and isn't opinionated on the type of design pattern we use.
 
 Suggestions are welcome!
 
