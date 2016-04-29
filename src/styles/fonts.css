@@ -15,7 +15,7 @@
   --font-medium: 1.25rem; /* 20px */
   --font-large: 1.625rem; /* 26px */
   --font-extra-large: 2rem; /* 32px */
-  --font-giant: 0.3rem; /* 48px */
+  --font-giant: 3rem; /* 48px */
 
   /* Font Declarations */
   --font-first: var(--bebas-neue), sans-serif;
@@ -23,4 +23,31 @@
   --font-third: var(--uni-sans-heavy-italic), sans-serif;
   --font-fourth: var(--uni-sans-thin), sans-serif;
   --font-fifth: var(--uni-sans-thin-italic), sans-serif;
+}
+
+/** Fonts **/
+
+@font-face {
+  font-family: var(--bebas-neue);
+  src: url("../assets/fonts/BebasNeue.otf") format("opentype");
+}
+
+@font-face {
+  font-family: var(--uni-sans-heavy);
+  src: url("../assets/fonts/UniSansHeavy.otf") format("opentype");
+}
+
+@font-face {
+  font-family: var(--uni-sans-heavy-italic);
+  src: url("../assets/fonts/UniSansHeavyItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: var(--uni-sans-thin);
+  src: url("../assets/fonts/UniSansThin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: var(--uni-sans-thin-italic);
+  src: url("../assets/fonts/UniSansThinItalic.otf") format("opentype");
 }

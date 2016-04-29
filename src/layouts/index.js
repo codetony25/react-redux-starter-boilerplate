@@ -1,4 +1,4 @@
-import '../styles/main.css'
+import '../styles/base.css'
 import React, { PropTypes } from 'react'
 
 // Layouts

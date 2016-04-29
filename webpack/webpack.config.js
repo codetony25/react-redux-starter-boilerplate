@@ -10,6 +10,8 @@ import customProperties from 'postcss-custom-properties'
 import webpackPostcssTools from 'webpack-postcss-tools'
 import customMedia from 'postcss-custom-media'
 import customSelectors from 'postcss-custom-selectors'
+import normalize from 'postcss-normalize'
+import mixin from 'postcss-mixins'
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -20,7 +22,7 @@ import webpackProdConfig from './prod.config.js'
  =============================================*/
 
 const debug = _debug('app:webpack:config')
-const map = webpackPostcssTools.makeVarMap('src/main.css')
+const map = webpackPostcssTools.makeVarMap(config.stylePath)
 const {
   __DEVELOPMENT__,
   __PRODUCTION__
@@ -98,10 +100,10 @@ webpackConfig.module.loaders.push(
 // Add postcss plugins here
 webpackConfig.postcss = () => {
   return [
-    webpackPostcssTools.prependTildesToImports,
     atImport({
-      addDependencyTo: webpack,
+      addDependencyTo: webpack
     }),
+    webpackPostcssTools.prependTildesToImports,
     customProperties({
       variables: map.vars
     }),
@@ -111,6 +113,8 @@ webpackConfig.postcss = () => {
     customSelectors({
       extensions: map.selector
     }),
+    normalize,
+    mixin,
     cssnext,
     rucksack,
     sorting,

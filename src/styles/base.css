@@ -1,0 +1,16 @@
+/* Imports */
+@import "./colors.css";
+@import "./fonts.css";
+
+/* Global Styles */
+html {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+*:matches(::before, ::after) {
+  box-sizing: inherit
+}
