@@ -154,6 +154,11 @@ webpackConfig.module.loaders.push(
   {
     test: /\.(png|jpg|gif)$/,
     loader: 'url?limit=8192'
+  },
+  {
+    test: /react-icons\/(.)*(.js)$/,
+    loader: 'babel',
+    include: config.iconPath
   }
 )
 

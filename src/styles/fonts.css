@@ -1,4 +1,4 @@
-/** Font Variables **/
+/** Font Global Styles **/
 :root {
   /* Font Names */
   --open-sans: "OpenSans";
@@ -25,8 +25,7 @@
   --font-fifth: var(--uni-sans-thin-italic), sans-serif;
 }
 
-/** Fonts **/
-
+/*** Fonts ***/
 @font-face {
   font-family: var(--bebas-neue);
   src: url("../assets/fonts/BebasNeue.otf") format("opentype");
@@ -50,4 +49,33 @@
 @font-face {
   font-family: var(--uni-sans-thin-italic);
   src: url("../assets/fonts/UniSansThinItalic.otf") format("opentype");
+}
+
+/*** Font Mixins ***/
+@define-mixin font $size $font {
+  font: $size $font;
+}
+@define-mixin font-body $font {
+  font: var(--font-tiny) $font;
+}
+@define-mixin font-heading-one $font {
+  font: var(--font-giant) $font;
+}
+@define-mixin font-heading-two $font {
+  font: var(--font-extra-large) $font;
+}
+@define-mixin font-heading-three $font {
+  font: var(--font-large) $font;
+}
+@define-mixin font-heading-four $font {
+  font: var(--font-medium) $font;
+}
+@define-mixin font-heading-five $font {
+  font: var(--font-small) $font;
+}
+@define-mixin font-heading-six $font {
+  font: var(--font-extra-small) $font;
+}
+@define-mixin font-heading-seven $font {
+  font: var(--font-small) $font;
 }

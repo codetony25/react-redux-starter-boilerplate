@@ -11,6 +11,9 @@ body {
   padding: 0;
   height: 100%;
 }
+* {
+  box-sizing: inherit;
+}
 *:matches(::before, ::after) {
-  box-sizing: inherit
+  box-sizing: inherit;
 }

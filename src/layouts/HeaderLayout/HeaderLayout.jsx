@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
+import FaBeer from 'react-icons/fa/beer';
+import {MdCancel, MdChat, MdCheck} from 'react-icons/md'
+
 import CSSModules from 'react-css-modules'
 
 // Styles
@@ -10,13 +13,13 @@ const Header = () => {
     <div>
       <ul className="main-nav">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">Home<FaBeer /></Link>
         </li>
       </ul>
       <div styleName="header-title">
-        <h1>Starting Point</h1>
-        <h2>Second Point</h2>
-        <p>Hello are you there?</p>
+        <h1>Starting Point <MdCheck /></h1>
+        <h2>Second Point <MdChat /></h2>
+        <p>Hello are you there? <MdCancel /></p>
         <h3 styleName="second-header">You will be a god at coding.</h3>
       </div>
     </div>
