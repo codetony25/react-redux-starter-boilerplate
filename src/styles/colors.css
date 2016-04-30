@@ -8,8 +8,3 @@
   --dark-gray-medium: #575d67;
   --strong-red: #d62a3d;
 }
-
-h2 {
-  font-family: var(--uni-sans-thin);
-  font-size: 12px;
-}
