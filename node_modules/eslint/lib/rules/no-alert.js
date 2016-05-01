@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to flag use of alert, confirm, prompt
  * @author Nicholas C. Zakas
- * @copyright 2015 Mathias Schreck
- * @copyright 2013 Nicholas C. Zakas
  */
 "use strict";
 
@@ -114,11 +112,11 @@ module.exports = {
 
         return {
 
-            "Program": function() {
+            Program: function() {
                 globalScope = context.getScope();
             },
 
-            "CallExpression": function(node) {
+            CallExpression: function(node) {
                 var callee = node.callee,
                     identifierName,
                     currentScope = context.getScope();

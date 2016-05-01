@@ -1,7 +1,6 @@
 /**
  * @fileoverview A rule to set the maximum number of statements in a function.
  * @author Ian Christian Myers
- * @copyright 2013 Ian Christian Myers. All rights reserved.
  */
 
 "use strict";
@@ -20,35 +19,35 @@ module.exports = {
 
         schema: [
             {
-                "oneOf": [
+                oneOf: [
                     {
-                        "type": "integer",
-                        "minimum": 0
+                        type: "integer",
+                        minimum: 0
                     },
                     {
-                        "type": "object",
-                        "properties": {
-                            "maximum": {
-                                "type": "integer",
-                                "minimum": 0
+                        type: "object",
+                        properties: {
+                            maximum: {
+                                type: "integer",
+                                minimum: 0
                             },
-                            "max": {
-                                "type": "integer",
-                                "minimum": 0
+                            max: {
+                                type: "integer",
+                                minimum: 0
                             }
                         },
-                        "additionalProperties": false
+                        additionalProperties: false
                     }
                 ]
             },
             {
-                "type": "object",
-                "properties": {
-                    "ignoreTopLevelFunctions": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    ignoreTopLevelFunctions: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -132,11 +131,11 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "FunctionDeclaration": startFunction,
-            "FunctionExpression": startFunction,
-            "ArrowFunctionExpression": startFunction,
+            FunctionDeclaration: startFunction,
+            FunctionExpression: startFunction,
+            ArrowFunctionExpression: startFunction,
 
-            "BlockStatement": countStatements,
+            BlockStatement: countStatements,
 
             "FunctionDeclaration:exit": endFunction,
             "FunctionExpression:exit": endFunction,

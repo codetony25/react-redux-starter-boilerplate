@@ -2,8 +2,6 @@
  * @fileoverview Rule to ensure newline per method call when chaining calls
  * @author Rajendra Patil
  * @author Burak Yigit Kaya
- * @copyright 2016 Rajendra Patil. All rights reserved.
- * @copyright 2016 Burak Yigit Kaya. All rights reserved.
  */
 
 "use strict";
@@ -21,15 +19,15 @@ module.exports = {
         },
 
         schema: [{
-            "type": "object",
-            "properties": {
-                "ignoreChainWithDepth": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 10
+            type: "object",
+            properties: {
+                ignoreChainWithDepth: {
+                    type: "integer",
+                    minimum: 1,
+                    maximum: 10
                 }
             },
-            "additionalProperties": false
+            additionalProperties: false
         }]
     },
 

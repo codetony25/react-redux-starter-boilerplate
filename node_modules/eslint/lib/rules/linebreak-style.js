@@ -1,9 +1,6 @@
 /**
  * @fileoverview Rule to enforce a single linebreak style.
  * @author Erik Mueller
- * @copyright 2015 Varun Verma. All rights reserverd.
- * @copyright 2015 James Whitney. All rights reserved.
- * @copyright 2015 Erik Mueller. All rights reserved.
  */
 
 "use strict";
@@ -24,7 +21,7 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["unix", "windows"]
+                enum: ["unix", "windows"]
             }
         ]
     },
@@ -56,7 +53,7 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "Program": function checkForlinebreakStyle(node) {
+            Program: function checkForlinebreakStyle(node) {
                 var linebreakStyle = context.options[0] || "unix",
                     expectedLF = linebreakStyle === "unix",
                     expectedLFChars = expectedLF ? "\n" : "\r\n",

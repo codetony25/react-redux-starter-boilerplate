@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to flag use of duplicate keys in an object.
  * @author Ian Christian Myers
- * @copyright 2013 Ian Christian Myers. All rights reserved.
- * @copyright 2013 Nicholas C. Zakas. All rights reserved.
  */
 
 "use strict";
@@ -26,7 +24,7 @@ module.exports = {
 
         return {
 
-            "ObjectExpression": function(node) {
+            ObjectExpression: function(node) {
 
                 // Object that will be a map of properties--safe because we will
                 // prefix all of the keys.

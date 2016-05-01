@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to check the spacing around the * in generator functions.
  * @author Jamund Ferguson
- * @copyright 2015 Brandon Mills. All rights reserved.
- * @copyright 2014 Jamund Ferguson. All rights reserved.
  */
 
 "use strict";
@@ -23,17 +21,17 @@ module.exports = {
 
         schema: [
             {
-                "oneOf": [
+                oneOf: [
                     {
-                        "enum": ["before", "after", "both", "neither"]
+                        enum: ["before", "after", "both", "neither"]
                     },
                     {
-                        "type": "object",
-                        "properties": {
-                            "before": {"type": "boolean"},
-                            "after": {"type": "boolean"}
+                        type: "object",
+                        properties: {
+                            before: {type: "boolean"},
+                            after: {type: "boolean"}
                         },
-                        "additionalProperties": false
+                        additionalProperties: false
                     }
                 ]
             }
@@ -116,8 +114,8 @@ module.exports = {
         }
 
         return {
-            "FunctionDeclaration": checkFunction,
-            "FunctionExpression": checkFunction
+            FunctionDeclaration: checkFunction,
+            FunctionExpression: checkFunction
         };
 
     }

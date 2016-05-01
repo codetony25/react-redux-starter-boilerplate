@@ -1,8 +1,6 @@
 /**
  * @fileoverview Comma style - enforces comma styles of two types: last and first
  * @author Vignesh Anand aka vegetableman
- * @copyright 2014 Vignesh Anand. All rights reserved.
- * @copyright 2015 Evan Simmons. All rights reserved.
  */
 
 "use strict";
@@ -23,19 +21,19 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["first", "last"]
+                enum: ["first", "last"]
             },
             {
-                "type": "object",
-                "properties": {
-                    "exceptions": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "boolean"
+                type: "object",
+                properties: {
+                    exceptions: {
+                        type: "object",
+                        additionalProperties: {
+                            type: "boolean"
                         }
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },

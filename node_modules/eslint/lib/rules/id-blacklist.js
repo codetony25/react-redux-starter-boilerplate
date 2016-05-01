@@ -1,11 +1,7 @@
 /**
  * @fileoverview Rule that warns when identifier names that are
-                 blacklisted in the configuration are used.
+ * blacklisted in the configuration are used.
  * @author Keith Cirkel (http://keithcirkel.co.uk)
- * Based on id-match rule:
- * @author Matthieu Larcher
- * @copyright 2015 Matthieu Larcher. All rights reserved.
- * See LICENSE in root directory for full license.
  */
 
 "use strict";
@@ -23,11 +19,11 @@ module.exports = {
         },
 
         schema: {
-            "type": "array",
-            "items": {
-                "type": "string"
+            type: "array",
+            items: {
+                type: "string"
             },
-            "uniqueItems": true
+            uniqueItems: true
         }
     },
 
@@ -78,7 +74,7 @@ module.exports = {
 
         return {
 
-            "Identifier": function(node) {
+            Identifier: function(node) {
                 var name = node.name,
                     effectiveParent = (node.parent.type === "MemberExpression") ? node.parent.parent : node.parent;
 

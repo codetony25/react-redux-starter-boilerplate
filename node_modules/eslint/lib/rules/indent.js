@@ -1,31 +1,10 @@
 /**
  * @fileoverview This option sets a specific tab width for your code
-
+ *
  * This rule has been ported and modified from nodeca.
  * @author Vitaly Puzrin
  * @author Gyandeep Singh
- * @copyright 2015 Vitaly Puzrin. All rights reserved.
- * @copyright 2015 Gyandeep Singh. All rights reserved.
- Copyright (C) 2014 by Vitaly Puzrin
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
-*/
+ */
 
 "use strict";
 
@@ -47,50 +26,50 @@ module.exports = {
 
         schema: [
             {
-                "oneOf": [
+                oneOf: [
                     {
-                        "enum": ["tab"]
+                        enum: ["tab"]
                     },
                     {
-                        "type": "integer",
-                        "minimum": 0
+                        type: "integer",
+                        minimum: 0
                     }
                 ]
             },
             {
-                "type": "object",
-                "properties": {
-                    "SwitchCase": {
-                        "type": "integer",
-                        "minimum": 0
+                type: "object",
+                properties: {
+                    SwitchCase: {
+                        type: "integer",
+                        minimum: 0
                     },
-                    "VariableDeclarator": {
-                        "oneOf": [
+                    VariableDeclarator: {
+                        oneOf: [
                             {
-                                "type": "integer",
-                                "minimum": 0
+                                type: "integer",
+                                minimum: 0
                             },
                             {
-                                "type": "object",
-                                "properties": {
-                                    "var": {
-                                        "type": "integer",
-                                        "minimum": 0
+                                type: "object",
+                                properties: {
+                                    var: {
+                                        type: "integer",
+                                        minimum: 0
                                     },
-                                    "let": {
-                                        "type": "integer",
-                                        "minimum": 0
+                                    let: {
+                                        type: "integer",
+                                        minimum: 0
                                     },
-                                    "const": {
-                                        "type": "integer",
-                                        "minimum": 0
+                                    const: {
+                                        type: "integer",
+                                        minimum: 0
                                     }
                                 }
                             }
                         ]
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -718,7 +697,7 @@ module.exports = {
         }
 
         return {
-            "Program": function(node) {
+            Program: function(node) {
                 if (node.body.length > 0) {
 
                     // Root nodes should have no indent
@@ -726,41 +705,41 @@ module.exports = {
                 }
             },
 
-            "ClassBody": blockIndentationCheck,
+            ClassBody: blockIndentationCheck,
 
-            "BlockStatement": blockIndentationCheck,
+            BlockStatement: blockIndentationCheck,
 
-            "WhileStatement": blockLessNodes,
+            WhileStatement: blockLessNodes,
 
-            "ForStatement": blockLessNodes,
+            ForStatement: blockLessNodes,
 
-            "ForInStatement": blockLessNodes,
+            ForInStatement: blockLessNodes,
 
-            "ForOfStatement": blockLessNodes,
+            ForOfStatement: blockLessNodes,
 
-            "DoWhileStatement": blockLessNodes,
+            DoWhileStatement: blockLessNodes,
 
-            "IfStatement": function(node) {
+            IfStatement: function(node) {
                 if (node.consequent.type !== "BlockStatement" && node.consequent.loc.start.line > node.loc.start.line) {
                     blockIndentationCheck(node);
                 }
             },
 
-            "VariableDeclaration": function(node) {
+            VariableDeclaration: function(node) {
                 if (node.declarations[node.declarations.length - 1].loc.start.line > node.declarations[0].loc.start.line) {
                     checkIndentInVariableDeclarations(node);
                 }
             },
 
-            "ObjectExpression": function(node) {
+            ObjectExpression: function(node) {
                 checkIndentInArrayOrObjectBlock(node);
             },
 
-            "ArrayExpression": function(node) {
+            ArrayExpression: function(node) {
                 checkIndentInArrayOrObjectBlock(node);
             },
 
-            "SwitchStatement": function(node) {
+            SwitchStatement: function(node) {
 
                 // Switch is not a 'BlockStatement'
                 var switchIndent = getNodeIndent(node);
@@ -772,7 +751,7 @@ module.exports = {
                 checkLastNodeLineIndent(node, switchIndent);
             },
 
-            "SwitchCase": function(node) {
+            SwitchCase: function(node) {
 
                 // Skip inline cases
                 if (isSingleLineNode(node)) {

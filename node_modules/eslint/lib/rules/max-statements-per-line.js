@@ -1,9 +1,6 @@
 /**
  * @fileoverview Specify the maximum number of statements allowed per line.
  * @author Kenneth Williams
- * @copyright 2016 Kenneth Williams. All rights reserved.
- * @copyright 2016 Michael Ficarra. All rights reserved.
- * See LICENSE file in root directory for full license.
  */
 "use strict";
 
@@ -21,13 +18,13 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "max": {
-                        "type": "integer"
+                type: "object",
+                properties: {
+                    max: {
+                        type: "integer"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -107,9 +104,9 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "Program": checkLinesInBody,
-            "BlockStatement": checkLinesInBody,
-            "SwitchCase": checkLinesInConsequent
+            Program: checkLinesInBody,
+            BlockStatement: checkLinesInBody,
+            SwitchCase: checkLinesInConsequent
         };
 
     }

@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to flag when a function has too many parameters
  * @author Ilya Volodin
- * @copyright 2014 Nicholas C. Zakas. All rights reserved.
- * @copyright 2013 Ilya Volodin. All rights reserved.
  */
 
 "use strict";
@@ -21,24 +19,24 @@ module.exports = {
 
         schema: [
             {
-                "oneOf": [
+                oneOf: [
                     {
-                        "type": "integer",
-                        "minimum": 0
+                        type: "integer",
+                        minimum: 0
                     },
                     {
-                        "type": "object",
-                        "properties": {
-                            "maximum": {
-                                "type": "integer",
-                                "minimum": 0
+                        type: "object",
+                        properties: {
+                            maximum: {
+                                type: "integer",
+                                minimum: 0
                             },
-                            "max": {
-                                "type": "integer",
-                                "minimum": 0
+                            max: {
+                                type: "integer",
+                                minimum: 0
                             }
                         },
-                        "additionalProperties": false
+                        additionalProperties: false
                     }
                 ]
             }
@@ -76,9 +74,9 @@ module.exports = {
         }
 
         return {
-            "FunctionDeclaration": checkFunction,
-            "ArrowFunctionExpression": checkFunction,
-            "FunctionExpression": checkFunction
+            FunctionDeclaration: checkFunction,
+            ArrowFunctionExpression: checkFunction,
+            FunctionExpression: checkFunction
         };
 
     }

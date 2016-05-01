@@ -1,7 +1,6 @@
 /**
  * @fileoverview A rule to disallow modifying variables that are declared using `const`
  * @author Toru Nagashima
- * @copyright 2015 Toru Nagashima. All rights reserved.
  */
 
 "use strict";
@@ -40,7 +39,7 @@ module.exports = {
         }
 
         return {
-            "VariableDeclaration": function(node) {
+            VariableDeclaration: function(node) {
                 if (node.kind === "const") {
                     context.getDeclaredVariables(node).forEach(checkVariable);
                 }

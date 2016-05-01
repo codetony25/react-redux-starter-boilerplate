@@ -1,10 +1,6 @@
 /**
  * @fileoverview Rule to forbid or enforce dangling commas.
  * @author Ian Christian Myers
- * @copyright 2015 Toru Nagashima
- * @copyright 2015 Mathias Schreck
- * @copyright 2013 Ian Christian Myers
- * See LICENSE file in root directory for full license.
  */
 
 "use strict";
@@ -24,26 +20,7 @@ var lodash = require("lodash");
  * @returns {boolean} `true` if a trailing comma is allowed.
  */
 function isTrailingCommaAllowed(node, lastItem) {
-    switch (node.type) {
-        case "ArrayPattern":
-
-            // TODO(t-nagashima): Remove SpreadElement after https://github.com/eslint/espree/issues/194 was fixed.
-            return (
-                lastItem.type !== "RestElement" &&
-                lastItem.type !== "SpreadElement"
-            );
-
-        // TODO(t-nagashima): Remove this case after https://github.com/eslint/espree/issues/195 was fixed.
-        case "ArrayExpression":
-            return (
-                node.parent.type !== "ForOfStatement" ||
-                node.parent.left !== node ||
-                lastItem.type !== "SpreadElement"
-            );
-
-        default:
-            return true;
-    }
+    return node.type !== "ArrayPattern" || lastItem.type !== "RestElement";
 }
 
 //------------------------------------------------------------------------------
@@ -58,9 +35,11 @@ module.exports = {
             recommended: true
         },
 
+        fixable: "code",
+
         schema: [
             {
-                "enum": ["always", "always-multiline", "only-multiline", "never"]
+                enum: ["always", "always-multiline", "only-multiline", "never"]
             }
         ]
     },
@@ -129,10 +108,14 @@ module.exports = {
             }
 
             if (trailingToken.value === ",") {
-                context.report(
-                    lastItem,
-                    trailingToken.loc.start,
-                    UNEXPECTED_MESSAGE);
+                context.report({
+                    node: lastItem,
+                    loc: trailingToken.loc.start,
+                    message: UNEXPECTED_MESSAGE,
+                    fix: function(fixer) {
+                        return fixer.remove(trailingToken);
+                    }
+                });
             }
         }
 
@@ -170,10 +153,14 @@ module.exports = {
             }
 
             if (trailingToken.value !== ",") {
-                context.report(
-                    lastItem,
-                    lastItem.loc.end,
-                    MISSING_MESSAGE);
+                context.report({
+                    node: lastItem,
+                    loc: lastItem.loc.end,
+                    message: MISSING_MESSAGE,
+                    fix: function(fixer) {
+                        return fixer.insertTextAfter(lastItem, ",");
+                    }
+                });
             }
         }
 
@@ -225,12 +212,12 @@ module.exports = {
         }
 
         return {
-            "ObjectExpression": checkForTrailingComma,
-            "ObjectPattern": checkForTrailingComma,
-            "ArrayExpression": checkForTrailingComma,
-            "ArrayPattern": checkForTrailingComma,
-            "ImportDeclaration": checkForTrailingComma,
-            "ExportNamedDeclaration": checkForTrailingComma
+            ObjectExpression: checkForTrailingComma,
+            ObjectPattern: checkForTrailingComma,
+            ArrayExpression: checkForTrailingComma,
+            ArrayPattern: checkForTrailingComma,
+            ImportDeclaration: checkForTrailingComma,
+            ExportNamedDeclaration: checkForTrailingComma
         };
     }
 };

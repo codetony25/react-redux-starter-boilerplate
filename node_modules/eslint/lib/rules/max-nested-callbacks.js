@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to enforce a maximum number of nested callbacks.
  * @author Ian Christian Myers
- * @copyright 2013 Ian Christian Myers. All rights reserved.
  */
 
 "use strict";
@@ -20,24 +19,24 @@ module.exports = {
 
         schema: [
             {
-                "oneOf": [
+                oneOf: [
                     {
-                        "type": "integer",
-                        "minimum": 0
+                        type: "integer",
+                        minimum: 0
                     },
                     {
-                        "type": "object",
-                        "properties": {
-                            "maximum": {
-                                "type": "integer",
-                                "minimum": 0
+                        type: "object",
+                        properties: {
+                            maximum: {
+                                type: "integer",
+                                minimum: 0
                             },
-                            "max": {
-                                "type": "integer",
-                                "minimum": 0
+                            max: {
+                                type: "integer",
+                                minimum: 0
                             }
                         },
-                        "additionalProperties": false
+                        additionalProperties: false
                     }
                 ]
             }
@@ -102,10 +101,10 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "ArrowFunctionExpression": checkFunction,
+            ArrowFunctionExpression: checkFunction,
             "ArrowFunctionExpression:exit": popStack,
 
-            "FunctionExpression": checkFunction,
+            FunctionExpression: checkFunction,
             "FunctionExpression:exit": popStack
         };
 

@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to require parens in arrow function arguments.
  * @author Jxck
- * @copyright 2015 Jxck. All rights reserved.
  */
 "use strict";
 
@@ -19,7 +18,7 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["always", "as-needed"]
+                enum: ["always", "as-needed"]
             }
         ]
     },
@@ -56,7 +55,7 @@ module.exports = {
         }
 
         return {
-            "ArrowFunctionExpression": parens
+            ArrowFunctionExpression: parens
         };
     }
 };

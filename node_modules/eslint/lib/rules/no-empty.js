@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to flag use of an empty block statement
  * @author Nicholas C. Zakas
- * @copyright Nicholas C. Zakas. All rights reserved.
- * @copyright 2015 Dieter Oberkofler. All rights reserved.
  */
 "use strict";
 
@@ -22,13 +20,13 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "allowEmptyCatch": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    allowEmptyCatch: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -38,7 +36,7 @@ module.exports = {
             allowEmptyCatch = options.allowEmptyCatch || false;
 
         return {
-            "BlockStatement": function(node) {
+            BlockStatement: function(node) {
 
                 // if the body is not empty, we can just return immediately
                 if (node.body.length !== 0) {
@@ -62,7 +60,7 @@ module.exports = {
                 context.report(node, "Empty block statement.");
             },
 
-            "SwitchStatement": function(node) {
+            SwitchStatement: function(node) {
 
                 if (typeof node.cases === "undefined" || node.cases.length === 0) {
                     context.report(node, "Empty switch statement.");

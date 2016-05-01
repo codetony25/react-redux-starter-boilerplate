@@ -1,8 +1,6 @@
 /**
  * @fileoverview Ensure handling of errors when we know they exist.
  * @author Jamund Ferguson
- * @copyright 2015 Mathias Schreck.
- * @copyright 2014 Jamund Ferguson. All rights reserved.
  */
 
 "use strict";
@@ -21,7 +19,7 @@ module.exports = {
 
         schema: [
             {
-                "type": "string"
+                type: "string"
             }
         ]
     },
@@ -84,9 +82,9 @@ module.exports = {
         }
 
         return {
-            "FunctionDeclaration": checkForError,
-            "FunctionExpression": checkForError,
-            "ArrowFunctionExpression": checkForError
+            FunctionDeclaration: checkForError,
+            FunctionExpression: checkForError,
+            ArrowFunctionExpression: checkForError
         };
 
     }

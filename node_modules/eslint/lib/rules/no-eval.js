@@ -1,9 +1,6 @@
 /**
  * @fileoverview Rule to flag use of eval() statement
  * @author Nicholas C. Zakas
- * @copyright 2015 Toru Nagashima. All rights reserved.
- * @copyright 2015 Mathias Schreck. All rights reserved.
- * @copyright 2013 Nicholas C. Zakas. All rights reserved.
  */
 
 "use strict";
@@ -87,11 +84,11 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "allowIndirect": {"type": "boolean"}
+                type: "object",
+                properties: {
+                    allowIndirect: {type: "boolean"}
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -250,7 +247,7 @@ module.exports = {
                 }
             },
 
-            "Program": function(node) {
+            Program: function(node) {
                 var scope = context.getScope(),
                     features = context.parserOptions.ecmaFeatures || {},
                     strict =
@@ -275,14 +272,14 @@ module.exports = {
                 reportAccessingEvalViaGlobalObject(globalScope);
             },
 
-            "FunctionDeclaration": enterVarScope,
+            FunctionDeclaration: enterVarScope,
             "FunctionDeclaration:exit": exitVarScope,
-            "FunctionExpression": enterVarScope,
+            FunctionExpression: enterVarScope,
             "FunctionExpression:exit": exitVarScope,
-            "ArrowFunctionExpression": enterVarScope,
+            ArrowFunctionExpression: enterVarScope,
             "ArrowFunctionExpression:exit": exitVarScope,
 
-            "ThisExpression": function(node) {
+            ThisExpression: function(node) {
                 if (!isMember(node.parent, "eval")) {
                     return;
                 }

@@ -1,10 +1,6 @@
 /**
  * @fileoverview Disallows or enforces spaces inside of array brackets.
  * @author Jamund Ferguson
- * @copyright 2015 Jamund Ferguson. All rights reserved.
- * @copyright 2014 Brandyn Bennett. All rights reserved.
- * @copyright 2014 Michael Ficarra. No rights reserved.
- * @copyright 2014 Vignesh Anand. All rights reserved.
  */
 "use strict";
 
@@ -24,22 +20,22 @@ module.exports = {
         fixable: "whitespace",
         schema: [
             {
-                "enum": ["always", "never"]
+                enum: ["always", "never"]
             },
             {
-                "type": "object",
-                "properties": {
-                    "singleValue": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    singleValue: {
+                        type: "boolean"
                     },
-                    "objectsInArrays": {
-                        "type": "boolean"
+                    objectsInArrays: {
+                        type: "boolean"
                     },
-                    "arraysInArrays": {
-                        "type": "boolean"
+                    arraysInArrays: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },

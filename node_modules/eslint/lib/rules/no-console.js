@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to flag use of console object
  * @author Nicholas C. Zakas
- * @copyright 2016 Eric Correia. All rights reserved.
  */
 
 "use strict";
@@ -20,18 +19,18 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "allow": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
+                type: "object",
+                properties: {
+                    allow: {
+                        type: "array",
+                        items: {
+                            type: "string"
                         },
-                        "minItems": 1,
-                        "uniqueItems": true
+                        minItems: 1,
+                        uniqueItems: true
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -40,7 +39,7 @@ module.exports = {
 
         return {
 
-            "MemberExpression": function(node) {
+            MemberExpression: function(node) {
 
                 if (node.object.name === "console") {
                     var blockConsole = true;

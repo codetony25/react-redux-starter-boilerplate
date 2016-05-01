@@ -1,23 +1,25 @@
-{
-  "parser"  : "babel-eslint",
-  "extends" : [
-    "standard",
-    "standard-react"
-  ],
-  "plugins" : [
-    "react"
-  ],
-  "env"     : {
-    "browser" : true
-  },
-  "globals" : {
-    "__DEVELOPMENT__"    : false,
-    "__PRODUCTION__"     : false
-  },
-  "rules": {
-    "semi"              : [2, "never"],
-    "key-spacing"       : 0,
-    "spaced-comment"    : 0,
-    "space-before-function-paren" : 0
-  }
-}
+ {
+   "parser"  : "babel-eslint",
+   "extends" : [
+     "airbnb"
+   ],
+   "ecmaFeatures": {
+     "jsx": true
+   },
+   "plugins" : [
+     "react"
+   ],
+   "env"     : {
+     "browser" : true
+   },
+   "globals" : {
+     "__DEVELOPMENT__" : false,
+     "__PRODUCTION__"  : false
+   },
+   "rules" : {
+     "semi"            : ["error", "never"],
+     "arrow-body-style": ["error", "always"],
+     "new-cap"         : 0,
+     "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "minimum", "align": "colon"}]
+   }
+ }

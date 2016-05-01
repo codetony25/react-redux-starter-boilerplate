@@ -1,7 +1,6 @@
 /**
  * @fileoverview Validates newlines before and after dots
  * @author Greg Cochard
- * @copyright 2015 Greg Cochard
  */
 
 "use strict";
@@ -22,7 +21,7 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["object", "property"]
+                enum: ["object", "property"]
             }
         ]
     },
@@ -66,7 +65,7 @@ module.exports = {
         }
 
         return {
-            "MemberExpression": checkNode
+            MemberExpression: checkNode
         };
     }
 };

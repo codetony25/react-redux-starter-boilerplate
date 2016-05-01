@@ -1,9 +1,6 @@
 /**
  * @fileoverview Rule to check empty newline after "var" statement
  * @author Gopal Venkatesan
- * @copyright 2015 Gopal Venkatesan. All rights reserved.
- * @copyright 2015 Casey Visco. All rights reserved.
- * @copyright 2015 Ian VanSchooten. All rights reserved.
  */
 
 "use strict";
@@ -22,7 +19,7 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["never", "always"]
+                enum: ["never", "always"]
             }
         ]
     },
@@ -173,7 +170,7 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "VariableDeclaration": checkForBlankLine
+            VariableDeclaration: checkForBlankLine
         };
 
     }

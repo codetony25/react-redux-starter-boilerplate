@@ -1,7 +1,6 @@
 /**
  * @fileoverview Enforce return after a callback.
  * @author Jamund Ferguson
- * @copyright 2015 Jamund Ferguson. All rights reserved.
  */
 "use strict";
 
@@ -89,7 +88,7 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "CallExpression": function(node) {
+            CallExpression: function(node) {
 
                 // if we"re not a callback we can return
                 if (!isCallback(node)) {

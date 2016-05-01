@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to warn when a function expression does not have a name.
  * @author Kyle T. Nunery
- * @copyright 2015 Brandon Mills. All rights reserved.
- * @copyright 2014 Kyle T. Nunery. All rights reserved.
  */
 
 "use strict";
@@ -42,7 +40,7 @@ module.exports = {
         }
 
         return {
-            "FunctionExpression": function(node) {
+            FunctionExpression: function(node) {
 
                 var name = node.id && node.id.name;
 

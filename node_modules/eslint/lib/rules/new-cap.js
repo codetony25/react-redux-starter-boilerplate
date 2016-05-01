@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to flag use of constructors without capital letters
  * @author Nicholas C. Zakas
- * @copyright 2014 Jordan Harband. All rights reserved.
- * @copyright 2013-2014 Nicholas C. Zakas. All rights reserved.
  */
 
 "use strict";
@@ -86,31 +84,31 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "newIsCap": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    newIsCap: {
+                        type: "boolean"
                     },
-                    "capIsNew": {
-                        "type": "boolean"
+                    capIsNew: {
+                        type: "boolean"
                     },
-                    "newIsCapExceptions": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
+                    newIsCapExceptions: {
+                        type: "array",
+                        items: {
+                            type: "string"
                         }
                     },
-                    "capIsNewExceptions": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
+                    capIsNewExceptions: {
+                        type: "array",
+                        items: {
+                            type: "string"
                         }
                     },
-                    "properties": {
-                        "type": "boolean"
+                    properties: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },

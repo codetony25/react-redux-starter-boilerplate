@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to enforce spacing before and after keywords.
  * @author Toru Nagashima
- * @copyright 2015 Toru Nagashima. All rights reserved.
- * See LICENSE file in root directory for full license.
  */
 
 "use strict";
@@ -77,27 +75,27 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "before": {"type": "boolean"},
-                    "after": {"type": "boolean"},
-                    "overrides": {
-                        "type": "object",
-                        "properties": KEYS.reduce(function(retv, key) {
+                type: "object",
+                properties: {
+                    before: {type: "boolean"},
+                    after: {type: "boolean"},
+                    overrides: {
+                        type: "object",
+                        properties: KEYS.reduce(function(retv, key) {
                             retv[key] = {
-                                "type": "object",
-                                "properties": {
-                                    "before": {"type": "boolean"},
-                                    "after": {"type": "boolean"}
+                                type: "object",
+                                properties: {
+                                    before: {type: "boolean"},
+                                    after: {type: "boolean"}
                                 },
-                                "additionalProperties": false
+                                additionalProperties: false
                             };
                             return retv;
                         }, {}),
-                        "additionalProperties": false
+                        additionalProperties: false
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },

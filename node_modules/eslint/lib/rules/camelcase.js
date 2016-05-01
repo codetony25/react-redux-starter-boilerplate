@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to flag non-camelcased identifiers
  * @author Nicholas C. Zakas
- * @copyright 2015 Dieter Oberkofler. All rights reserved.
  */
 
 "use strict";
@@ -20,13 +19,13 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "properties": {
-                        "enum": ["always", "never"]
+                type: "object",
+                properties: {
+                    properties: {
+                        enum: ["always", "never"]
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -74,7 +73,7 @@ module.exports = {
 
         return {
 
-            "Identifier": function(node) {
+            Identifier: function(node) {
 
                 /*
                  * Leading and trailing underscores are commonly used to flag

@@ -1,7 +1,6 @@
 /**
  * @fileoverview A rule to control the style of variable initializations.
  * @author Colin Ihrig
- * @copyright 2015 Colin Ihrig. All rights reserved.
  */
 
 "use strict";
@@ -52,35 +51,35 @@ module.exports = {
         },
 
         schema: {
-            "anyOf": [
+            anyOf: [
                 {
-                    "type": "array",
-                    "items": [
+                    type: "array",
+                    items: [
                         {
-                            "enum": ["always"]
+                            enum: ["always"]
                         }
                     ],
-                    "minItems": 0,
-                    "maxItems": 1
+                    minItems: 0,
+                    maxItems: 1
                 },
                 {
-                    "type": "array",
-                    "items": [
+                    type: "array",
+                    items: [
                         {
-                            "enum": ["never"]
+                            enum: ["never"]
                         },
                         {
-                            "type": "object",
-                            "properties": {
-                                "ignoreForLoopInit": {
-                                    "type": "boolean"
+                            type: "object",
+                            properties: {
+                                ignoreForLoopInit: {
+                                    type: "boolean"
                                 }
                             },
-                            "additionalProperties": false
+                            additionalProperties: false
                         }
                     ],
-                    "minItems": 0,
-                    "maxItems": 2
+                    minItems: 0,
+                    maxItems: 2
                 }
             ]
         }

@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to check for max length on a line.
  * @author Matt DuVall <http://www.mattduvall.com>
- * @copyright 2013 Matt DuVall. All rights reserved.
  */
 
 "use strict";
@@ -11,42 +10,42 @@
 //------------------------------------------------------------------------------
 
 var OPTIONS_SCHEMA = {
-    "type": "object",
-    "properties": {
-        "code": {
-            "type": "integer",
-            "minimum": 0
+    type: "object",
+    properties: {
+        code: {
+            type: "integer",
+            minimum: 0
         },
-        "comments": {
-            "type": "integer",
-            "minimum": 0
+        comments: {
+            type: "integer",
+            minimum: 0
         },
-        "tabWidth": {
-            "type": "integer",
-            "minimum": 0
+        tabWidth: {
+            type: "integer",
+            minimum: 0
         },
-        "ignorePattern": {
-            "type": "string"
+        ignorePattern: {
+            type: "string"
         },
-        "ignoreComments": {
-            "type": "boolean"
+        ignoreComments: {
+            type: "boolean"
         },
-        "ignoreUrls": {
-            "type": "boolean"
+        ignoreUrls: {
+            type: "boolean"
         },
-        "ignoreTrailingComments": {
-            "type": "boolean"
+        ignoreTrailingComments: {
+            type: "boolean"
         }
     },
-    "additionalProperties": false
+    additionalProperties: false
 };
 
 var OPTIONS_OR_INTEGER_SCHEMA = {
-    "anyOf": [
+    anyOf: [
         OPTIONS_SCHEMA,
         {
-            "type": "integer",
-            "minimum": 0
+            type: "integer",
+            minimum: 0
         }
     ]
 };
@@ -252,7 +251,7 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "Program": checkProgramForMaxLength
+            Program: checkProgramForMaxLength
         };
 
     }

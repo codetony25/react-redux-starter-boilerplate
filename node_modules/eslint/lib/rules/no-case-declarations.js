@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to flag use of an lexical declarations inside a case clause
  * @author Erik Arvidsson
- * @copyright 2015 Erik Arvidsson. All rights reserved.
  */
 "use strict";
 
@@ -40,7 +39,7 @@ module.exports = {
         }
 
         return {
-            "SwitchCase": function(node) {
+            SwitchCase: function(node) {
                 for (var i = 0; i < node.consequent.length; i++) {
                     var statement = node.consequent[i];
 

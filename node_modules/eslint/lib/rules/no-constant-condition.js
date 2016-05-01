@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to flag use constant conditions
  * @author Christian Schulz <http://rndm.de>
- * @copyright 2014 Christian Schulz. All rights reserved.
  */
 
 "use strict";
@@ -108,11 +107,11 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "ConditionalExpression": checkConstantCondition,
-            "IfStatement": checkConstantCondition,
-            "WhileStatement": checkConstantCondition,
-            "DoWhileStatement": checkConstantCondition,
-            "ForStatement": checkConstantCondition
+            ConditionalExpression: checkConstantCondition,
+            IfStatement: checkConstantCondition,
+            WhileStatement: checkConstantCondition,
+            DoWhileStatement: checkConstantCondition,
+            ForStatement: checkConstantCondition
         };
 
     }

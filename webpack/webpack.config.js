@@ -17,83 +17,77 @@ import config from './config.js'
 import webpackDevConfig from './dev.config.js'
 import webpackProdConfig from './prod.config.js'
 
-/*=============================================
- =           Webpack Global Variables          =
- =============================================*/
-
+/**
+ * Webpack Global Variables
+ */
 const debug = _debug('app:webpack:config')
 const map = webpackPostcssTools.makeVarMap(config.stylePath)
 const {
   __DEVELOPMENT__,
-  __PRODUCTION__
+  __PRODUCTION__,
 } = config.globals
 
-/*=============================================
- =           Webpack Configuarations           =
- =============================================*/
-
+/**
+ * Webpack Configuarations
+ */
 debug('Starting Webpack Configurations...')
 const webpackConfig = {
-  target     : 'web',
-  devtool    : 'source-map',
-  node       : { fs: 'empty' },
-  resolve    : { extensions: ['', 'json', '.js', '.jsx'] },
-  module     : {},
-  vendor     : ['react']
+  target : 'web',
+  devtool: 'source-map',
+  node   : { fs: 'empty' },
+  resolve: { extensions: ['', 'json', '.js', '.jsx'] },
+  module : {},
+  vendor : ['react'],
 }
 
-/*=============================================
- =           Entry points for App              =
- =============================================*/
-
+/**
+ * Entry points for App
+ */
 webpackConfig.entry = {
   app: [
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
-    config.appPath
-  ]
+    config.appPath,
+  ],
 }
 
-/*=============================================
- =           Output points for App             =
- =============================================*/
-
+/**
+ * Output points for App
+ */
 webpackConfig.output = {
-  path          : config.distPath,
-  filename      : '[name].[hash].js',
-  publicPath    : `http://${config.serverHost}:${config.serverPort}/`
+  path      : config.distPath,
+  filename  : '[name].[hash].js',
+  publicPath: `http://${config.serverHost}:${config.serverPort}/`,
 }
 
-/*=============================================
- =                 Pre-Loaders                =
- =============================================*/
-// In the Future.
-
-/*=============================================
- =         JavaScript and JSON Loaders         =
- =============================================*/
+/**
+ * JavaScript and JSON Loaders
+ */
 debug('Setting up Webpack Loaders...')
 webpackConfig.module.loaders = [
   {
-    test       : /\.jsx?$/,
-    include    : config.appPath,
-    loader     : 'babel-loader?cacheDirectory'
+    test   : /\.jsx?$/,
+    include: config.appPath,
+    loader : 'babel-loader?cacheDirectory',
   },
   {
-    test       : /\.json$/,
-    loaders    : ['json']
-  }
+    test   : /\.json$/,
+    loaders: ['json'],
+  },
 ]
 
-/*=============================================
- =     Style Loaders and Configurations        =
- =============================================*/
-
+/**
+ * Style Loaders and Configurations
+ */
 webpackConfig.module.loaders.push(
   {
-    test       : /\.css$/,
-    loaders    : ['style', 'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]', 'postcss'],
-    include    : config.appPath
+    test   : /\.css$/,
+    include: config.appPath,
+    loaders: [
+      'style',
+      'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+      'postcss',
+    ],
   }
 )
 
@@ -101,59 +95,61 @@ webpackConfig.module.loaders.push(
 webpackConfig.postcss = () => {
   return [
     atImport({
-      addDependencyTo: webpack
+      addDependencyTo: webpack,
     }),
     webpackPostcssTools.prependTildesToImports,
     customProperties({
-      variables: map.vars
+      variables: map.vars,
     }),
     customMedia({
-      extensions: map.media
+      extensions: map.media,
     }),
     customSelectors({
-      extensions: map.selector
+      extensions: map.selector,
     }),
     normalize,
     mixin,
     cssnext,
     rucksack,
     sorting,
-    short
+    short,
   ]
 }
 
-/*=============================================
- =              File Loaders                   =
- =============================================*/
+/**
+ * File Loaders
+ */
+const filePrefix = 'prefix=fonts/&name=[path][name]'
+const fileType = '.[ext]&limit=10000&mimetype='
 
 webpackConfig.module.loaders.push(
   {
-    test: /\.woff(\?.*)?$/,
-    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
+    test  : /\.woff(\?.*)?$/,
+    loader: `url?${filePrefix}${fileType}application/font-woff`,
   },
   {
-    test: /\.woff2(\?.*)?$/,
-    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
+    test  : /\.woff2(\?.*)?$/,
+    loader: 'url?${filePrefix}${fileType}application/font-woff2',
   },
   {
-    test: /\.otf(\?.*)?$/,
-    loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'
+    test  : /\.otf(\?.*)?$/,
+    loader: 'file?${filePrefix}${fileType}ont/opentype',
   },
   {
-    test: /\.ttf(\?.*)?$/,
-    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
+    test  : /\.ttf(\?.*)?$/,
+    loader: 'url?${filePrefix}${fileType}application/octet-stream',
   },
   {
-    test: /\.eot(\?.*)?$/,
-    loader: 'file?prefix=fonts/&name=[path][name].[ext]'
+    test  : /\.eot(\?.*)?$/,
+    loader: 'file?${filePrefix}',
   },
   {
-    test: /\.svg(\?.*)?$/,
-    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml'
+    test  : /\.svg(\?.*)?$/,
+    loader: 'url?{$filePrefix}${fileType}image/svg+xml',
   },
   {
-    test: /\.(png|jpg|gif)$/,
-    loader: 'url?limit=8192'
+    test  : /\.(png|jpg|gif)$/,
+    loader: 'url?limit=8192',
   },
   // {
   //   test: /react-icons\/(.)*(.js)$/,
@@ -162,38 +158,33 @@ webpackConfig.module.loaders.push(
   // }
 )
 
-/*=============================================
- =            Plugin Configurations            =
- =============================================*/
-
+/**
+ * Plugin Configurations
+ */
 debug('Setting up Plugin Configurations...')
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
-    template    : config.htmlPath,
-    hash        : false,
-    filename    : 'index.html',
-    inject      : 'body',
-    minify: {
-      collapseWhitespace: true
-    }
-  })
+    template: config.htmlPath,
+    hash    : false,
+    filename: 'index.html',
+    inject  : 'body',
+    minify  : { collapseWhitespace: true },
+  }),
 ]
 
-/*=============================================
- =     Development Only Configurations         =
- =============================================*/
-
+/**
+ * Development Only Configurations
+ */
 if (__DEVELOPMENT__) {
-  debug('Development Mode Detected. Running only Development Webpack Configurations...')
+  debug('Running only Development Webpack Configurations')
   webpackDevConfig(webpackConfig, config)
 }
 
-/*=============================================
- =     Production Only Configurations          =
- =============================================*/
-
+/**
+ * Production Only Configurations
+ */
 if (__PRODUCTION__) {
-  debug('Production Mode Detected. Running only Production Webpack Configurations...')
+  debug('Running only Production Webpack Configurations')
   webpackProdConfig(webpackConfig, config)
 }
 

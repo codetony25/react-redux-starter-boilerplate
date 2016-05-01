@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to require braces in arrow function body.
  * @author Alberto Rodríguez
- * @copyright 2015 Alberto Rodríguez. All rights reserved.
- * See LICENSE file in root directory for full license.
  */
 "use strict";
 
@@ -20,7 +18,7 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["always", "as-needed"]
+                enum: ["always", "as-needed"]
             }
         ]
     },
@@ -63,7 +61,7 @@ module.exports = {
         }
 
         return {
-            "ArrowFunctionExpression": validate
+            ArrowFunctionExpression: validate
         };
     }
 };

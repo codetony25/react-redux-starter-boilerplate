@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to flag statements that use != and == instead of !== and ===
  * @author Nicholas C. Zakas
- * @copyright 2013 Nicholas C. Zakas. All rights reserved.
- * See LICENSE file in root directory for full license.
  */
 
 "use strict";
@@ -21,7 +19,7 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["smart", "allow-null"]
+                enum: ["smart", "allow-null"]
             }
         ]
     },
@@ -83,7 +81,7 @@ module.exports = {
         }
 
         return {
-            "BinaryExpression": function(node) {
+            BinaryExpression: function(node) {
                 if (node.operator !== "==" && node.operator !== "!=") {
                     return;
                 }

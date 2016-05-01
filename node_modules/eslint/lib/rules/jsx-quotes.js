@@ -1,7 +1,6 @@
 /**
  * @fileoverview A rule to ensure consistent quotes used in jsx syntax.
  * @author Mathias Schreck <https://github.com/lo1tuma>
- * @copyright 2015 Mathias Schreck
  */
 
 "use strict";
@@ -49,7 +48,7 @@ module.exports = {
 
         schema: [
             {
-                "enum": [ "prefer-single", "prefer-double" ]
+                enum: [ "prefer-single", "prefer-double" ]
             }
         ]
     },
@@ -69,7 +68,7 @@ module.exports = {
         }
 
         return {
-            "JSXAttribute": function(node) {
+            JSXAttribute: function(node) {
                 var attributeValue = node.value;
 
                 if (attributeValue && astUtils.isStringLiteral(attributeValue) && !usesExpectedQuotes(attributeValue)) {

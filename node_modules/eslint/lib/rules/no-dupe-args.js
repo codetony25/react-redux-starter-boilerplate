@@ -1,9 +1,6 @@
 /**
  * @fileoverview Rule to flag duplicate arguments
  * @author Jamund Ferguson
- * @copyright 2015 Jamund Ferguson. All rights reserved.
- * @copyright 2015 Toru Nagashima. All rights reserved.
- * See LICENSE file in root directory for full license.
  */
 
 "use strict";
@@ -46,18 +43,9 @@ module.exports = {
          */
         function checkParams(node) {
             var variables = context.getDeclaredVariables(node);
-            var keyMap = Object.create(null);
 
             for (var i = 0; i < variables.length; ++i) {
                 var variable = variables[i];
-
-                // TODO(nagashima): Remove this duplication check after https://github.com/estools/escope/pull/79
-                var key = "$" + variable.name; // to avoid __proto__.
-
-                if (!isParameter(variable.defs[0]) || keyMap[key]) {
-                    continue;
-                }
-                keyMap[key] = true;
 
                 // Checks and reports duplications.
                 var defs = variable.defs.filter(isParameter);
@@ -77,8 +65,8 @@ module.exports = {
         //--------------------------------------------------------------------------
 
         return {
-            "FunctionDeclaration": checkParams,
-            "FunctionExpression": checkParams
+            FunctionDeclaration: checkParams,
+            FunctionExpression: checkParams
         };
 
     }

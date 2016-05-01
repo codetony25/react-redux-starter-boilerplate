@@ -1,7 +1,6 @@
 /**
  * @fileoverview Comma spacing - validates spacing before and after comma
  * @author Vignesh Anand aka vegetableman.
- * @copyright 2014 Vignesh Anand. All rights reserved.
  */
 "use strict";
 
@@ -23,16 +22,16 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "before": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    before: {
+                        type: "boolean"
                     },
-                    "after": {
-                        "type": "boolean"
+                    after: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -186,8 +185,8 @@ module.exports = {
                     }, token);
                 });
             },
-            "ArrayExpression": addNullElementsToIgnoreList,
-            "ArrayPattern": addNullElementsToIgnoreList
+            ArrayExpression: addNullElementsToIgnoreList,
+            ArrayPattern: addNullElementsToIgnoreList
 
         };
 

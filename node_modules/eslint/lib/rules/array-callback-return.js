@@ -1,8 +1,6 @@
 /**
  * @fileoverview Rule to enforce return statements in callbacks of array's methods
  * @author Toru Nagashima
- * @copyright 2015 Toru Nagashima. All rights reserved.
- * See LICENSE file in root directory for full license.
  */
 
 "use strict";
@@ -212,7 +210,7 @@ module.exports = {
         return {
 
             // Stacks this function's information.
-            "onCodePathStart": function(codePath, node) {
+            onCodePathStart: function(codePath, node) {
                 funcInfo = {
                     upper: funcInfo,
                     codePath: codePath,
@@ -225,12 +223,12 @@ module.exports = {
             },
 
             // Pops this function's information.
-            "onCodePathEnd": function() {
+            onCodePathEnd: function() {
                 funcInfo = funcInfo.upper;
             },
 
             // Checks the return statement is valid.
-            "ReturnStatement": function(node) {
+            ReturnStatement: function(node) {
                 if (funcInfo.shouldCheck) {
                     funcInfo.hasReturn = true;
 

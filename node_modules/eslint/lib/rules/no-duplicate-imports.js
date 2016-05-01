@@ -1,8 +1,6 @@
 /**
  * @fileoverview Restrict usage of duplicate imports.
  * @author Simen Bekkhus
- * @copyright 2016 Simen Bekkhus. All rights reserved.
- * See LICENSE file in root directory for full license.
  */
 "use strict";
 
@@ -107,13 +105,13 @@ module.exports = {
         },
 
         schema: [{
-            "type": "object",
-            "properties": {
-                "includeExports": {
-                    "type": "boolean"
+            type: "object",
+            properties: {
+                includeExports: {
+                    type: "boolean"
                 }
             },
-            "additionalProperties": false
+            additionalProperties: false
         }]
     },
 
@@ -123,7 +121,7 @@ module.exports = {
             exportsInFile = [];
 
         var handlers = {
-            "ImportDeclaration": handleImports(context, includeExports, importsInFile, exportsInFile)
+            ImportDeclaration: handleImports(context, includeExports, importsInFile, exportsInFile)
         };
 
         if (includeExports) {

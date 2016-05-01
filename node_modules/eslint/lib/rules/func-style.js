@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to enforce a particular function style
  * @author Nicholas C. Zakas
- * @copyright 2013 Nicholas C. Zakas. All rights reserved.
  */
 "use strict";
 
@@ -19,16 +18,16 @@ module.exports = {
 
         schema: [
             {
-                "enum": ["declaration", "expression"]
+                enum: ["declaration", "expression"]
             },
             {
-                "type": "object",
-                "properties": {
-                    "allowArrowFunctions": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    allowArrowFunctions: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -41,11 +40,11 @@ module.exports = {
             stack = [];
 
         var nodesToCheck = {
-            "Program": function() {
+            Program: function() {
                 stack = [];
             },
 
-            "FunctionDeclaration": function(node) {
+            FunctionDeclaration: function(node) {
                 stack.push(false);
 
                 if (!enforceDeclarations && node.parent.type !== "ExportDefaultDeclaration") {
@@ -56,7 +55,7 @@ module.exports = {
                 stack.pop();
             },
 
-            "FunctionExpression": function(node) {
+            FunctionExpression: function(node) {
                 stack.push(false);
 
                 if (enforceDeclarations && node.parent.type === "VariableDeclarator") {
@@ -67,7 +66,7 @@ module.exports = {
                 stack.pop();
             },
 
-            "ThisExpression": function() {
+            ThisExpression: function() {
                 if (stack.length > 0) {
                     stack[stack.length - 1] = true;
                 }

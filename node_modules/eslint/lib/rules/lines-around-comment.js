@@ -1,9 +1,6 @@
 /**
  * @fileoverview Enforces empty lines around comments.
  * @author Jamund Ferguson
- * @copyright 2015 Mathieu M-Gosselin. All rights reserved.
- * @copyright 2015 Jamund Ferguson. All rights reserved.
- * @copyright 2015 Gyandeep Singh. All rights reserved.
  */
 "use strict";
 
@@ -78,40 +75,40 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "beforeBlockComment": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    beforeBlockComment: {
+                        type: "boolean"
                     },
-                    "afterBlockComment": {
-                        "type": "boolean"
+                    afterBlockComment: {
+                        type: "boolean"
                     },
-                    "beforeLineComment": {
-                        "type": "boolean"
+                    beforeLineComment: {
+                        type: "boolean"
                     },
-                    "afterLineComment": {
-                        "type": "boolean"
+                    afterLineComment: {
+                        type: "boolean"
                     },
-                    "allowBlockStart": {
-                        "type": "boolean"
+                    allowBlockStart: {
+                        type: "boolean"
                     },
-                    "allowBlockEnd": {
-                        "type": "boolean"
+                    allowBlockEnd: {
+                        type: "boolean"
                     },
-                    "allowObjectStart": {
-                        "type": "boolean"
+                    allowObjectStart: {
+                        type: "boolean"
                     },
-                    "allowObjectEnd": {
-                        "type": "boolean"
+                    allowObjectEnd: {
+                        type: "boolean"
                     },
-                    "allowArrayStart": {
-                        "type": "boolean"
+                    allowArrayStart: {
+                        type: "boolean"
                     },
-                    "allowArrayEnd": {
-                        "type": "boolean"
+                    allowArrayEnd: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -326,7 +323,7 @@ module.exports = {
 
         return {
 
-            "LineComment": function(node) {
+            LineComment: function(node) {
                 if (options.beforeLineComment || options.afterLineComment) {
                     checkForEmptyLine(node, {
                         after: options.afterLineComment,
@@ -335,7 +332,7 @@ module.exports = {
                 }
             },
 
-            "BlockComment": function(node) {
+            BlockComment: function(node) {
                 if (options.beforeBlockComment || options.afterBlockComment) {
                     checkForEmptyLine(node, {
                         after: options.afterBlockComment,

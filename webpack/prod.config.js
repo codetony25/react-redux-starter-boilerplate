@@ -4,11 +4,10 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { cssLoaderAddExtract } from './utils/helpers'
 
 const debug = _debug('app:webpack:prod')
-const webpackProdConfig = (webpackConfig, config) => {
-  /*=============================================
-   =            Production Plugins              =
-   =============================================*/
-
+const webpackProdConfig = (webpackConfig) => {
+/**
+ * Production Plugins
+ */
   debug('Extracting Css Loaders with the ExtractTextPlugin...')
   cssLoaderAddExtract(webpackConfig, /css/, ExtractTextPlugin)
 
@@ -18,16 +17,16 @@ const webpackProdConfig = (webpackConfig, config) => {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings     : false,
-        dead_code    : true,
-        unused       : true
-      }
+        warnings : false,
+        dead_code: true,
+        unused   : true,
+      },
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor']
+      names: ['vendor'],
     }),
     new ExtractTextPlugin('[name].[contenthash].css', {
-      allChunks: true
+      allChunks: true,
     })
   )
 }

@@ -1,7 +1,6 @@
 /**
  * @fileoverview Rule to define spacing before/after arrow function's arrow.
  * @author Jxck
- * @copyright 2015 Jxck. All rights reserved.
  */
 "use strict";
 
@@ -21,16 +20,16 @@ module.exports = {
 
         schema: [
             {
-                "type": "object",
-                "properties": {
-                    "before": {
-                        "type": "boolean"
+                type: "object",
+                properties: {
+                    before: {
+                        type: "boolean"
                     },
-                    "after": {
-                        "type": "boolean"
+                    after: {
+                        type: "boolean"
                     }
                 },
-                "additionalProperties": false
+                additionalProperties: false
             }
         ]
     },
@@ -139,7 +138,7 @@ module.exports = {
         }
 
         return {
-            "ArrowFunctionExpression": spaces
+            ArrowFunctionExpression: spaces
         };
     }
 };

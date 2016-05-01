@@ -1,7 +1,6 @@
 /**
  * @fileoverview A rule to disallow modifying variables of class declarations
  * @author Toru Nagashima
- * @copyright 2015 Toru Nagashima. All rights reserved.
  */
 
 "use strict";
@@ -50,8 +49,8 @@ module.exports = {
         }
 
         return {
-            "ClassDeclaration": checkForClass,
-            "ClassExpression": checkForClass
+            ClassDeclaration: checkForClass,
+            ClassExpression: checkForClass
         };
 
     }

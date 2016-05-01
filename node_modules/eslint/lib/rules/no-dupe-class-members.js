@@ -1,7 +1,6 @@
 /**
  * @fileoverview A rule to disallow duplicate name in class members.
  * @author Toru Nagashima
- * @copyright 2015 Toru Nagashima. All rights reserved.
  */
 
 "use strict";
@@ -66,12 +65,12 @@ module.exports = {
         return {
 
             // Initializes the stack of state of member declarations.
-            "Program": function() {
+            Program: function() {
                 stack = [];
             },
 
             // Initializes state of member declarations for the class.
-            "ClassBody": function() {
+            ClassBody: function() {
                 stack.push(Object.create(null));
             },
 
@@ -81,7 +80,7 @@ module.exports = {
             },
 
             // Reports the node if its name has been declared already.
-            "MethodDefinition": function(node) {
+            MethodDefinition: function(node) {
                 if (node.computed) {
                     return;
                 }

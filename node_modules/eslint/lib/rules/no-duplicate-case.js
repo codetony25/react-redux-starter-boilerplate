@@ -1,9 +1,7 @@
 /**
  * @fileoverview Rule to disallow a duplicate case label.
-  * @author Dieter Oberkofler
+ * @author Dieter Oberkofler
  * @author Burak Yigit Kaya
- * @copyright 2015 Dieter Oberkofler. All rights reserved.
- * @copyright 2015 Burak Yigit Kaya. All rights reserved.
  */
 
 "use strict";
@@ -26,7 +24,7 @@ module.exports = {
     create: function(context) {
 
         return {
-            "SwitchStatement": function(node) {
+            SwitchStatement: function(node) {
                 var mapping = {};
 
                 node.cases.forEach(function(switchCase) {
