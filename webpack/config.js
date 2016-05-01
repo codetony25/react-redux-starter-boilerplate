@@ -24,8 +24,8 @@ const config = {
  * @type {Object}
  */
 config.globals = {
-  __DEVELOPMENT__:  config.env = 'development',
-  __PRODUCTION__ :  config.env = 'production',
+  __DEVELOPMENT__:  config.env === 'development',
+  __PRODUCTION__ :  config.env === 'production',
 }
 
 export default config

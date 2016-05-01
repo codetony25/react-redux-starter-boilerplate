@@ -63,7 +63,6 @@ webpackConfig.output = {
 /**
  * JavaScript and JSON Loaders
  */
-debug('Setting up Webpack Loaders...')
 webpackConfig.module.loaders = [
   {
     test   : /\.jsx?$/,
@@ -91,7 +90,9 @@ webpackConfig.module.loaders.push(
   }
 )
 
-// Add postcss plugins here
+/**
+ * PostCSS Plugins
+ */
 webpackConfig.postcss = () => {
   return [
     atImport({
@@ -161,7 +162,6 @@ webpackConfig.module.loaders.push(
 /**
  * Plugin Configurations
  */
-debug('Setting up Plugin Configurations...')
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     template: config.htmlPath,
@@ -188,5 +188,4 @@ if (__PRODUCTION__) {
   webpackProdConfig(webpackConfig, config)
 }
 
-debug('Webpack Configuration Completed!')
 export default webpackConfig
