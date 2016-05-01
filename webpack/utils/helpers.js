@@ -11,12 +11,14 @@ export const getPath = (pathParam) => {
 
 // Replaces css loader with the extract plugin css loader
 export const cssLoaderAddExtract = (config, searchParam, plugin) => {
-  config.module.loaders.filter((loader) =>
-    loader.loaders && loader.loaders.find((name) =>
+  config.module.loaders.filter((loader) => {
+    return loader.loaders && loader.loaders.find((name) => {
       return searchParam.test(name.split('?')[0])
     })
-  ).forEach((cssLoader) => {
+  }).forEach((cssLoader) => {
     const [first, ...rest] = cssLoader.loaders
-    cssLoader.loader = plugin.extract(first, rest.join('!'))
+    let singleCssLoader = cssLoader.loader
+    singleCssLoader = plugin.extract(first, rest.join('!'))
+    return singleCssLoader
   })
 }

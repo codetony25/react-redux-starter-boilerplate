@@ -2,7 +2,7 @@ import React from 'react'
 import CSSModules from 'react-css-modules'
 
 // Styles
-import styles from './HeaderLayout.css'
+import Styles from './HeaderLayout.css'
 
 const Header = () => {
   return (
@@ -14,4 +14,4 @@ const Header = () => {
   )
 }
 
-export default CSSModules(Header, styles)
+export default CSSModules(Header, Styles)

@@ -10,7 +10,8 @@
      "react"
    ],
    "env"     : {
-     "browser" : true
+     "browser" : true,
+     "node"    : true
    },
    "globals" : {
      "__DEVELOPMENT__" : false,
@@ -18,8 +19,8 @@
    },
    "rules" : {
      "semi"            : ["error", "never"],
-     "arrow-body-style": ["error", "always"],
      "new-cap"         : 0,
-     "key-spacing": [2, {"beforeColon": false, "afterColon": true, "mode": "minimum", "align": "colon"}]
+     "arrow-body-style": ["error", "always"],
+     "key-spacing"     : [2, {"beforeColon": false, "afterColon": true, "mode": "minimum", "align": "colon"}]
    }
  }
