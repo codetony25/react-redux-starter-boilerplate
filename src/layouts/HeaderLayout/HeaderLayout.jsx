@@ -4,7 +4,7 @@ import CSSModules from 'react-css-modules'
 // Styles
 import Styles from './HeaderLayout.css'
 
-const Header = () => {
+const HeaderLayout = () => {
   return (
     <header>
       <div styleName="navigation">
@@ -14,4 +14,4 @@ const Header = () => {
   )
 }
 
-export default CSSModules(Header, Styles)
+export default CSSModules(HeaderLayout, Styles)

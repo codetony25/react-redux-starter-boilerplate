@@ -130,33 +130,33 @@ webpackConfig.module.loaders.push(
   },
   {
     test  : /\.woff2(\?.*)?$/,
-    loader: 'url?${filePrefix}${fileType}application/font-woff2',
+    loader: `url?${filePrefix}${fileType}application/font-woff2`,
   },
   {
     test  : /\.otf(\?.*)?$/,
-    loader: 'file?${filePrefix}${fileType}ont/opentype',
+    loader: `file?${filePrefix}${fileType}ont/opentype`,
   },
   {
     test  : /\.ttf(\?.*)?$/,
-    loader: 'url?${filePrefix}${fileType}application/octet-stream',
+    loader: `url?${filePrefix}${fileType}application/octet-stream`,
   },
   {
     test  : /\.eot(\?.*)?$/,
-    loader: 'file?${filePrefix}',
+    loader: `file?${filePrefix}`,
   },
   {
     test  : /\.svg(\?.*)?$/,
-    loader: 'url?{$filePrefix}${fileType}image/svg+xml',
+    loader: `url?{$filePrefix}${fileType}image/svg+xml`,
   },
   {
     test  : /\.(png|jpg|gif)$/,
     loader: 'url?limit=8192',
   },
-  // {
-  //   test: /react-icons\/(.)*(.js)$/,
-  //   loader: 'babel',
-  //   include: config.iconPath
-  // }
+  {
+    test   : /react-icons\/(.)*(.js)$/,
+    loader : 'babel',
+    include: config.iconPath,
+  }
 )
 
 /**
