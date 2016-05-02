@@ -11,7 +11,7 @@ aside {
     right: -1px;
   }
   &.close {
-    right: -300px;
+    right: -301px;
   }
   & .sidebar-close {
     cursor: pointer;
