@@ -5,9 +5,14 @@ aside {
   height: 100%;
   background: var(--dark-gray-medium);
   top: 0;
-  right: -300px;
   transition: 0.5s ease;
   z-index: 100;
+  &.open {
+    right: -1px;
+  }
+  &.close {
+    right: -300px;
+  }
   & .sidebar-close {
     cursor: pointer;
     float: right;

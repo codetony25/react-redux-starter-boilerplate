@@ -5,11 +5,11 @@ import { IoCloseRound } from 'react-icons/io'
 // Styles
 import Styles from './SidebarLayout.css'
 
-const SidebarLayout = () => {
+const SidebarLayout = (Store) => {
   return (
-    <aside>
+    <aside styleName={Store.sidebarState ? 'close' : 'open'}>
       <div styleName="sidebar-close">
-        <IoCloseRound />
+        <IoCloseRound onClick={Store.sidebarToggle} />
       </div>
       <h1>This is where the sidebar is</h1>
     </aside>

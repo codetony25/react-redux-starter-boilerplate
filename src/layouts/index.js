@@ -13,9 +13,12 @@ const layout = observer(({ children }) => {
   return (
     <div>
       <HeaderLayout
-        sidebarState={LayoutStore.isSidebarClosed} sidebarToggle={LayoutStore.onSidebarToggle}
+        sidebarToggle={LayoutStore.onSidebarToggle}
       />
-      <SidebarLayout />
+      <SidebarLayout
+        sidebarState={LayoutStore.isSidebarClosed}
+        sidebarToggle={LayoutStore.onSidebarToggle}
+      />
       {children}
     </div>
   )
