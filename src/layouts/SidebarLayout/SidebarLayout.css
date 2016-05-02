@@ -1,0 +1,23 @@
+/* Sidebar Layout Styles */
+aside {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  background: var(--dark-gray-medium);
+  top: 0;
+  right: -300px;
+  transition: 0.5s ease;
+  z-index: 100;
+  & .sidebar-close {
+    cursor: pointer;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    color: var(--white);
+    transition: 0.2s;
+    &:hover {
+      color: var(--bright-red);
+    }
+  }
+}

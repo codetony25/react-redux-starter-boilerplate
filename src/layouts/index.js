@@ -1,22 +1,24 @@
 import '../styles/base.css'
-import React, { PropTypes } from 'react'
+import React from 'react'
+import { observer } from 'mobx-react'
+
+// Stores
+import LayoutStore from './LayoutStore'
 
 // Layouts
 import HeaderLayout from './HeaderLayout'
 import SidebarLayout from './SidebarLayout'
 
-const layout = ({ children }) => {
+const layout = observer(({ children }) => {
   return (
     <div>
-      <HeaderLayout />
+      <HeaderLayout
+        sidebarState={LayoutStore.isSidebarClosed} sidebarToggle={LayoutStore.onSidebarToggle}
+      />
       <SidebarLayout />
       {children}
     </div>
   )
-}
-
-layout.propTypes = {
-  children: PropTypes.element,
-}
+})
 
 export default layout

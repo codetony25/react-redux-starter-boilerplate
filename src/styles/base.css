@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 * {
   box-sizing: inherit;
@@ -17,3 +18,12 @@ body {
 *:matches(::before, ::after) {
   box-sizing: inherit;
 }
+a {
+  text-decoration: none;
+}
+
+/* Media Queries */
+@custom-media --small (min-width: 554px);
+@custom-media --medium (min-width: 768px);
+@custom-media --large (min-width: 992px);
+@custom-media --extra-large (min-width: 1200px);

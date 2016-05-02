@@ -1,3 +1,133 @@
-.navigation {
-  
+/* Header Layout Styles */
+header {
+  background: var(--black);
+  height: 110px;
+  margin-top: -7px;
+  border-bottom: 1px solid var(--light-gray);
+
+  /* Main Logo */
+  & .main-logo {
+    @mixin font-heading-three UniSansHeavy;
+    position: relative;
+    top: 50px;
+    left: 35px;
+    & .logo-first {
+      color: var(--white);
+      margin-right: 3px;
+    }
+    & .logo-second {
+      color: var(--bright-red);
+    }
+
+    @media (--extra-large) {
+      left: 70px;
+    }
+  }
+
+  /* Main Navigation */
+  & nav {
+    display: none;
+    & ul {
+      display: flex;
+      width: 50%;
+      flex-direction: row;
+      justify-content: center;
+      list-style: none;
+    }
+    & li {
+      text-align: center;
+      flex-grow: 1;
+      & a {
+        position: relative;
+        color: var(--white);
+        transition: 0.3s ease-in-cubic;
+        letter-spacing: 1px;
+        & .first-dot,
+        & .second-dot,
+        & .third-dot,
+        & .fourth-dot {
+          position: absolute;
+          opacity: 0;
+          color: var(--bright-red);
+          transition: 0.3s ease-in-cubic;
+        }
+        & .first-dot {
+          top: 50px;
+          left: 50px;
+        }
+        & .second-dot {
+          top: 50px;
+          right: 50px;
+        }
+        & .third-dot {
+          bottom: 50px;
+          left: 50px;
+        }
+        & .fourth-dot {
+          bottom: 50px;
+          right: 50px;
+        }
+      }
+    }
+
+    @media (--extra-large) {
+      @mixin font-heading-six OpenSans;
+      position: relative;
+      top: 6px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      text-transform: uppercase;
+      & a {
+        padding: 50px 50px;
+        transition: 0.3s ease-out-back;
+      }
+      & a:matches(:hover) {
+        color: var(--bright-red);
+        & .first-dot,
+        & .second-dot,
+        & .third-dot,
+        & .fourth-dot {
+          opacity: 1;
+        }
+        & .first-dot {
+          top: 0;
+          left: 0;
+        }
+        & .second-dot {
+          top: 0;
+          right: 0;
+        }
+        & .third-dot {
+          bottom: 0;
+          left: 0;
+        }
+        & .fourth-dot {
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  /* Navigation Hamburger Icon */
+  & .navicon {
+    float: right;
+    cursor: pointer;
+    color: var(--white);
+    text-align: right;
+    font-size: 36px;
+    margin-right: 35px;
+    position: relative;
+    bottom: -6px;
+    transition: 0.3s ease-out-back;
+
+    @media (--extra-large) {
+      bottom: 44px;
+      margin-right: 70px;
+      &:hover {
+        color: var(--bright-red);
+      }
+    }
+  }
 }

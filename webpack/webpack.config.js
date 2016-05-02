@@ -82,6 +82,7 @@ webpackConfig.module.loaders.push(
   {
     test   : /\.css$/,
     include: config.appPath,
+    exclude: /flexboxgrid/,
     loaders: [
       'style',
       'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
