@@ -3,7 +3,7 @@ import CssModules from 'react-css-modules'
 import { IoCloseRound } from 'react-icons/io'
 
 // Styles
-import Styles from './SidebarLayout.css'
+import Styles from './SidebarLayout.sss'
 
 const SidebarLayout = (Store) => {
   return (

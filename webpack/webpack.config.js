@@ -12,6 +12,7 @@ import customMedia from 'postcss-custom-media'
 import customSelectors from 'postcss-custom-selectors'
 import normalize from 'postcss-normalize'
 import mixin from 'postcss-mixins'
+import sugarss from 'sugarss'
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -80,13 +81,12 @@ webpackConfig.module.loaders = [
  */
 webpackConfig.module.loaders.push(
   {
-    test   : /\.css$/,
+    test   : /\.sss$/,
     include: config.appPath,
-    exclude: /flexboxgrid/,
     loaders: [
       'style',
       'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-      'postcss',
+      'postcss-loader?parser=sugarss',
     ],
   }
 )
@@ -109,9 +109,10 @@ webpackConfig.postcss = () => {
     customSelectors({
       extensions: map.selector,
     }),
+    cssnext,
+    sugarss,
     normalize,
     mixin,
-    cssnext,
     rucksack,
     sorting,
     short,

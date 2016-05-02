@@ -1,4 +1,4 @@
-import '../styles/base.css'
+import '../styles/base.sss'
 import React from 'react'
 import { observer } from 'mobx-react'
 

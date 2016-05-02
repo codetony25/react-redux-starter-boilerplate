@@ -11,7 +11,7 @@ const config = {
   appPath   : getPath('../src'),
   distPath  : getPath('../dist'),
   rootPath  : getPath('../'),
-  stylePath : getPath('../src/styles/base.css'),
+  stylePath : getPath('../src/styles/base.sss'),
   htmlPath  : getPath('../src/index.html'),
   iconPath  : getPath('../node_modules/react-icons'),
   serverHost: 'localhost',

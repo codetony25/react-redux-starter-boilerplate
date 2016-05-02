@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules'
 import { IoNaviconRound } from 'react-icons/io'
 
 // Styles
-import Styles from './HeaderLayout.css'
+import Styles from './HeaderLayout.sss'
 
 const HeaderLayout = (Store) => {
   return (

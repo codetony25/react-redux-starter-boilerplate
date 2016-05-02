@@ -2,7 +2,7 @@ import React from 'react'
 import CssModules from 'react-css-modules'
 
 // Styles
-import Styles from './HomeView.css'
+import Styles from './HomeView.sss'
 
 // Images
 import MainLogo from './assets/images/codetony.png'
