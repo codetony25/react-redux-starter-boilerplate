@@ -1,0 +1,54 @@
+body{
+    font-family:sans-serif;
+}
+.offscreen {
+    left: -999em;
+    position: absolute;
+}
+label{
+    display:inline-block;
+    min-width:80px;
+    -width:80px;
+}
+input,textarea{
+    width:150px;
+}
+input[type=submit]{
+    width:auto;
+}
+.implicit label{
+    min-width:240px;
+    -width:240px;
+}
+.implicit label input,
+.implicit label textarea{
+    float:right;
+}
+/* HTML5 Boilerplate class for testing */
+.visuallyhidden { 
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* demo mode css make polyfilled placeholder red */
+.demo label span.placeholder,
+.demo a.demotoggle,
+strong.alert{
+    color:red;
+}
+
+pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
