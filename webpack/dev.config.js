@@ -3,11 +3,12 @@ import _debug from 'debug'
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin'
 
 const debug = _debug('app:webpack:dev')
-const webpackDevConfig = (webpackConfig, config) => {
+
 /**
  * Development Plugins
  */
-  debug('Setting up development plugins: HMR, BrowserSyncPlugin and NoErrorsPlugin')
+const webpackDevConfig = (webpackConfig, config) => {
+  debug('Setting up development plugins')
   webpackConfig.plugins.push(
     new BrowserSyncPlugin(
       {

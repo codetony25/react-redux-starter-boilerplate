@@ -1,27 +1,36 @@
 import { getPath } from './utils/helpers'
 
 /**
+ * Set up Webpack Configurations
+ */
+const nodeEnv = process.env.NODE_ENV
+let devTool
+
+if (nodeEnv === 'development') {
+  devTool = 'inline-eval-cheap-source-map'
+}
+else {
+  devTool = 'source-map'
+}
+
+/**
  * Custom Webpack Configuration
- *
- * @type {Object}
  */
 const config = {
-  env       : process.env.NODE_ENV || 'development',
+  env       : nodeEnv || 'development',
   target    : process.env.npm_lifecycle_event,
   appPath   : getPath('../src'),
   distPath  : getPath('../dist'),
   rootPath  : getPath('../'),
   stylePath : getPath('../src/styles/base.css'),
   htmlPath  : getPath('../src/index.html'),
-  iconPath  : getPath('../node_modules/react-icons'),
   serverHost: 'localhost',
   serverPort: '8080',
+  devTool,
 }
 
 /**
  * Set Webpack Global Variables
- *
- * @type {Object}
  */
 config.globals = {
   __DEVELOPMENT__:  config.env === 'development',

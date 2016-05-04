@@ -1,6 +1,5 @@
 import React from 'react'
 import CSSModules from 'react-css-modules'
-import { IoNaviconRound } from 'react-icons/io'
 
 // Styles
 import Styles from './HeaderLayout.css'
@@ -64,7 +63,7 @@ const HeaderLayout = (Store) => {
         </ul>
       </nav>
       <div styleName="navicon">
-        <IoNaviconRound onClick={Store.sidebarToggle} />
+        <i className="icon ion-navicon-round" onClick={Store.sidebarToggle} />
       </div>
     </header>
   )

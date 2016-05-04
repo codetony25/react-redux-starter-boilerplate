@@ -1,0 +1,30 @@
+'use strict';
+
+;(function () {
+  /* react-hot-loader/webpack */
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+      return;
+    }
+
+    if (typeof module.exports === 'function') {
+      __REACT_HOT_LOADER__.register(module.exports, 'module.exports', __FILENAME__);
+      return;
+    }
+
+    for (var key in module.exports) {
+      if (!Object.prototype.hasOwnProperty.call(module.exports, key)) {
+        continue;
+      }
+
+      var namedExport = void 0;
+      try {
+        namedExport = module.exports[key];
+      } catch (err) {
+        continue;
+      }
+
+      __REACT_HOT_LOADER__.register(namedExport, key, __FILENAME__);
+    }
+  }
+})();

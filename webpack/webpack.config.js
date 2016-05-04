@@ -17,10 +17,11 @@ import config from './config.js'
 import webpackDevConfig from './dev.config.js'
 import webpackProdConfig from './prod.config.js'
 
+const debug = _debug('app:webpack:config')
+
 /**
  * Webpack Global Variables
  */
-const debug = _debug('app:webpack:config')
 const map = webpackPostcssTools.makeVarMap(config.stylePath)
 const {
   __DEVELOPMENT__,
@@ -33,7 +34,7 @@ const {
 debug('Starting Webpack Configurations...')
 const webpackConfig = {
   target : 'web',
-  devtool: 'source-map',
+  devtool: config.devTool,
   node   : { fs: 'empty' },
   resolve: { extensions: ['', 'json', '.js', '.jsx'] },
   module : {},
@@ -82,7 +83,6 @@ webpackConfig.module.loaders.push(
   {
     test   : /\.css$/,
     include: config.appPath,
-    exclude: /flexboxgrid/,
     loaders: [
       'style',
       'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
@@ -153,11 +153,6 @@ webpackConfig.module.loaders.push(
     test  : /\.(png|jpg|gif)$/,
     loader: 'url?limit=8192',
   },
-  {
-    test   : /react-icons\/(.)*(.js)$/,
-    loader : 'babel',
-    include: config.iconPath,
-  }
 )
 
 /**

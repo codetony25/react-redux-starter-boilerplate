@@ -1,4 +1,6 @@
-/* HomeView Styles */
+/*** HomeView Styles ***/
+
+/* Main Hero */
 .main-hero {
   background: var(--black);
   height: 613px;
@@ -24,6 +26,7 @@
     color: var(--bright-red);
   }
 
+  /* Main Hero Media Queries */
   @media (--small) {
     & h1 {
       font: 50px UniSansHeavy;
