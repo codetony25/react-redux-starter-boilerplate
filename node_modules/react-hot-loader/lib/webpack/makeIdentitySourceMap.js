@@ -9,7 +9,7 @@ function makeIdentitySourceMap(content, resourcePath) {
   var map = new SourceMapGenerator();
   map.setSourceContent(resourcePath, content);
 
-  content.split('\n').map(function (line, index) {
+  content.split('\n').forEach(function (line, index) {
     map.addMapping({
       source: resourcePath,
       original: {

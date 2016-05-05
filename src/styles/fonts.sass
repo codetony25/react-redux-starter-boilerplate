@@ -1,4 +1,4 @@
-/** Font Global Styles **/
+/*** Font Global Styles ***/
 
 /* Font Names */
 $open-sans: "OpenSans"
@@ -17,7 +17,7 @@ $font-large: 1.5rem /* 24px */
 $font-extra-large: 2rem /* 32px */
 $font-giant: 3rem /* 48px */
 
-/*** Fonts ***/
+/* Fonts */
 @font-face
   font-family: $bebas-neue
   src: url("/assets/fonts/BebasNeue.otf") format("opentype")
@@ -34,7 +34,22 @@ $font-giant: 3rem /* 48px */
   font-family: $uni-sans-thin-italic
   src: url("/assets/fonts/UniSansThinItalic.otf") format("opentype")
 
-/*** Font Mixins ***/
-@mixin font($size, $font-family)
-  font: $size $font-family, sans-serif
-
+/* Font Mixins */
+@define-mixin font $size, $font
+  font: $size $font, sans-serif
+@define-mixin font-body $font
+  font: $font-tiny $font, sans-serif
+@define-mixin font-heading-one $font
+  font: $font-giant $font, sans-serif
+@define-mixin font-heading-two $font
+  font: $font-extra-large $font, sans-serif
+@define-mixin font-heading-three $font
+  font: $font-large $font, sans-serif
+@define-mixin font-heading-four $font
+  font: $font-medium $font, sans-serif
+@define-mixin font-heading-five $font
+  font: $font-small $font, sans-serif
+@define-mixin font-heading-six $font
+  font: $font-extra-small $font, sans-serif
+@define-mixin font-heading-seven $font
+  font: $font-tiny $font, sans-serif

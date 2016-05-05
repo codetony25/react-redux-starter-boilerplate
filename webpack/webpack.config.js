@@ -92,13 +92,16 @@ webpackConfig.postcss = () => {
   return [
     atImport({
       addDependencyTo: webpack,
-      path: ["src/styles"],
+      path: ['src/styles'],
     }),
     precss,
     normalize,
-    rucksack,
     sorting,
     short,
+    rucksack({
+      autoprefixer: true,
+      fallbacks: true,
+    }),
   ]
 }
 

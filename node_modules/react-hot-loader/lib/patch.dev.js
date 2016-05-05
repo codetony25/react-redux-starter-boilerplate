@@ -33,14 +33,16 @@ var ComponentMap = function () {
     value: function get(type) {
       if (this.wm) {
         return this.wm.get(type);
-      } else {
-        var slot = this.getSlot(type);
-        for (var i = 0; i < slot.length; i++) {
-          if (slot[i].key === type) {
-            return slot[i].value;
-          }
+      }
+
+      var slot = this.getSlot(type);
+      for (var i = 0; i < slot.length; i++) {
+        if (slot[i].key === type) {
+          return slot[i].value;
         }
       }
+
+      return undefined;
     }
   }, {
     key: 'set',
@@ -63,15 +65,15 @@ var ComponentMap = function () {
     value: function has(type) {
       if (this.wm) {
         return this.wm.has(type);
-      } else {
-        var slot = this.getSlot(type);
-        for (var i = 0; i < slot.length; i++) {
-          if (slot[i].key === type) {
-            return true;
-          }
-        }
-        return false;
       }
+
+      var slot = this.getSlot(type);
+      for (var i = 0; i < slot.length; i++) {
+        if (slot[i].key === type) {
+          return true;
+        }
+      }
+      return false;
     }
   }]);
 
@@ -94,7 +96,7 @@ var hooks = {
     if (typeof uniqueLocalName !== 'string' || typeof fileName !== 'string') {
       return;
     }
-    var id = fileName + '#' + uniqueLocalName;
+    var id = fileName + '#' + uniqueLocalName; // eslint-disable-line prefer-template
     if (!idsByType.has(type) && hasCreatedElementsByType.has(type)) {
       if (!didWarnAboutID[id]) {
         didWarnAboutID[id] = true;
@@ -163,7 +165,18 @@ function patchedCreateElement(type) {
 }
 patchedCreateElement.isPatchedByReactHotLoader = true;
 
+function patchedCreateFactory(type) {
+  // Patch React.createFactory to use patched createElement
+  // because the original implementation uses the internal,
+  // unpatched ReactElement.createElement
+  var factory = patchedCreateElement.bind(null, type);
+  factory.type = type;
+  return factory;
+}
+patchedCreateFactory.isPatchedByReactHotLoader = true;
+
 if (typeof global.__REACT_HOT_LOADER__ === 'undefined') {
   React.createElement = patchedCreateElement;
+  React.createFactory = patchedCreateFactory;
   global.__REACT_HOT_LOADER__ = hooks;
 }
