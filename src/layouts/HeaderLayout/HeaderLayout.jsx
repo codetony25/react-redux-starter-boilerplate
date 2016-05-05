@@ -2,14 +2,12 @@ import React from 'react'
 import CSSModules from 'react-css-modules'
 
 // Styles
-import Styles from './HeaderLayout.css'
+import Styles from './HeaderLayout.styl'
 
-const HeaderLayout = () => {
+const HeaderLayout = (Store) => {
   return (
     <header>
-      <div styleName="navigation">
-        <h1>Hello World! This is the header.</h1>
-      </div>
+      <h1 styleName="test">This is your header</h1>
     </header>
   )
 }

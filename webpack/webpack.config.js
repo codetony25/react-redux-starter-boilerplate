@@ -1,27 +1,20 @@
-import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import _debug from 'debug'
-import cssnext from 'postcss-cssnext'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import short from 'postcss-short'
-import atImport from 'postcss-import'
-import customProperties from 'postcss-custom-properties'
-import webpackPostcssTools from 'webpack-postcss-tools'
-import customMedia from 'postcss-custom-media'
-import customSelectors from 'postcss-custom-selectors'
 import normalize from 'postcss-normalize'
-import mixin from 'postcss-mixins'
+import poststylus from 'poststylus'
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
 import webpackProdConfig from './prod.config.js'
 
+const debug = _debug('app:webpack:config')
+
 /**
  * Webpack Global Variables
  */
-const debug = _debug('app:webpack:config')
-const map = webpackPostcssTools.makeVarMap(config.stylePath)
 const {
   __DEVELOPMENT__,
   __PRODUCTION__,
@@ -33,11 +26,12 @@ const {
 debug('Starting Webpack Configurations...')
 const webpackConfig = {
   target : 'web',
-  devtool: 'source-map',
+  devtool: config.devTool,
   node   : { fs: 'empty' },
   resolve: { extensions: ['', 'json', '.js', '.jsx'] },
   module : {},
   vendor : ['react'],
+  stylus : {},
 }
 
 /**
@@ -78,42 +72,37 @@ webpackConfig.module.loaders = [
 /**
  * Style Loaders and Configurations
  */
+const styleModuleLoader = [
+  'css?sourceMap&-minimize',
+  'modules',
+  'importLoaders=1',
+  'localIdentName=[name]__[local]___[hash:base64:5]'
+].join('&')
+
 webpackConfig.module.loaders.push(
   {
-    test   : /\.css$/,
-    include: config.appPath,
+    test   : /\.styl$/,
     loaders: [
       'style',
-      'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+      styleModuleLoader,
       'postcss',
+      'stylus?resolve url'
     ],
+    include: config.appPath,
   }
 )
 
-/**
- * PostCSS Plugins
- */
-webpackConfig.postcss = () => {
-  return [
-    atImport({
-      addDependencyTo: webpack,
-    }),
-    webpackPostcssTools.prependTildesToImports,
-    customProperties({
-      variables: map.vars,
-    }),
-    customMedia({
-      extensions: map.media,
-    }),
-    customSelectors({
-      extensions: map.selector,
-    }),
-    normalize,
-    mixin,
-    cssnext,
-    rucksack,
-    sorting,
-    short,
+webpackConfig.stylus = {
+  use: [
+    poststylus([
+      normalize,
+      rucksack({
+        autoprefixer: true,
+        fallback: true,
+      }),
+      sorting,
+      short,
+    ])
   ]
 }
 
@@ -134,7 +123,7 @@ webpackConfig.module.loaders.push(
   },
   {
     test  : /\.otf(\?.*)?$/,
-    loader: `file?${filePrefix}${fileType}ont/opentype`,
+    loader: `file?${filePrefix}${fileType}font/opentype`,
   },
   {
     test  : /\.ttf(\?.*)?$/,
@@ -152,11 +141,6 @@ webpackConfig.module.loaders.push(
     test  : /\.(png|jpg|gif)$/,
     loader: 'url?limit=8192',
   },
-  {
-    test   : /react-icons\/(.)*(.js)$/,
-    loader : 'babel',
-    include: config.iconPath,
-  }
 )
 
 /**
