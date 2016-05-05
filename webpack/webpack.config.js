@@ -1,17 +1,12 @@
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import _debug from 'debug'
-import cssnext from 'postcss-cssnext'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import short from 'postcss-short'
 import atImport from 'postcss-import'
-import customProperties from 'postcss-custom-properties'
-import webpackPostcssTools from 'webpack-postcss-tools'
-import customMedia from 'postcss-custom-media'
-import customSelectors from 'postcss-custom-selectors'
 import normalize from 'postcss-normalize'
-import mixin from 'postcss-mixins'
+import precss from 'precss'
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -22,7 +17,6 @@ const debug = _debug('app:webpack:config')
 /**
  * Webpack Global Variables
  */
-const map = webpackPostcssTools.makeVarMap(config.stylePath)
 const {
   __DEVELOPMENT__,
   __PRODUCTION__,
@@ -81,12 +75,12 @@ webpackConfig.module.loaders = [
  */
 webpackConfig.module.loaders.push(
   {
-    test   : /\.css$/,
+    test   : /\.sass$/,
     include: config.appPath,
     loaders: [
       'style',
       'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-      'postcss',
+      'postcss?parser=sugarss',
     ],
   }
 )
@@ -98,20 +92,10 @@ webpackConfig.postcss = () => {
   return [
     atImport({
       addDependencyTo: webpack,
+      path: ["src/styles"],
     }),
-    webpackPostcssTools.prependTildesToImports,
-    customProperties({
-      variables: map.vars,
-    }),
-    customMedia({
-      extensions: map.media,
-    }),
-    customSelectors({
-      extensions: map.selector,
-    }),
+    precss,
     normalize,
-    mixin,
-    cssnext,
     rucksack,
     sorting,
     short,
