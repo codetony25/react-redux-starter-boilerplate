@@ -10,7 +10,7 @@ var buildRegistration = (0, _babelTemplate2.default)('__REACT_HOT_LOADER__.regis
 var buildSemi = (0, _babelTemplate2.default)(';');
 var buildTagger = (0, _babelTemplate2.default)('\n(function () {\n  if (typeof __REACT_HOT_LOADER__ === \'undefined\') {\n    return;\n  }\n\n  REGISTRATIONS\n})();\n');
 
-module.exports = function (args) {
+module.exports = function plugin(args) {
   // This is a Babel plugin, but the user put it in the Webpack config.
   if (this && this.callback) {
     throw new Error('React Hot Loader: You are erroneously trying to use a Babel plugin ' + 'as a Webpack loader. We recommend that you use Babel, ' + 'remove "react-hot-loader/babel" from the "loaders" section ' + 'of your Webpack configuration, and instead add ' + '"react-hot-loader/babel" to the "plugins" section of your .babelrc file. ' + 'If you prefer not to use Babel, replace "react-hot-loader/babel" with ' + '"react-hot-loader/webpack" in the "loaders" section of your Webpack configuration. ');
@@ -37,12 +37,14 @@ module.exports = function (args) {
       case 'VariableDeclaration':
         return true;
       case 'VariableDeclarator':
-        var init = node.init;
+        {
+          var init = node.init;
 
-        if (t.isCallExpression(init) && init.callee.name === 'require') {
-          return false;
+          if (t.isCallExpression(init) && init.callee.name === 'require') {
+            return false;
+          }
+          return true;
         }
-        return true;
       default:
         return false;
     }
@@ -65,7 +67,7 @@ module.exports = function (args) {
         var id = path.scope.generateUidIdentifier('default');
         var expression = t.isExpression(path.node.declaration) ? path.node.declaration : t.toExpression(path.node.declaration);
         path.insertBefore(t.variableDeclaration('const', [t.variableDeclarator(id, expression)]));
-        path.node.declaration = id;
+        path.node.declaration = id; // eslint-disable-line no-param-reassign
 
         // It won't appear in scope.bindings
         // so we'll manually remember it exists.
@@ -83,10 +85,11 @@ module.exports = function (args) {
           var scope = _ref2.scope;
           var file = _ref3.file;
 
-          node[REGISTRATIONS] = [];
+          node[REGISTRATIONS] = []; // eslint-disable-line no-param-reassign
 
           // Everything in the top level scope, when reasonable,
           // is going to get tagged with __source.
+          /* eslint-disable guard-for-in,no-restricted-syntax */
           for (var id in scope.bindings) {
             var binding = scope.bindings[id];
             if (shouldRegisterBinding(binding)) {
@@ -97,13 +100,13 @@ module.exports = function (args) {
               }));
             }
           }
+          /* eslint-enable */
         },
         exit: function exit(_ref4) {
           var node = _ref4.node;
-          var scope = _ref4.scope;
 
           var registrations = node[REGISTRATIONS];
-          node[REGISTRATIONS] = null;
+          node[REGISTRATIONS] = null; // eslint-disable-line no-param-reassign
 
           // Inject the generated tagging code at the very end
           // so that it is as minimally intrusive as possible.

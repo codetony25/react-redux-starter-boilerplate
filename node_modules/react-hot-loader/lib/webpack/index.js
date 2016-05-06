@@ -27,7 +27,9 @@ function transform(source, map) {
     tagCommonJSExportsSource = fs.readFileSync(path.join(__dirname, 'tagCommonJSExports.js'), 'utf8')
     // Babel inserts these.
     // Ideally we'd opt out for one file but this is simpler.
-    .replace(/['"]use strict['"];/, '').split(/\n\s*/).join(' ');
+    .replace(/['"]use strict['"];/, '')
+    // eslint comments don't need to end up in the output
+    .replace(/\/\/ eslint-disable-line .*\n/g, '\n').replace(/\/\* global.*\*\//, '').split(/\n\s*/).join(' ');
   }
 
   // Parameterize the helper with the current filename.
@@ -39,12 +41,12 @@ function transform(source, map) {
   }
 
   if (!map) {
-    map = makeIdentitySourceMap(source, this.resourcePath);
+    map = makeIdentitySourceMap(source, this.resourcePath); // eslint-disable-line no-param-reassign
   }
   var node = new SourceNode(null, null, null, [SourceNode.fromStringWithSourceMap(source, new SourceMapConsumer(map)), new SourceNode(null, null, this.resourcePath, appendText)]).join(separator);
 
   var result = node.toStringWithSourceMap();
-  this.callback(null, result.code, result.map.toString());
-};
+  return this.callback(null, result.code, result.map.toString());
+}
 
 module.exports = transform;

@@ -34,7 +34,7 @@ var AppContainer = function (_Component) {
     }
   }, {
     key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    value: function componentWillReceiveProps() {
       // Hot reload is happening.
       // Retry rendering!
       this.setState({
@@ -53,6 +53,7 @@ var AppContainer = function (_Component) {
   }, {
     key: 'unstable_handleError',
     value: function unstable_handleError(error) {
+      // eslint-disable-line camelcase
       this.setState({
         error: error
       });
@@ -68,9 +69,9 @@ var AppContainer = function (_Component) {
 
       if (this.props.component) {
         return React.createElement(this.props.component, this.props.props);
-      } else {
-        return React.Children.only(this.props.children);
       }
+
+      return React.Children.only(this.props.children);
     }
   }]);
 
@@ -82,16 +83,22 @@ AppContainer.propTypes = {
     if (props.component) {
       return new Error('Passing "component" prop to <AppContainer /> is deprecated. ' + 'Replace <AppContainer component={App} /> with <AppContainer><App /></AppContainer>.');
     }
+
+    return undefined;
   },
   props: function props(_props) {
     if (_props.props) {
-      return new Error('Passing "props" prop to <AppContainer /> is deprecated. ' + 'Replace <AppContainer component={App} props={{ myProp: myValue }} /> with <AppContainer><App myProp={myValue} /></AppContainer>.');
+      return new Error('Passing "props" prop to <AppContainer /> is deprecated. ' + 'Replace <AppContainer component={App} props={{ myProp: myValue }} /> ' + 'with <AppContainer><App myProp={myValue} /></AppContainer>.');
     }
+
+    return undefined;
   },
   children: function children(props) {
     if (React.Children.count(props.children) !== 1) {
-      return new Error('Invalid prop "children" supplied to AppContainer. Expected a single React element with your app’s root component, e.g. <App />.');
+      return new Error('Invalid prop "children" supplied to AppContainer. ' + 'Expected a single React element with your app’s root component, e.g. <App />.');
     }
+
+    return undefined;
   }
 };
 

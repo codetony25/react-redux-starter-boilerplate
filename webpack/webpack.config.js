@@ -49,8 +49,8 @@ webpackConfig.entry = {
  * Output points for App
  */
 webpackConfig.output = {
-  path      : config.distPath,
-  filename  : '[name].[hash].js',
+  path: config.distPath,
+  filename: '[name].[hash].js',
   publicPath: `http://${config.serverHost}:${config.serverPort}/`,
 }
 

@@ -1,0 +1,19 @@
+/* Media Query Sizes */
+$small: 554px
+$medium: 768px
+$large: 992px
+$extra-large: 1200px
+
+/* Custom Media Queries */
+@define-mixin break-small
+  @media (min-width: $small)
+    @content
+@define-mixin break-medium
+  @media (min-width: $medium)
+    @content
+@define-mixin break-large
+  @media (min-width: $large)
+    @content
+@define-mixin break-extra-large
+  @media (min-width: $extra-large)
+    @content

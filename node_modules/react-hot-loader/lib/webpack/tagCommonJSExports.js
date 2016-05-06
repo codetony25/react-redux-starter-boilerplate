@@ -1,6 +1,9 @@
 'use strict';
 
-;(function () {
+/* global __FILENAME__ */
+
+;(function register() {
+  // eslint-disable-line no-extra-semi
   /* react-hot-loader/webpack */
   if (process.env.NODE_ENV !== 'production') {
     if (typeof __REACT_HOT_LOADER__ === 'undefined') {
@@ -13,6 +16,7 @@
     }
 
     for (var key in module.exports) {
+      // eslint-disable-line no-restricted-syntax
       if (!Object.prototype.hasOwnProperty.call(module.exports, key)) {
         continue;
       }
