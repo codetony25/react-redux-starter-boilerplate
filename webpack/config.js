@@ -17,13 +17,13 @@ else {
  * Custom Webpack Configuration
  */
 const config = {
-  env       : nodeEnv || 'development',
-  target    : process.env.npm_lifecycle_event,
-  appPath   : getPath('../src'),
-  distPath  : getPath('../dist'),
-  rootPath  : getPath('../'),
-  stylePath : getPath('../src/styles/base.css'),
-  htmlPath  : getPath('../src/index.html'),
+  env: nodeEnv || 'development',
+  target: process.env.npm_lifecycle_event,
+  appPath: getPath('../src'),
+  distPath: getPath('../dist'),
+  rootPath: getPath('../'),
+  stylePath: getPath('../src/styles/base.css'),
+  htmlPath: getPath('../src/index.html'),
   serverHost: 'localhost',
   serverPort: '8080',
   devTool,
@@ -33,8 +33,8 @@ const config = {
  * Set Webpack Global Variables
  */
 config.globals = {
-  __DEVELOPMENT__:  config.env === 'development',
-  __PRODUCTION__ :  config.env === 'production',
+  __DEVELOPMENT__: config.env === 'development',
+  __PRODUCTION__ : config.env === 'production',
 }
 
 export default config

@@ -1,0 +1,114 @@
+/*** Home Styles ***/
+
+@import '../../styles/base'
+
+.main-hero
+	background: --color.black
+	height: 665px
+	width: 100%
+	padding-top: 20px
+
+	.hero-logo
+		margin-top: 30px
+		text-align: center
+
+		img
+			height: 130px
+
+	.hero-main-text
+		margin-top: 30px
+
+		.main-name
+			color: --color.white
+
+		.main-title
+			color: --color.bright-red
+		h1
+			font-custom(--font.uni-sans-heavy, 40px)
+			margin: 0
+			text-align: center
+			font-size: responsive
+			min-font-size: 40px
+			max-font-size: 80px
+
+	.main-slogan
+		font-custom(--font.open-sans)
+		width: 60%
+		margin: 40px auto
+		color: --color.white
+		font-size: responsive
+		min-font-size: 15px
+		max-font-size: 20px
+		text-align: center
+
+	.divider-white
+		width: 73px
+		height: 6px
+		background: --color.white
+		margin: 15px auto
+
+	.main-hero-button
+		text-align: center
+		margin-top: 45px
+
+		a
+			font-custom(--font.open-sans, 12px)
+			display: inline-block
+			padding-top: 15px
+			text-transform: uppercase
+			letter-spacing: 1px
+			width: 168px
+			height: 49px
+			color: --color.white
+			border: 2px solid --color.strong-red
+			transition: 0.4s ease-in-out-quart
+			&:hover
+				background: --color.strong-red
+
+.main-about
+	text-align: left
+
+	h2
+		font-custom(--font.uni-sans-heavy)
+		color: --color.light-gray
+		font-size: responsive
+		min-font-size: 70px
+		max-font-size: 120px
+		opacity: 0.03
+		white-space: nowrap
+		overflow: hidden
+		text-transform: uppercase
+		letter-spacing: 30px
+		margin: 0
+		cursor: default
+		position: relative
+		bottom: 24px
+
+	.about-headline
+		text-align: center
+
+		h3
+			font-custom(--font.uni-sans-heavy)
+			font-size: responsive
+			min-font-size: 50px
+			max-font-size: 70px
+			color: --color.black
+			margin: 0
+
+		.divider-red
+			width: 73px
+			height: 6px
+			background: --color.strong-red
+			margin: 15px auto
+
+	.about-description
+		font-extra-small(--font.open-sans)
+		padding-top: 12px
+		margin: 0 auto
+		padding-right: 7%
+		padding-left: 7%
+		color: --color.lighter-gray
+
+		@media --query.medium
+			padding-left: 30%
+			padding-right: 30%

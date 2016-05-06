@@ -21,9 +21,9 @@ const webpackProdConfig = (webpackConfig) => {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings : false,
+        warnings: false,
         dead_code: true,
-        unused   : true,
+        unused: true,
         screw_ie8: true,
       },
     }),

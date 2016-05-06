@@ -2,18 +2,18 @@ import React from 'react'
 import CSSModules from 'react-css-modules'
 
 // Styles
-import Styles from './HeaderLayout.sass'
+import Styles from './HeaderLayout.styl'
 
 const HeaderLayout = (Store) => {
   return (
-    <header>
+    <header styleName="main-header">
       <div styleName="main-logo">
         <a href="#">
           <span styleName="logo-first">Code</span>
           <span styleName="logo-second">Tony</span>
         </a>
       </div>
-      <nav>
+      <nav styleName="main-navigation">
         <ul>
           <li>
             <a href="#">
@@ -62,8 +62,8 @@ const HeaderLayout = (Store) => {
           </li>
         </ul>
       </nav>
-      <div styleName="navicon">
-        <i className="icon ion-navicon-round" onClick={Store.sidebarToggle} />
+      <div styleName="main-navicon">
+        <i className="icon ion-navicon" onClick={Store.sidebarToggle} />
       </div>
     </header>
   )

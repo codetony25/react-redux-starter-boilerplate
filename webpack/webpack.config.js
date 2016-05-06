@@ -1,12 +1,10 @@
-import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import _debug from 'debug'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import short from 'postcss-short'
-import atImport from 'postcss-import'
 import normalize from 'postcss-normalize'
-import precss from 'precss'
+import poststylus from 'poststylus'
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -27,12 +25,13 @@ const {
  */
 debug('Starting Webpack Configurations...')
 const webpackConfig = {
-  target : 'web',
+  target: 'web',
   devtool: config.devTool,
-  node   : { fs: 'empty' },
+  node: { fs: 'empty' },
   resolve: { extensions: ['', 'json', '.js', '.jsx'] },
-  module : {},
-  vendor : ['react'],
+  module: {},
+  vendor: ['react'],
+  stylus: {},
 }
 
 /**
@@ -60,12 +59,12 @@ webpackConfig.output = {
  */
 webpackConfig.module.loaders = [
   {
-    test   : /\.jsx?$/,
+    test: /\.jsx?$/,
     include: config.appPath,
-    loader : 'babel-loader?cacheDirectory',
+    loader: 'babel-loader?cacheDirectory',
   },
   {
-    test   : /\.json$/,
+    test: /\.json$/,
     loaders: ['json'],
   },
 ]
@@ -73,33 +72,38 @@ webpackConfig.module.loaders = [
 /**
  * Style Loaders and Configurations
  */
+const styleModuleLoader = [
+  'css?sourceMap&-minimize',
+  'modules',
+  'importLoaders=1',
+  'localIdentName=[name]__[local]___[hash:base64:5]'
+].join('&')
+
 webpackConfig.module.loaders.push(
   {
-    test   : /\.sass$/,
-    include: config.appPath,
+    test: /\.styl$/,
     loaders: [
       'style',
-      'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-      'postcss?parser=sugarss',
+      styleModuleLoader,
+      'postcss',
+      'stylus?resolve url',
     ],
+    include: config.appPath,
   }
 )
 
-/**
- * PostCSS Plugins
- */
-webpackConfig.postcss = () => {
-  return [
-    atImport({
-      addDependencyTo: webpack,
-      path: ["src/styles"],
-    }),
-    precss,
-    normalize,
-    rucksack,
-    sorting,
-    short,
-  ]
+webpackConfig.stylus = {
+  use: [
+    poststylus([
+      normalize,
+      sorting,
+      short,
+      rucksack({
+        autoprefixer: true,
+        fallback: true,
+      }),
+    ]),
+  ],
 }
 
 /**
@@ -110,31 +114,31 @@ const fileType = '.[ext]&limit=10000&mimetype='
 
 webpackConfig.module.loaders.push(
   {
-    test  : /\.woff(\?.*)?$/,
+    test: /\.woff(\?.*)?$/,
     loader: `url?${filePrefix}${fileType}application/font-woff`,
   },
   {
-    test  : /\.woff2(\?.*)?$/,
+    test: /\.woff2(\?.*)?$/,
     loader: `url?${filePrefix}${fileType}application/font-woff2`,
   },
   {
-    test  : /\.otf(\?.*)?$/,
-    loader: `file?${filePrefix}${fileType}ont/opentype`,
+    test: /\.otf(\?.*)?$/,
+    loader: `file?${filePrefix}${fileType}font/opentype`,
   },
   {
-    test  : /\.ttf(\?.*)?$/,
+    test: /\.ttf(\?.*)?$/,
     loader: `url?${filePrefix}${fileType}application/octet-stream`,
   },
   {
-    test  : /\.eot(\?.*)?$/,
+    test: /\.eot(\?.*)?$/,
     loader: `file?${filePrefix}`,
   },
   {
-    test  : /\.svg(\?.*)?$/,
+    test: /\.svg(\?.*)?$/,
     loader: `url?{$filePrefix}${fileType}image/svg+xml`,
   },
   {
-    test  : /\.(png|jpg|gif)$/,
+    test: /\.(png|jpg|gif)$/,
     loader: 'url?limit=8192',
   },
 )

@@ -12,8 +12,8 @@ const webpackDevConfig = (webpackConfig, config) => {
   webpackConfig.plugins.push(
     new BrowserSyncPlugin(
       {
-        host : config.serverHost,
-        port : config.serverPort,
+        host: config.serverHost,
+        port: config.serverPort,
         proxy: `http://${config.serverHost}:${config.serverPort}/`,
       },
       { reload: false },
