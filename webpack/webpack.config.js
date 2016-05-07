@@ -2,7 +2,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import _debug from 'debug'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
-import short from 'postcss-short'
 import normalize from 'postcss-normalize'
 import poststylus from 'poststylus'
 import config from './config.js'
@@ -97,7 +96,6 @@ webpackConfig.stylus = {
     poststylus([
       normalize,
       sorting,
-      short,
       rucksack({
         autoprefixer: true,
         fallback: true,

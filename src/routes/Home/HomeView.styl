@@ -27,18 +27,14 @@
 			font-custom(--font.uni-sans-heavy, 40px)
 			margin: 0
 			text-align: center
-			font-size: responsive
-			min-font-size: 40px
-			max-font-size: 80px
+			font-size: responsive 40px 80px
 
 	.main-slogan
 		font-custom(--font.open-sans)
 		width: 60%
 		margin: 40px auto
 		color: --color.white
-		font-size: responsive
-		min-font-size: 15px
-		max-font-size: 20px
+		font-size: responsive 15px 20px
 		text-align: center
 
 	.divider-white
@@ -52,9 +48,9 @@
 		margin-top: 45px
 
 		a
-			font-custom(--font.open-sans, 12px)
+			font-custom(--font.open-sans-bold, 13px)
 			display: inline-block
-			padding-top: 15px
+			padding-top: 13px
 			text-transform: uppercase
 			letter-spacing: 1px
 			width: 168px
@@ -62,6 +58,7 @@
 			color: --color.white
 			border: 2px solid --color.strong-red
 			transition: 0.4s ease-in-out-quart
+
 			&:hover
 				background: --color.strong-red
 
@@ -71,9 +68,7 @@
 	h2
 		font-custom(--font.uni-sans-heavy)
 		color: --color.light-gray
-		font-size: responsive
-		min-font-size: 70px
-		max-font-size: 120px
+		font-size: responsive 70px 120px
 		opacity: 0.03
 		white-space: nowrap
 		overflow: hidden
@@ -89,9 +84,7 @@
 
 		h3
 			font-custom(--font.uni-sans-heavy)
-			font-size: responsive
-			min-font-size: 50px
-			max-font-size: 70px
+			font-size: responsive 50px 70px
 			color: --color.black
 			margin: 0
 
@@ -103,12 +96,9 @@
 
 	.about-description
 		font-extra-small(--font.open-sans)
-		padding-top: 12px
+		padding: 12px 7% 0 7%
 		margin: 0 auto
-		padding-right: 7%
-		padding-left: 7%
 		color: --color.lighter-gray
 
 		@media --query.medium
-			padding-left: 30%
-			padding-right: 30%
+			padding: 0 30%
