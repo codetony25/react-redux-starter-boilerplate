@@ -22,7 +22,7 @@
 	giant: 3rem, /* 48px */
 }
 
-// font declarations
+// Font declarations
 for key, value in --font
 	if (value != "OpenSans" && value != "OpenSansBold")
 		@font-face
@@ -33,7 +33,7 @@ for key, value in --font
 			font-family: value
 			src: url("../assets/fonts/" + value + ".ttf") format("truetype")
 
-// font mixins
+// Font mixins
 font-custom(--font-family, --font-size = null, --font-weight = normal)
 	if (--font-size != null)
 		font: --font-weight --font-size --font-family, sans-serif
