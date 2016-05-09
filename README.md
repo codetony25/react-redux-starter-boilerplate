@@ -1,4 +1,4 @@
-# Modern-ReactJS-Starter-Boilerplate
+# ReactJS-Starter-Boilerplate
 
 ## Features
 
@@ -6,8 +6,8 @@
   * Using the latest React Version.
 * [react-router](https://github.com/rackt/react-router) (`^2.2.4`)
 * [Webpack](https://github.com/webpack/webpack)
-  * CSSNext with React CSS modules
-  * PostCSS Plugins included: RucksackCSS, Sorting, Mixins, and Short.
+  * Stylus with React CSS modules
+  * PostCSS Plugins included: RucksackCSS, Sorting.
   * BrowserSync included.
   * CSS extraction and Uglify on Production build.
   * Supports Component Styling ie: `styleName="awesome"` using CSSModules.
