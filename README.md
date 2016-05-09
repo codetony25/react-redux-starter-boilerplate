@@ -31,7 +31,7 @@ Things planned for this boilerplate:
 - [x] Added support for CSS Modules
 - [x] React Router
 - [x] Mobx
-- [x] Mobx DevTools
+- [ ] Mobx DevTools
 - [ ] Set up Mobx Example Structure and Design Pattern for large scalability
 - [ ] Develop a design pattern and file structure on server side with express and Node.js
 - [ ] Add Flow, a new static type checker for JavaScript
