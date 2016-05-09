@@ -21,6 +21,6 @@
      "semi"            : ["error", "never"],
      "new-cap"         : 0,
      "arrow-body-style": ["error", "always"],
-     "key-spacing"     : [2, {"beforeColon": false, "afterColon": true, "mode": "minimum", "align": "colon"}]
+     "brace-style"     : ["error", "stroustrup"]
    }
  }

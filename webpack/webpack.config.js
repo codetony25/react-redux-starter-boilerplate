@@ -2,7 +2,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import _debug from 'debug'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
-import short from 'postcss-short'
 import normalize from 'postcss-normalize'
 import poststylus from 'poststylus'
 import config from './config.js'
@@ -25,13 +24,13 @@ const {
  */
 debug('Starting Webpack Configurations...')
 const webpackConfig = {
-  target : 'web',
+  target: 'web',
   devtool: config.devTool,
-  node   : { fs: 'empty' },
+  node: { fs: 'empty' },
   resolve: { extensions: ['', 'json', '.js', '.jsx'] },
-  module : {},
-  vendor : ['react'],
-  stylus : {},
+  module: {},
+  vendor: ['react'],
+  stylus: {},
 }
 
 /**
@@ -49,8 +48,8 @@ webpackConfig.entry = {
  * Output points for App
  */
 webpackConfig.output = {
-  path      : config.distPath,
-  filename  : '[name].[hash].js',
+  path: config.distPath,
+  filename: '[name].[hash].js',
   publicPath: `http://${config.serverHost}:${config.serverPort}/`,
 }
 
@@ -59,12 +58,12 @@ webpackConfig.output = {
  */
 webpackConfig.module.loaders = [
   {
-    test   : /\.jsx?$/,
+    test: /\.jsx?$/,
     include: config.appPath,
-    loader : 'babel-loader?cacheDirectory',
+    loader: 'babel-loader?cacheDirectory',
   },
   {
-    test   : /\.json$/,
+    test: /\.json$/,
     loaders: ['json'],
   },
 ]
@@ -81,12 +80,12 @@ const styleModuleLoader = [
 
 webpackConfig.module.loaders.push(
   {
-    test   : /\.styl$/,
+    test: /\.styl$/,
     loaders: [
       'style',
       styleModuleLoader,
       'postcss',
-      'stylus?resolve url'
+      'stylus?resolve url',
     ],
     include: config.appPath,
   }
@@ -96,14 +95,13 @@ webpackConfig.stylus = {
   use: [
     poststylus([
       normalize,
+      sorting,
       rucksack({
         autoprefixer: true,
         fallback: true,
       }),
-      sorting,
-      short,
-    ])
-  ]
+    ]),
+  ],
 }
 
 /**
@@ -114,31 +112,31 @@ const fileType = '.[ext]&limit=10000&mimetype='
 
 webpackConfig.module.loaders.push(
   {
-    test  : /\.woff(\?.*)?$/,
+    test: /\.woff(\?.*)?$/,
     loader: `url?${filePrefix}${fileType}application/font-woff`,
   },
   {
-    test  : /\.woff2(\?.*)?$/,
+    test: /\.woff2(\?.*)?$/,
     loader: `url?${filePrefix}${fileType}application/font-woff2`,
   },
   {
-    test  : /\.otf(\?.*)?$/,
+    test: /\.otf(\?.*)?$/,
     loader: `file?${filePrefix}${fileType}font/opentype`,
   },
   {
-    test  : /\.ttf(\?.*)?$/,
+    test: /\.ttf(\?.*)?$/,
     loader: `url?${filePrefix}${fileType}application/octet-stream`,
   },
   {
-    test  : /\.eot(\?.*)?$/,
+    test: /\.eot(\?.*)?$/,
     loader: `file?${filePrefix}`,
   },
   {
-    test  : /\.svg(\?.*)?$/,
+    test: /\.svg(\?.*)?$/,
     loader: `url?{$filePrefix}${fileType}image/svg+xml`,
   },
   {
-    test  : /\.(png|jpg|gif)$/,
+    test: /\.(png|jpg|gif)$/,
     loader: 'url?limit=8192',
   },
 )

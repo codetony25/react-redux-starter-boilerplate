@@ -1,39 +1,69 @@
-/** Font Global Styles **/
+/*** Font Styles ***/
 
-/* Font Names */
---open-sans = "OpenSans"
---bebas-neue = "BebasNeue"
---uni-sans-heavy ="UniSansHeavy"
---uni-sans-heavy-italic = "UniSansHeavyItalic"
---uni-sans-thin = "UniSansThin"
---uni-sans-thin-italic = "UniSansThinItalic"
+// Font names
+--font = {
+	open-sans: "OpenSans",
+	open-sans-bold: "OpenSansBold",
+	bebas-neue: "BebasNeue",
+	uni-sans-thin: "UniSansThin",
+	uni-sans-heavy: "UniSansHeavy",
+	uni-sans-thin-italic: "UniSansThinItalic",
+	uni-sans-heavy-italic: "UniSansHeavyItalic",
+}
 
-/* Premade Font sizes */
---font-tiny = 0.875rem /* 14px */
---font-extra-small = 1rem /* 16px */
---font-small = 1.125rem /* 18px */
---font-medium = 1.25rem /* 20px */
---font-large = 1.5rem /* 24px */
---font-extra-large = 2rem /* 32px */
---font-giant =  3rem /* 48px */
+// Pre-defined font sizes
+--font-size = {
+	tiny: 0.875rem, /* 14px */
+	extra-small: 1rem, /* 16px */
+	small: 1.125rem, /* 18px */
+	medium: 1.25rem, /* 20px */
+	large: 1.5rem, /* 24px */
+	extra-large: 2rem, /* 32px */
+	giant: 3rem, /* 48px */
+}
 
-/*** Fonts ***/
-@font-face
-  font-family: --bebas-neue
-  src: url("../assets/fonts/BebasNeue.otf") format("opentype")
-@font-face 
-  font-family: --uni-sans-heavy
-  src: url("../assets/fonts/UniSansHeavy.otf") format("opentype")
-@font-face 
-  font-family: --uni-sans-heavy-italic
-  src: url("../assets/fonts/UniSansHeavyItalic.otf") format("opentype")
-@font-face 
-  font-family: --uni-sans-thin
-  src: url("../assets/fonts/UniSansThin.otf") format("opentype")
-@font-face 
-  font-family: --uni-sans-thin-italic
-  src: url("../assets/fonts/UniSansThinItalic.otf") format("opentype")
+// Font declarations
+for key, value in --font
+	if (value != "OpenSans" && value != "OpenSansBold")
+		@font-face
+			font-family: value
+			src: url("../assets/fonts/" + value + ".otf") format("opentype")
+	else if (value == "OpenSans" || value == "OpenSansBold")
+		@font-face
+			font-family: value
+			src: url("../assets/fonts/" + value + ".ttf") format("truetype")
 
-/*** Font Mixins ***/
-font(size, font)
-  font: size font, sans-serif
+// Font mixins
+font-custom(--font-family, --font-size = null, --font-weight = normal)
+	if (--font-size != null)
+		font: --font-weight --font-size --font-family, sans-serif
+	else
+		font-family: --font-family, sans-serif
+
+font-tiny(--font-family, --font-weight = normal)
+	font: --font-weight --font-size.tiny --font-family, sans-serif
+	speak: none
+
+font-extra-small(--font-family, --font-weight = normal)
+	font: --font-weight --font-size.extra-small --font-family, sans-serif
+	speak: none
+
+font-small(--font-family, --font-weight = normal)
+	font: --font-weight --font-size.small --font-family, sans-serif
+	speak: none
+
+font-medium(--font-family, --font-weight = normal)
+	font: --font-weight --font-size.medium --font-family, sans-serif
+	speak: none
+
+font-large(--font-family, --font-weight = normal)
+	font: --font-weight --font-size.large --font-family, sans-serif
+	speak: none
+
+font-extra-large(--font-family, --font-weight = normal)
+	font: --font-weight --font-size.extra-large --font-family, sans-serif
+	speak: none
+
+font-giant(--font-family, --font-weight = normal)
+	font: --font-weight --font-size.giant --font-family, sans-serif
+	speak: none

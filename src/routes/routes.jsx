@@ -3,18 +3,20 @@ import {
   Router,
   Route,
   browserHistory,
-  IndexRoute
+  IndexRoute,
 } from 'react-router'
 
 import Home from './Home'
 
-// Core Layout
-import layout from '../layouts'
+// Layouts
+import CoreLayout from '../layouts/CoreLayout'
 
-export default () => (
-  <Router history={browserHistory}>
-    <Route path="/" component={layout}>
-      <IndexRoute component={Home} />
-    </Route>
-  </Router>
-)
+export default () => {
+  return (
+    <Router history={browserHistory}>
+      <Route path="/" component={CoreLayout}>
+        <IndexRoute component={Home} />
+      </Route>
+    </Router>
+  )
+}

@@ -4,22 +4,27 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import { cssLoaderAddExtract } from './utils/helpers'
 
 const debug = _debug('app:webpack:prod')
-const webpackProdConfig = (webpackConfig) => {
+
 /**
  * Production Plugins
  */
+const webpackProdConfig = (webpackConfig) => {
   debug('Extracting Css Loaders with the ExtractTextPlugin...')
   cssLoaderAddExtract(webpackConfig, /css/, ExtractTextPlugin)
 
-  debug('Setting up development plugins: DedupePlugin, OccurenceOrderPlugin, and UglifyJsPlugin')
+  debug('Setting up development plugins')
   webpackConfig.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': { NODE_ENV: JSON.stringify('production') },
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings : false,
+        warnings: false,
         dead_code: true,
-        unused   : true,
+        unused: true,
+        screw_ie8: true,
       },
     }),
     new webpack.optimize.CommonsChunkPlugin({

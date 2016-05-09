@@ -1,6 +1,123 @@
-/* Header Layout Styles */
+/*** Header Layout Styles ***/
 @import '../../styles/base'
 
-.test
-	color: --bright-red
-	font(12px, --uni-sans-heavy)
+.main-header
+	background: --color.black
+	height: 110px
+	margin-top: -7px
+	border-bottom: 1px solid --color.light-gray
+
+.main-logo
+	font-large(--font.uni-sans-heavy)
+	display: inline-block
+	padding: 50px 0 0 35px
+
+	.logo-first
+		color: --color.white
+		margin-right: 3px
+
+	.logo-second
+		color: --color.bright-red
+
+	@media --query.large
+		left: 70px
+
+.main-navigation
+	display: none
+
+	ul
+		display: flex
+		width: 50%
+		flex-direction: row
+		justify-content: center
+		list-style: none
+
+	li
+		text-align: center
+		flex-grow: 1
+
+		a
+			font-tiny(--font.open-sans)
+			position: relative
+			color: --color.white
+			transition: 0.3s ease-in-cubic
+			letter-spacing: 1px
+
+			.first-dot,
+			.second-dot,
+			.third-dot,
+			.fourth-dot
+				position: absolute
+				z-index: 1
+				opacity: 0
+				color: --color.bright-red
+				transition: 0.3s ease-in-cubic
+
+			.first-dot
+				top: 50px
+				left: 50px
+
+			.second-dot
+				top: 50px
+				right: 50px
+
+			.third-dot
+				bottom: 50px
+				left: 50px
+
+			.fourth-dot
+				bottom: 50px
+				right: 50px
+
+	@media --query.extra-large
+		position: relative
+		bottom: 46px
+		display: flex
+		flex-direction: row
+		justify-content: center
+		text-transform: uppercase
+
+		a
+			padding: 50px 50px
+			transition: 0.3s ease-out-back
+
+			&:hover
+				color: --color.bright-red
+
+				 .first-dot,
+				 .second-dot,
+				 .third-dot,
+				 .fourth-dot
+					 opacity: 1
+
+				.first-dot
+					top: 0
+					left: 0
+
+				.second-dot
+					top: 0
+					right: 0
+
+				.third-dot
+					bottom: 0
+					left: 0
+
+				.fourth-dot
+					bottom: 0
+					right: 0
+
+.main-navicon
+	float: right
+	cursor: pointer
+	color: --color.white
+	text-align: right
+	font-size: 55px
+	margin-right: 35px
+	position: absolute
+	top: 5px
+	right: 0
+	transition: 0.3s ease-out-back
+	padding: 8px
+
+	&:hover
+		color: --color.bright-red

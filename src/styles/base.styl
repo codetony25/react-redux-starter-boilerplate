@@ -1,22 +1,24 @@
-/* Imports */
+/*** Global styles ***/
 @import "colors"
 @import "fonts"
+@import "responsive"
 
-/* Global Styles */
 html
 	box-sizing: border-box
+
 body
 	margin: 0
 	padding: 0
 	height: 100%
+	font-smoothing: antialiased
 	-webkit-font-smoothing: subpixel-antialiased
+	text-rendering: optimizeLegibility
+	-moz-osx-font-smoothing: grayscale
+
 *,
 *::before,
 *::after
 	box-sizing: inherit
+
 a
 	text-decoration: none
-h1
-	color: --bright-red
-	font-family: --uni-sans-heavy
-	display: flex
