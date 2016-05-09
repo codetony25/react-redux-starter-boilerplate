@@ -89,7 +89,7 @@
     "postcss-sorting": "^1.3.1",
     "poststylus": "^0.2.3",
     "react-css-modules": "^3.7.6",
-    "react-hot-loader": "3.0.0-a*",
+    "react-hot-loader": "3.0.0-beta.2",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.3",
