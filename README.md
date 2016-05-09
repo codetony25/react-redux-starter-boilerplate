@@ -18,7 +18,7 @@
   * More information about the current extension used here: https://github.com/stylelint/stylelint-config-standard
 
 ## To Do List
-ReactJS, Webpack, PostCSS, Stylus, CSSNext, ESLint, StyleLint, ES6, Modern Front End Starter Boilerplate
+ReactJS, Webpack, PostCSS, Stylus, ESLint, StyleLint, ES6, Modern Front End Starter Boilerplate
 
 Things planned for this boilerplate:
 - [x] Add ES6 Support with .babelrc
