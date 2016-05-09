@@ -33,7 +33,7 @@ Things planned for this boilerplate:
 - [x] Mobx
 - [ ] Mobx DevTools
 - [ ] Set up Mobx Example Structure and Design Pattern for large scalability
-- [ ] Develop a design pattern and file structure on server side with express and Node.js
+- [ ] Develop a design pattern and file structure on server side with Koa and Node.js
 - [ ] Add Flow, a new static type checker for JavaScript
 - [ ] Decide on Database to use (MongoDB, PostgreSQL, RethinkDB, GraphQL)
 - [ ] Testing (Mocha -Recommended by Redux, Enzyme - By Airbnb)
