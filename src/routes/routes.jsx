@@ -6,6 +6,7 @@ import {
   IndexRoute,
 } from 'react-router'
 
+// Views
 import Home from './Home'
 
 // Layouts

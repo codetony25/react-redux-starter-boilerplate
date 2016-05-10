@@ -1,2 +1,2 @@
-import HomeView from './HomeVIew.jsx'
+import HomeView from './HomeView.jsx'
 export default HomeView
