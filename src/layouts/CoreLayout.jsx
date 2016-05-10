@@ -1,4 +1,4 @@
-import '../../styles/base.styl'
+import '../styles/base.styl'
 import React from 'react'
 import { observer } from 'mobx-react'
 
@@ -6,7 +6,7 @@ import { observer } from 'mobx-react'
 // import Store from './CoreLayoutStore'
 
 // Layouts
-import HeaderLayout from '../HeaderLayout'
+import HeaderLayout from './HeaderLayout'
 
 const CoreLayout = observer(({ children }) => {
   return (

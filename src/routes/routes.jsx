@@ -9,7 +9,7 @@ import {
 import Home from './Home'
 
 // Layouts
-import CoreLayout from '../layouts/CoreLayout'
+import CoreLayout from '../layouts'
 
 export default () => {
   return (
