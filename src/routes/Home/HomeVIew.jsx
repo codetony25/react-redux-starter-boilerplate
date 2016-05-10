@@ -27,7 +27,7 @@ const HomeView = () => {
       <div styleName="main-about">
         <h2>Tony Tai Nguyen</h2>
         <div styleName="about-headline">
-          <h3>Who am I</h3>
+          <h3>Who I am</h3>
           <div styleName="divider-red"></div>
           <p styleName="about-description">I am a Full Stack JavaScript developer who is passionate in problem solving. I currently work at Docler Media in the city of Los Angeles and have been developing for 6 years</p>
         </div>

@@ -17,56 +17,46 @@ const HeaderLayout = (Store) => {
         <ul>
           <li>
             <a href="#">
-              <span styleName="first-dot">&bull;</span>
-              <span styleName="second-dot">&bull;</span>
-              <span styleName="third-dot">&bull;</span>
-              <span styleName="fourth-dot">&bull;</span>
+              <span styleName="dots-top" />
+              <span styleName="dots-bottom" />
               Home
             </a>
           </li>
           <li>
             <a href="#">
-              <span styleName="first-dot">&bull;</span>
-              <span styleName="second-dot">&bull;</span>
-              <span styleName="third-dot">&bull;</span>
-              <span styleName="fourth-dot">&bull;</span>
+              <span styleName="dots-top" />
+              <span styleName="dots-bottom" />
               About
             </a>
           </li>
           <li>
             <a href="#">
-              <span styleName="first-dot">&bull;</span>
-              <span styleName="second-dot">&bull;</span>
-              <span styleName="third-dot">&bull;</span>
-              <span styleName="fourth-dot">&bull;</span>
+              <span styleName="dots-top" />
+              <span styleName="dots-bottom" />
               Portfolio
             </a>
           </li>
           <li>
             <a href="#">
-              <span styleName="first-dot">&bull;</span>
-              <span styleName="second-dot">&bull;</span>
-              <span styleName="third-dot">&bull;</span>
-              <span styleName="fourth-dot">&bull;</span>
+              <span styleName="dots-top" />
+              <span styleName="dots-bottom" />
               Contact
             </a>
           </li>
           <li>
             <a href="#">
-              <span styleName="first-dot">&bull;</span>
-              <span styleName="second-dot">&bull;</span>
-              <span styleName="third-dot">&bull;</span>
-              <span styleName="fourth-dot">&bull;</span>
+              <span styleName="dots-top" />
+              <span styleName="dots-bottom" />
               Blog
             </a>
           </li>
         </ul>
       </nav>
       <div styleName="main-navicon">
-        <i className="icon ion-navicon" onClick={Store.sidebarToggle} />
+        <div styleName="navicon active"></div>
       </div>
     </header>
   )
 }
 
-export default CSSModules(HeaderLayout, Styles)
+export default CSSModules(HeaderLayout, Styles, {allowMultiple: true})

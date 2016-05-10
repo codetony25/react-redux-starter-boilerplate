@@ -42,31 +42,36 @@
 			transition: 0.3s ease-in-cubic
 			letter-spacing: 1px
 
-			.first-dot,
-			.second-dot,
-			.third-dot,
-			.fourth-dot
-				position: absolute
-				z-index: 1
+			.dots-top,
+			.dots-bottom
 				opacity: 0
 				color: --color.bright-red
+				z-index: 1
 				transition: 0.3s ease-in-cubic
 
-			.first-dot
-				top: 50px
-				left: 50px
+				&::after,
+				&::before
+					content: "\2022"
+					position: absolute
+					transition: 0.3s ease-in-cubic
 
-			.second-dot
-				top: 50px
-				right: 50px
+			.dots-top
+				&::after
+					top: 50px
+					left: 50px
 
-			.third-dot
-				bottom: 50px
-				left: 50px
+				&::before
+					top: 50px
+					right: 50px
 
-			.fourth-dot
-				bottom: 50px
-				right: 50px
+			.dots-bottom
+				&::after
+					bottom: 50px
+					left: 50px
+
+				&::before
+					bottom: 50px
+					right: 50px
 
 	@media --query.extra-large
 		position: relative
@@ -83,40 +88,68 @@
 			&:hover
 				color: --color.bright-red
 
-				 .first-dot,
-				 .second-dot,
-				 .third-dot,
-				 .fourth-dot
-					 opacity: 1
+				.dots-top,
+				.dots-bottom
+					opacity: 1
 
-				.first-dot
-					top: 0
-					left: 0
+				.dots-top
+					&::after
+						top: 0
+						left: 0
 
-				.second-dot
-					top: 0
-					right: 0
+					&::before
+						top: 0
+						right: 0
 
-				.third-dot
-					bottom: 0
-					left: 0
+				.dots-bottom
+					&::after
+						bottom: 0
+						left: 0
 
-				.fourth-dot
-					bottom: 0
-					right: 0
+					&::before
+						bottom: 0
+						right: 0
 
 .main-navicon
 	float: right
 	cursor: pointer
 	color: --color.white
-	text-align: right
-	font-size: 55px
-	margin-right: 35px
+	margin-right: 25px
 	position: absolute
-	top: 5px
+	top: 16px
 	right: 0
-	transition: 0.3s ease-out-back
-	padding: 8px
+	transition: 0.7s ease-out-cubic
+	padding: 15px
+
+	.navicon
+		display: inline-block
+		position: relative
+		background: --color.white
+		width: 42px
+		height: 5px
+		top: 1.5px
+		transition: 0.4s
+
+		&::after,
+		&::before
+			content: ""
+			display: inline-block
+			position: relative
+			background: --color.white
+			width: 42px
+			height: 5px
+			transition: 0.4s ease-in-sine
+
+		&::after
+			top: 1px
+
+		&::before
+			top: 5px
 
 	&:hover
-		color: --color.bright-red
+		background: --color.bright-red
+
+	&.active
+
+		&::after
+			opacity: 0
