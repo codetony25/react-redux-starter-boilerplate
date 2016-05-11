@@ -27,7 +27,7 @@ const webpackConfig = {
   target: 'web',
   devtool: config.devTool,
   node: { fs: 'empty' },
-  resolve: { extensions: ['', 'json', '.js', '.jsx'] },
+  resolve: { extensions: ['', '.json', '.js', '.jsx'] },
   module: {},
   vendor: ['react'],
   stylus: {},
