@@ -16,7 +16,9 @@ const webpackDevConfig = (webpackConfig, config) => {
         port: config.serverPort,
         proxy: `http://${config.serverHost}:${config.serverPort}/`,
       },
-      { reload: false },
+      {
+        reload: false,
+      },
     ),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()

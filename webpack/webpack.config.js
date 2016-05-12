@@ -4,6 +4,8 @@ import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import normalize from 'postcss-normalize'
 import poststylus from 'poststylus'
+import chalk from 'chalk'
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import config from './config.js'
 
 import webpackDevConfig from './dev.config.js'
@@ -27,10 +29,13 @@ const webpackConfig = {
   target: 'web',
   devtool: config.devTool,
   node: { fs: 'empty' },
-  resolve: { extensions: ['', '.json', '.js', '.jsx'] },
   module: {},
   vendor: ['react'],
   stylus: {},
+  resolve: {
+    extensions: ['', '.json', '.js', '.jsx'],
+    modulesDirectories: ['node_modules']
+  },
 }
 
 /**
@@ -60,11 +65,11 @@ webpackConfig.module.loaders = [
   {
     test: /\.jsx?$/,
     include: config.appPath,
-    loader: 'babel-loader?cacheDirectory',
+    loader: 'babel?cacheDirectory',
   },
   {
     test: /\.json$/,
-    loaders: ['json'],
+    loader: 'json',
   },
 ]
 
@@ -145,6 +150,10 @@ webpackConfig.module.loaders.push(
  * Plugin Configurations
  */
 webpackConfig.plugins = [
+  new ProgressBarPlugin({
+    format: `${chalk.cyan.bold('  Webpack buliding in progress: ')} ${chalk.magenta.bold('[:bar]')} ${chalk.green.bold(':percent')} ( :elapsed seconds )`,
+    clear: false,
+  }),
   new HtmlWebpackPlugin({
     template: config.htmlPath,
     hash    : false,

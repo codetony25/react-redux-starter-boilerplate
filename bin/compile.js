@@ -8,7 +8,7 @@ const compiler = webpack(webpackConfig)
 /**
  * Runs the webpack compiler
  */
-function runCompiler() {
+(function runCompiler() {
   try {
     compiler.run((error) => {
       debug('Webpack compile has finished')
@@ -23,6 +23,4 @@ function runCompiler() {
   catch (error) {
     debug('compiling has failed', error)
   }
-}
-
-runCompiler()
+})();
