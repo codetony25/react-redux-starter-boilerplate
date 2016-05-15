@@ -113,6 +113,7 @@
   },
   "dependencies": {
     "history": "^2.1.1",
+    "lodash": "^4.12.0",
     "mobx": "^2.1.5",
     "mobx-react": "^3.0.5",
     "react": "^15.0.2",

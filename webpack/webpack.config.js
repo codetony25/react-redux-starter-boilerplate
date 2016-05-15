@@ -1,5 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import _debug from 'debug'
+import webpack from 'webpack'
 import rucksack from 'rucksack-css'
 import sorting from 'postcss-sorting'
 import normalize from 'postcss-normalize'
@@ -8,8 +9,8 @@ import chalk from 'chalk'
 import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 import config from './config.js'
 
-import webpackDevConfig from './dev.config.js'
-import webpackProdConfig from './prod.config.js'
+import developmentConfig from './dev.config.js'
+import productionConfig from './prod.config.js'
 
 const debug = _debug('app:webpack:config')
 
@@ -30,11 +31,11 @@ const webpackConfig = {
   devtool: config.devTool,
   node: { fs: 'empty' },
   module: {},
-  vendor: ['react'],
+  cache: config.cache,
   stylus: {},
   resolve: {
     extensions: ['', '.json', '.js', '.jsx'],
-    modulesDirectories: ['node_modules']
+    modulesDirectories: ['node_modules'],
   },
 }
 
@@ -149,9 +150,18 @@ webpackConfig.module.loaders.push(
 /**
  * Plugin Configurations
  */
+let progressChalk = chalk.cyan.bold('  Webpack buliding in progress: '),
+    barChalk = chalk.magenta.bold('[:bar]'),
+    percentChalk = chalk.green.bold(':percent');
+
 webpackConfig.plugins = [
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(config.env),
+    __DEVELOPMENT__,
+    __PRODUCTION__,
+  }),
   new ProgressBarPlugin({
-    format: `${chalk.cyan.bold('  Webpack buliding in progress: ')} ${chalk.magenta.bold('[:bar]')} ${chalk.green.bold(':percent')} ( :elapsed seconds )`,
+    format: `${progressChalk} ${barChalk} ${percentChalk} ( :elapsed seconds )`,
     clear: false,
   }),
   new HtmlWebpackPlugin({
@@ -168,7 +178,7 @@ webpackConfig.plugins = [
  */
 if (__DEVELOPMENT__) {
   debug('Running only Development Webpack Configurations')
-  webpackDevConfig(webpackConfig, config)
+  developmentConfig(webpackConfig, config)
 }
 
 /**
@@ -176,7 +186,7 @@ if (__DEVELOPMENT__) {
  */
 if (__PRODUCTION__) {
   debug('Running only Production Webpack Configurations')
-  webpackProdConfig(webpackConfig, config)
+  productionConfig(webpackConfig, config)
 }
 
 export default webpackConfig

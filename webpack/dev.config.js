@@ -7,7 +7,7 @@ const debug = _debug('app:webpack:dev')
 /**
  * Development Plugins
  */
-const webpackDevConfig = (webpackConfig, config) => {
+const developmentConfig = (webpackConfig, config) => {
   debug('Setting up development plugins')
   webpackConfig.plugins.push(
     new BrowserSyncPlugin(
@@ -25,4 +25,4 @@ const webpackDevConfig = (webpackConfig, config) => {
   )
 }
 
-export default webpackDevConfig
+export default developmentConfig

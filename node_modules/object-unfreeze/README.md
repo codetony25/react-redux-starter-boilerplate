@@ -25,6 +25,26 @@ shallowCopy = objectUnfreeze(subject);
 shallowCopy.foo = 'FOO';
 ```
 
+---
+
+```js
+import objectUnfreeze from 'object-unfreeze';
+
+let subject,
+    shallowCopy;
+
+subject = [];
+
+Object.freeze(subject);
+
+// Throws an error.
+// subject.push('FOO');
+
+shallowCopy = objectUnfreeze(subject);
+
+shallowCopy.push('FOO');
+```
+
 ## Download
 
 Download using NPM:

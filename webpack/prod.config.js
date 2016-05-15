@@ -8,15 +8,12 @@ const debug = _debug('app:webpack:prod')
 /**
  * Production Plugins
  */
-const webpackProdConfig = (webpackConfig) => {
+const productionConfig = (webpackConfig) => {
   debug('Extracting Css Loaders with the ExtractTextPlugin...')
   cssLoaderAddExtract(webpackConfig, /css/, ExtractTextPlugin)
 
   debug('Setting up development plugins')
   webpackConfig.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('production') },
-    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -25,15 +22,21 @@ const webpackProdConfig = (webpackConfig) => {
         dead_code: true,
         unused: true,
         screw_ie8: true,
+        sequences: true,
+        conditionals: true,
+        booleans: true,
+        if_return: true,
+        join_vars: true,
+        drop_console: true,
       },
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor'],
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   names: ['vendor'],
+    // }),
     new ExtractTextPlugin('[name].[contenthash].css', {
       allChunks: true,
     })
   )
 }
 
-export default webpackProdConfig
+export default productionConfig
