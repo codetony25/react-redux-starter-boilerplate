@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 
 /**
  * Webpack Configuration Helpers

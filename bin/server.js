@@ -16,15 +16,19 @@ debug('Booting up server...')
  * Webpack Middleware Configuarations
  */
 app.use(webpackDevMiddleware(compiler, {
-  publicPath        : webpackConfig.output.publicPath,
-  quiet             : false,
-  noInfo            : false,
-  hot               : true,
-  inline            : true,
-  lazy              : false,
+  publicPath: webpackConfig.output.publicPath,
+  quiet: false,
+  noInfo: false,
+  hot: true,
+  inline: true,
+  lazy: false,
   historyApiFallback: true,
-  headers           : { 'Access-Control-Allow-Origin': '*' },
-  stats             : { chunks: false, chunkModules: false, colors: true },
+  headers: {'Access-Control-Allow-Origin': '*'},
+  stats: {
+    chunks: false,
+    chunkModules: false,
+    colors: true,
+  },
 }))
 
 /**
@@ -35,11 +39,8 @@ app.use(webpackHotMiddleware(compiler))
 /**
  * Server port listining
  */
-app.listen(config.serverPort, (err) => {
-  if (err) {
-    debug(`Error while listining to ${config.serverPort}`, err)
-  }
-  else {
-    debug(`Running on ${config.serverHost}:${config.serverPort}!`)
+app.listen(config.serverPort, (error) => {
+  if (error) {
+    debug(`Error while listining to ${config.serverPort}`, error)
   }
 })

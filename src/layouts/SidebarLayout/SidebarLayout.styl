@@ -1,7 +1,5 @@
 /* Sidebar Layout Styles */
-@import '../../styles/base'
-
-aside
+aside 
   position: absolute
   width: 300px
   height: 100%
@@ -10,13 +8,13 @@ aside
   transition: 0.5s ease
   z-index: 100
 
-  .open
+  .open 
     right: -1px
-
-  .close
+  
+  .close 
     right: -301px
-
-  .sidebar-close
+  
+   .sidebar-close 
     cursor: pointer
     float: right
     margin-top: 20px
@@ -26,4 +24,4 @@ aside
     transition: 0.2s
 
     &:hover
-      color: var(--bright-red)
+      color: --color.bright-red

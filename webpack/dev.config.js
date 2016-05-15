@@ -7,7 +7,7 @@ const debug = _debug('app:webpack:dev')
 /**
  * Development Plugins
  */
-const webpackDevConfig = (webpackConfig, config) => {
+const developmentConfig = (webpackConfig, config) => {
   debug('Setting up development plugins')
   webpackConfig.plugins.push(
     new BrowserSyncPlugin(
@@ -16,11 +16,13 @@ const webpackDevConfig = (webpackConfig, config) => {
         port: config.serverPort,
         proxy: `http://${config.serverHost}:${config.serverPort}/`,
       },
-      { reload: false },
+      {
+        reload: false,
+      },
     ),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   )
 }
 
-export default webpackDevConfig
+export default developmentConfig

@@ -63,7 +63,6 @@
 				background: --color.strong-red
 
 .main-about
-	text-align: left
 
 	h2
 		font-custom(--font.uni-sans-heavy)
@@ -71,6 +70,7 @@
 		font-size: responsive 70px 120px
 		opacity: 0.03
 		white-space: nowrap
+		text-align: left
 		overflow: hidden
 		text-transform: uppercase
 		letter-spacing: 30px
@@ -92,7 +92,7 @@
 			width: 73px
 			height: 6px
 			background: --color.strong-red
-			margin: 15px auto
+			margin: 8px auto 25px
 
 	.about-description
 		font-extra-small(--font.open-sans)
@@ -101,4 +101,37 @@
 		color: --color.lighter-gray
 
 		@media --query.medium
-			padding: 0 30%
+			padding: 0 25%
+
+	.about-section
+		padding-top: 106px
+		text-align: center
+		display: flex
+		max-width: 1102px
+		margin: 0 auto
+		justify-content: space-between
+
+		.about-column
+			width: 225px
+
+			h3
+				font-custom(--font.bebas-neue, 30px)
+				color: --color.dark-gray
+				margin: 0
+			p
+				font-tiny(--font.open-sans)
+				line-height: 27px;
+				color: --color.dark-gray-light
+				margin: 0
+				padding-top: 28px
+			img
+				vertical-align: bottom
+				min-height: 85px
+				margin-bottom: 44px
+
+			.red-dot
+				width: 11px
+				height: 11px
+				border-radius: 50%
+				margin: 47px auto
+				background: --color.strong-red
