@@ -30,15 +30,13 @@ Things planned for this boilerplate:
 - [x] Add Plugins for PostCSS (CSSNext which includes autoprefixer, RucksackCSS, Sorting, Mixins, and Short)
 - [x] Added support for CSS Modules
 - [x] React Router
-- [x] Mobx
-- [ ] Mobx DevTools
-- [ ] Set up Mobx Example Structure and Design Pattern for large scalability
+- [x] Redux
+- [x] Add Redux Example Counter
+- [ ] Set up Redux Example Structure and Design Pattern for large scalability
 - [ ] Develop a design pattern and file structure on server side with Koa and Node.js
 - [ ] Add Flow, a new static type checker for JavaScript
 - [ ] Decide on Database to use (MongoDB, PostgreSQL, RethinkDB, GraphQL)
 - [ ] Testing (Mocha -Recommended by Redux, Enzyme - By Airbnb)
-
-MobX (https://github.com/mobxjs/mobx) also formerly known as Mobservable is gaining a lot of attention and can be scaled for large applications. It makes it helps with state management and isn't opinionated on the type of design pattern we use.
 
 Suggestions are welcome!
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import Root from './routes/routes.jsx'
+import Root from './routes'
 
-if (module.hot) {
+if (module.hot && __DEVELOPMENT__) {
   module.hot.accept()
 }
 
