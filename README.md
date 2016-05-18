@@ -2,23 +2,19 @@
 
 ## Features
 
-* [React](https://github.com/facebook/react) (`^15.0.1`)
-  * Using the latest React Version.
-* [react-router](https://github.com/rackt/react-router) (`^2.2.4`)
+* [React](https://github.com/facebook/react)
+* [React-router](https://github.com/rackt/react-router)
+* [Babel](http://babeljs.io) for ES6 and ES7 transpiling
 * [Webpack](https://github.com/webpack/webpack)
-  * Stylus with React CSS modules
-  * PostCSS Plugins included: RucksackCSS, Sorting.
-  * BrowserSync included.
-  * CSS extraction and Uglify on Production build.
-  * Supports Component Styling ie: `styleName="awesome"` using CSSModules.
-* [ESLint](http://eslint.org)
-  * Extends Standard and Standard-React. More information at: https://github.com/feross/eslint-config-standard-react
-* [StyleLint](https://github.com/stylelint/stylelint)
-  * Using stylelint-config-standard as our starting point linter. Feel free to add additional rules!
-  * More information about the current extension used here: https://github.com/stylelint/stylelint-config-standard
+* [Koa Webpack Dev Middleware](https://github.com/yiminghe/koa-webpack-dev-middleware)
+* [Koa Webpack Hot Middleware](https://github.com/dayAlone/koa-webpack-hot-middleware)
+* [ESLint](http://eslint.org) uses airbnb linting preferences
+* [StyleLint](https://github.com/stylelint/stylelint) includes style linter for our css/stylus code
+* [Redux](https://github.com/rackt/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
+* [React Router Redux](https://github.com/reactjs/react-router-redux) Redux/React Router bindings.
 
 ## To Do List
-ReactJS, Webpack, PostCSS, Stylus, ESLint, StyleLint, ES6, Modern Front End Starter Boilerplate
+ReactJS, Redux, Webpack, PostCSS, Stylus, ESLint, StyleLint, ES6, Modern Front End Starter Boilerplate
 
 Things planned for this boilerplate:
 - [x] Add ES6 Support with .babelrc
@@ -32,6 +28,7 @@ Things planned for this boilerplate:
 - [x] React Router
 - [x] Redux
 - [x] Add Redux Example Counter
+- [ ] Make it all Universal(Isomorphic) JavaScript!
 - [ ] Set up Redux Example Structure and Design Pattern for large scalability
 - [ ] Develop a design pattern and file structure on server side with Koa and Node.js
 - [ ] Add Flow, a new static type checker for JavaScript
@@ -53,19 +50,17 @@ Navigate in the project and run the good ol' npm install and start to boot up th
 npm install
 npm start
 ```
-
-Browser Sync will start up and open your browser to the current hosted port.
-
 There are more commands to which I have included in the package.json file which include the following:
 - `npm start` starts up localhost with browserSync and hot reloading
 - `npm run compile` compiles project and puts them in the /dist folder.
 - `npm run deploy` removes the dist folder and compiles afterwards.
 - `npm run clean` removes the dist folder and clears npm cache.
-- `npm run lint` lints all .js, .jsx, and .styl files and displayed in console.
-- `npm run lint:jsx` lints only jsx files located in the /src directory.
-- `npm run lint:js` lints only js files located in the /src directory.
-- `npm run lint:node` lints everything that except what is in /src directory
-- `npm run lint:css` lints all stylesheets located in /src directory.
+
+## Styles
+  * Stylus with React CSS modules
+  * PostCSS Plugins included: RucksackCSS, Sorting.
+  * CSS extraction and Uglify on Production build.
+  * Supports Component Styling ie: `styleName="awesome"` using CSSModules.
 
 ## Contributing
 

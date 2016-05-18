@@ -20,12 +20,12 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 export default () => {
   return (
-	<Provider store={store} history={history}>
-	  <Router history={browserHistory}>
-		<Route path="/" component={CoreLayout}>
-		  <IndexRoute component={Home} />
-		</Route>
-	  </Router>
-	</Provider>
+		<Provider store={store} history={history}>
+		  <Router history={history}>
+				<Route path="/" component={CoreLayout}>
+				  <IndexRoute component={Home} />
+				</Route>
+		  </Router>
+		</Provider>
   )
 }

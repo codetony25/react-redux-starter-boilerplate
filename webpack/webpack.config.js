@@ -48,6 +48,16 @@ webpackConfig.entry = {
     'webpack-hot-middleware/client',
     config.appPath,
   ],
+  vendor: [
+    'react',
+    'react-dom',
+    'react-router',
+    'react-redux',
+    'react-router-redux',
+    'redux',
+    'history',
+    'lodash',
+  ],
 }
 
 /**

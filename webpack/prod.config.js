@@ -30,9 +30,11 @@ const productionConfig = (webpackConfig) => {
         drop_console: true,
       },
     }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   names: ['vendor'],
-    // }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor-[hash].min.js',
+      minChunks: Infinity,
+    }),
     new ExtractTextPlugin('[name].[contenthash].css', {
       allChunks: true,
     })
