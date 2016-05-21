@@ -28,7 +28,7 @@ Things planned for this boilerplate:
 - [x] React Router
 - [x] Redux
 - [x] Add Redux Example Counter
-- [ ] Make it all Universal(Isomorphic) JavaScript!
+- [ ] Make it all Universal (Isomorphic) JavaScript!
 - [ ] Set up Redux Example Structure and Design Pattern for large scalability
 - [ ] Develop a design pattern and file structure on server side with Koa and Node.js
 - [ ] Add Flow, a new static type checker for JavaScript
