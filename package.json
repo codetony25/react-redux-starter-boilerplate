@@ -77,7 +77,7 @@
     "koa-webpack-hot-middleware": "^1.0.3",
     "mobx-react-devtools": "^4.0.5",
     "mocha": "^2.4.5",
-    "node-sass": "^3.7.0",
+    "node-sass": "^4.14.1",
     "npm-install-webpack-plugin": "^3.1.1",
     "postcss-loader": "^0.9.1",
     "postcss-normalize": "^0.2.0",
